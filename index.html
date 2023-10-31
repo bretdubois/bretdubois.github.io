@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // This will attempt to redirect the user immediately
+        window.onload = function() {
+            window.location = "/portfolio";
+        };
+
+        // If the above redirection fails, after 5 seconds we'll display the redirection message.
+        setTimeout(function() {
+            document.getElementById('redirection-message').style.display = 'block';
+        }, 3000);
+    </script>
+</head>
+<body>
+    <div class="container" id="redirection-message" style="display: none;">
+        <h1>Whoops! Detour Ahead!</h1>
+        <p>Seems like you took a wrong turn 🤣. But don't worry! We're rerouting you to my awesome portfolio. Sit tight, or if you're impatient like me, <a href="/portfolio">click here</a>.</p>
+        <div class="loader"></div>
+    </div>
+</body>
+</html>

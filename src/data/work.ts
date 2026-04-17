@@ -42,17 +42,17 @@ export const caseStudies: CaseStudy[] = [
   {
     id: "apple",
     company: "Apple",
-    role: "Technical Expert · Technical Specialist · Sales Specialist",
+    role: "Sales Specialist → Technical Specialist → Technical Expert",
     period: "October 2019 – August 2022",
     location: "San Mateo, CA",
     summary:
-      "Nearly three years at the Genius Bar building a reputation for technical excellence and exceptional human connection—earning 300+ perfect NPS scores and driving $150K+ in enterprise lifetime value.",
+      "Joined as a Sales Specialist and earned two promotions in under three years—advancing to Technical Specialist, then Technical Expert at the Genius Bar. 300+ perfect NPS scores and $150K+ in enterprise lifetime value from a single referral.",
     challenge:
-      "High-volume, high-stakes customer interactions where every conversation was someone's bad day. The challenge was delivering consistent, outstanding experiences under pressure, and spotting business opportunities inside consumer conversations.",
+      "High-volume, high-stakes interactions where every conversation was someone's bad day. The challenge was delivering consistent, outstanding experiences under pressure while spotting business opportunities hidden inside consumer conversations.",
     approach:
-      "Treated every customer interaction as a product experience. I diagnosed fast, communicated clearly to non-technical users, and stayed present enough to notice when someone's iPhone issue was actually an enterprise procurement conversation in disguise.",
+      "Started on the floor in sales—which grounded me in customer psychology before I ever touched a diagnostic tool. Earned promotion into technical roles by pairing those instincts with deep device-level expertise. Diagnosed fast, communicated clearly to non-technical users, and stayed present enough to notice when an iPhone repair was actually an enterprise procurement conversation in disguise.",
     outcome:
-      "Recognized company-wide for NPS performance. One enterprise referral generated over $150K in lifetime spend. Partnered with iPhone engineering to inform repair documentation and product design feedback.",
+      "Recognized company-wide for NPS performance. One enterprise referral generated over $150K in lifetime spend. Partnered with iPhone engineering to inform repair documentation and product design feedback. Trained and mentored newer teammates on both support workflows and customer interaction.",
     metrics: [
       { value: "300", label: "Perfect NPS surveys (100/100)", suffix: "+" },
       { value: "150", label: "Lifetime value, one referral", prefix: "$", suffix: "K+" },
@@ -67,21 +67,22 @@ export const caseStudies: CaseStudy[] = [
     period: "September 2024 – April 2025",
     location: "San Diego, CA",
     summary:
-      "In-home tech onboarding and protection plan sales for Verizon and AT&T customers—consistently ranked among top field performers while navigating a wide variety of device ecosystems.",
+      "B2C in-home tech consultant for Verizon and AT&T customers—conducting needs-based consultations, delivering device setup and training, handling objections in real time, and managing a structured CRM pipeline across a wide range of device ecosystems.",
     challenge:
-      "Showing up to someone's home to talk about tech is an intimate, trust-based environment. Customers are often anxious or confused, and objections come fast.",
+      "Showing up at someone's front door to talk about tech and protection plans requires earning trust in the first 60 seconds. Customers are skeptical, busy, and quick to object on price or timing.",
     approach:
-      "Built rapport from the first moment at the door. Used technical knowledge to genuinely help with setup and troubleshooting, which made protection plan conversations feel natural rather than transactional.",
+      "Led every visit with a genuine needs assessment—listening for pain points before recommending solutions. Handled budget and timing objections by anchoring to real cost-saving value. Used CRM tools to manage structured follow-ups that turned one-time visits into long-term customer relationships. Rounded every consultation with product training and technical demos to build customer confidence.",
     outcome:
-      "Consistently exceeded quota and ranked among top field performers across the region.",
+      "Consistently exceeded conversion targets and maintained top satisfaction ratings. Ranked among top regional field performers with high close rates driven by consultative selling and technical credibility.",
     metrics: [],
     highlights: [
-      "Top regional field performer",
-      "Exceeded quota consistently",
-      "Trust-first sales approach",
-      "Multi-ecosystem technical fluency",
+      "In-home B2C technical consultations",
+      "Needs-based protection plan selling",
+      "Real-time objection handling",
+      "CRM pipeline & follow-up management",
+      "Product training & technical demos",
     ],
-    tags: ["Field Sales", "Device Onboarding", "Smart Home", "Verizon", "AT&T"],
+    tags: ["B2C Field Sales", "Device Onboarding", "Consultative Selling", "CRM", "Verizon · AT&T"],
     accent: "#4D7C0F",
   },
 ];
@@ -116,7 +117,7 @@ export const timeline: TimelineItem[] = [
     title: "Apple Genius Bar",
     company: "Apple · San Mateo",
     description:
-      "Joined Apple as a Technical Specialist, quickly advancing to Technical Expert. Partnered with iPhone engineering, mentored teammates, and built a reputation for outstanding customer experiences.",
+      "Joined as a Sales Specialist and earned two promotions in under three years—advancing to Technical Specialist, then Technical Expert. Partnered with iPhone engineering, mentored teammates, and built a reputation for outstanding customer experiences.",
     type: "sales",
   },
   {

@@ -151,8 +151,13 @@ export default function About() {
                       style={{ background: color, borderColor: "var(--bg-alt)" }}
                     />
                     {/* Card */}
-                    <div className="card p-4 flex-1">
-                      <div className="flex items-center gap-2 mb-2">
+                    <div className="card overflow-hidden p-4 flex-1 relative">
+                      {/* Type accent bar */}
+                      <div
+                        className="absolute top-0 left-0 right-0 h-[3px]"
+                        style={{ background: color }}
+                      />
+                      <div className="flex items-center gap-2 mb-2 mt-1">
                         <div
                           className="w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0"
                           style={{ background: `${color}20` }}
@@ -177,8 +182,13 @@ export default function About() {
                   <div className={`hidden md:flex items-center gap-0 ${isLeft ? "flex-row" : "flex-row-reverse"}`}>
                     {/* Content */}
                     <div className={`w-[calc(50%-2rem)] ${isLeft ? "text-right pr-6" : "text-left pl-6"}`}>
-                      <div className="card p-5 inline-block text-left max-w-sm">
-                        <div className="flex items-center gap-2 mb-2" style={isLeft ? { justifyContent: "flex-end" } : {}}>
+                      <div className="card overflow-hidden p-5 inline-block text-left max-w-sm relative w-full">
+                        {/* Type accent bar */}
+                        <div
+                          className="absolute top-0 left-0 right-0 h-[3px]"
+                          style={{ background: color }}
+                        />
+                        <div className="flex items-center gap-2 mb-2 mt-1" style={isLeft ? { justifyContent: "flex-end" } : {}}>
                           <div
                             className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0"
                             style={{ background: `${color}20` }}

@@ -12,6 +12,7 @@ export interface CaseStudy {
   highlights?: string[];
   tags: string[];
   accent: string;
+  logo?: string;
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -38,6 +39,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     tags: ["B2B SaaS", "AI Platform", "HubSpot CRM", "Consultative Selling", "Restaurant Tech"],
     accent: "#C2410C",
+    logo: "https://logo.clearbit.com/spothopper.com",
   },
   {
     id: "apple",
@@ -59,6 +61,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     tags: ["Technical Support", "Enterprise Sales", "Customer Experience", "iOS Ecosystem", "Product Feedback"],
     accent: "#B45309",
+    logo: "https://logo.clearbit.com/apple.com",
   },
   {
     id: "asurion",
@@ -84,6 +87,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     tags: ["B2C Field Sales", "Device Onboarding", "Consultative Selling", "CRM", "Verizon · AT&T"],
     accent: "#4D7C0F",
+    logo: "https://logo.clearbit.com/asurion.com",
   },
 ];
 
@@ -93,6 +97,7 @@ export interface TimelineItem {
   company: string;
   description: string;
   type: "sales" | "technical" | "education" | "maker";
+  logo?: string;
 }
 
 export const timeline: TimelineItem[] = [
@@ -111,21 +116,23 @@ export const timeline: TimelineItem[] = [
     description:
       "Earned the highest rank in Scouting, completing a community leadership project and developing skills in planning, teamwork, and accountability.",
     type: "education",
+    logo: "https://logo.clearbit.com/scouting.org",
   },
   {
     year: "2019",
     title: "Apple Genius Bar",
-    company: "Apple · San Mateo",
+    company: "Apple · San Mateo, CA",
     description:
-      "Joined as a Sales Specialist and earned two promotions in under three years—advancing to Technical Specialist, then Technical Expert. Partnered with iPhone engineering, mentored teammates, and built a reputation for outstanding customer experiences.",
+      "Joined as Sales Specialist, earned two promotions in under three years to Technical Specialist then Technical Expert. Partnered with iPhone engineering and mentored teammates.",
     type: "sales",
+    logo: "https://logo.clearbit.com/apple.com",
   },
   {
     year: "2020",
     title: "Network Engineering",
-    company: "Independent · Redwood City",
+    company: "Independent · Redwood City, CA",
     description:
-      "Began designing and deploying Ubiquiti UniFi networks for clients—handling everything from AP placement and switch configuration to IP cameras and post-deployment support.",
+      "Designing and deploying Ubiquiti UniFi networks—AP placement, switch config, IP cameras, VLAN segmentation, and post-deployment support.",
     type: "technical",
   },
   {
@@ -133,39 +140,44 @@ export const timeline: TimelineItem[] = [
     title: "A.S. Computer & Information Science",
     company: "College of San Mateo",
     description:
-      "Completed an Associate of Science in Computer & Information Science while working at Apple—covering data structures, algorithms, OOP, databases, networking fundamentals, and operating systems. The formal CS foundation beneath everything.",
+      "Completed a CS degree while working at Apple—data structures, algorithms, OOP, databases, networking, and operating systems.",
     type: "education",
+    logo: "https://logo.clearbit.com/collegeofsanmateo.edu",
   },
   {
     year: "2022",
     title: "Transferred to UC San Diego",
     company: "UC San Diego",
     description:
-      "After finishing the A.S. at College of San Mateo, transferred to UCSD to pursue Cognitive Science with a specialization in Design & HCI—bridging the technical and human sides of design that I'd been living intuitively.",
+      "Transferred after finishing the A.S. to pursue Cognitive Science with a specialization in Design & HCI.",
     type: "education",
+    logo: "https://logo.clearbit.com/ucsd.edu",
   },
   {
     year: "2024",
     title: "Technical Product Owner",
     company: "Product Management Club · UCSD",
     description:
-      "Led the design and marketing overhaul of 'Afterhours,' a food-accessibility platform. Managed roadmaps, workshops, and full lifecycle from research to deployment.",
+      "Led the design and marketing overhaul of 'Afterhours,' a food-accessibility platform. Roadmaps, workshops, full lifecycle from research to deployment.",
     type: "sales",
+    logo: "https://logo.clearbit.com/ucsd.edu",
   },
   {
     year: "2024",
     title: "B.S. Cognitive Science + HCI",
     company: "UC San Diego",
     description:
-      "Graduated with a specialization in Design & Human-Computer Interaction—the academic foundation for the design instincts built throughout my career.",
+      "Graduated with a specialization in Design & Human-Computer Interaction.",
     type: "education",
+    logo: "https://logo.clearbit.com/ucsd.edu",
   },
   {
     year: "2025",
-    title: "AI-Era B2B Sales",
-    company: "SpotHopper · SF Bay Area",
+    title: "BDR — AI-Era B2B Sales",
+    company: "SpotHopper · SF Bay Area, CA",
     description:
-      "Joined SpotHopper as a BDR, bridging AI product complexity with real restaurant owner needs. Applying everything learned about technology, people, and design.",
+      "Bridging AI product complexity with real restaurant owner needs—discovery-led selling, HubSpot CRM, and consultative close.",
     type: "sales",
+    logo: "https://logo.clearbit.com/spothopper.com",
   },
 ];

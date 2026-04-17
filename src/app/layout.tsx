@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter, JetBrains_Mono } from "next/font/google";
 import LenisProvider from "@/providers/LenisProvider";
-import CustomCursor from "@/components/ui/CustomCursor";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -69,7 +68,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        <CustomCursor />
         <LenisProvider>{children}</LenisProvider>
       </body>
     </html>

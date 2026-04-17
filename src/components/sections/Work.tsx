@@ -8,6 +8,32 @@ import { RevealLine } from "@/components/ui/TextReveal";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import { caseStudies } from "@/data/work";
 
+function CompanyLogo({ logo, company, accent }: { logo?: string; company: string; accent: string }) {
+  const [failed, setFailed] = useState(false);
+  if (logo && !failed) {
+    return (
+      <div className="w-12 h-12 rounded-xl bg-white border border-[var(--border)] flex items-center justify-center overflow-hidden shadow-sm flex-shrink-0">
+        <img
+          src={logo}
+          alt={company}
+          width={36}
+          height={36}
+          className="w-9 h-9 object-contain"
+          onError={() => setFailed(true)}
+        />
+      </div>
+    );
+  }
+  return (
+    <div
+      className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+      style={{ background: `${accent}20` }}
+    >
+      <Briefcase size={20} style={{ color: accent }} />
+    </div>
+  );
+}
+
 function CaseStudyCard({ study, index }: { study: typeof caseStudies[0]; index: number }) {
   const [expanded, setExpanded] = useState(false);
 
@@ -22,29 +48,24 @@ function CaseStudyCard({ study, index }: { study: typeof caseStudies[0]; index: 
       <div className="p-6 md:p-8">
         {/* Header */}
         <div className="flex items-start justify-between gap-4 mb-6">
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <div
-                className="w-8 h-8 rounded-lg flex items-center justify-center"
-                style={{ background: `${study.accent}20` }}
-              >
-                <Briefcase size={16} style={{ color: study.accent }} />
-              </div>
-              <span className="section-label" style={{ color: study.accent }}>
+          <div className="flex items-start gap-4">
+            <CompanyLogo logo={study.logo} company={study.company} accent={study.accent} />
+            <div>
+              <span className="section-label block mb-1" style={{ color: study.accent }}>
                 {study.period}
               </span>
+              <h3
+                className="font-display text-2xl font-bold mb-1"
+                style={{ color: "var(--text-primary)" }}
+              >
+                {study.company}
+              </h3>
+              <p className="text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
+                {study.role}
+              </p>
             </div>
-            <h3
-              className="font-display text-2xl font-bold mb-1"
-              style={{ color: "var(--text-primary)" }}
-            >
-              {study.company}
-            </h3>
-            <p className="text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
-              {study.role}
-            </p>
           </div>
-          <span className="tag hidden sm:inline-flex">{study.location.split(",")[1]?.trim()}</span>
+          <span className="tag hidden sm:inline-flex flex-shrink-0">{study.location.split(",")[1]?.trim()}</span>
         </div>
 
         {/* Summary */}

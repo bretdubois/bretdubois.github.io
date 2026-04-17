@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, ExternalLink } from "lucide-react";
+import { MapPin, ExternalLink, Briefcase } from "lucide-react";
 import { RevealLine } from "@/components/ui/TextReveal";
+import { staggerContainer, fadeUp, scaleUp, viewportConfig } from "@/lib/animation";
 
 function LinkedInIcon({ size = 20 }: { size?: number }) {
   return (
@@ -13,35 +14,25 @@ function LinkedInIcon({ size = 20 }: { size?: number }) {
     </svg>
   );
 }
-import { staggerContainer, fadeUp, scaleUp, viewportConfig } from "@/lib/animation";
 
 const contactMethods = [
   {
-    icon: Mail,
-    label: "Email",
-    value: "bretdubois1@gmail.com",
-    href: "mailto:bretdubois1@gmail.com",
-    cta: "Send an email",
-    accent: "#C2410C",
-    description: "Best for professional inquiries",
-  },
-  {
     icon: LinkedInIcon,
     label: "LinkedIn",
-    value: "linkedin.com/in/bret-dubois",
-    href: "https://www.linkedin.com/in/bret-dubois/",
-    cta: "Connect",
+    value: "linkedin.com/in/bretdubois",
+    href: "https://www.linkedin.com/in/bretdubois/",
+    cta: "Connect on LinkedIn",
     accent: "#0077B5",
-    description: "Let's connect professionally",
+    description: "Best way to reach me",
   },
   {
-    icon: Phone,
-    label: "Phone",
-    value: "(650) 400-0490",
-    href: "tel:+16504000490",
-    cta: "Call or text",
-    accent: "#15803D",
-    description: "Available for quick conversations",
+    icon: Briefcase,
+    label: "Currently exploring",
+    value: "Technical Sales · Sales Engineering · GTM at AI / SaaS",
+    href: "https://www.linkedin.com/in/bretdubois/",
+    cta: "Open to the right fit",
+    accent: "#C2410C",
+    description: "Full-cycle, BDR→AE, or SE roles at growing companies",
   },
 ];
 
@@ -102,7 +93,7 @@ export default function Contact() {
 
         {/* Contact cards */}
         <motion.div
-          className="grid gap-5 md:grid-cols-3 max-w-3xl mx-auto mb-14"
+          className="grid gap-5 md:grid-cols-2 max-w-2xl mx-auto mb-14"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"

@@ -128,11 +128,19 @@ export const timeline: TimelineItem[] = [
     type: "technical",
   },
   {
+    year: "2021",
+    title: "A.S. Computer & Information Science",
+    company: "College of San Mateo",
+    description:
+      "Completed an Associate of Science in Computer & Information Science while working at Apple—covering data structures, algorithms, OOP, databases, networking fundamentals, and operating systems. The formal CS foundation beneath everything.",
+    type: "education",
+  },
+  {
     year: "2022",
-    title: "Returned to School",
+    title: "Transferred to UC San Diego",
     company: "UC San Diego",
     description:
-      "Pursued a B.S. in Cognitive Science with a specialization in Design & Human-Computer Interaction—formally studying the design thinking I'd been practicing intuitively.",
+      "After finishing the A.S. at College of San Mateo, transferred to UCSD to pursue Cognitive Science with a specialization in Design & HCI—bridging the technical and human sides of design that I'd been living intuitively.",
     type: "education",
   },
   {

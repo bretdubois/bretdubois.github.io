@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import { ArrowDown, Mail } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { RevealLine } from "@/components/ui/TextReveal";
 
 const NetworkScene = dynamic(() => import("@/components/three/NetworkScene"), {
@@ -25,6 +25,11 @@ function LinkedInIcon({ size = 14 }: { size?: number }) {
 export default function Hero() {
   const scrollDown = () => {
     const el = document.getElementById("about");
+    if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: "smooth" });
+  };
+
+  const scrollToContact = () => {
+    const el = document.getElementById("contact");
     if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: "smooth" });
   };
 
@@ -94,7 +99,7 @@ export default function Hero() {
               letterSpacing: "0.18em",
             }}
           >
-            Redwood City, CA &nbsp;·&nbsp; Technical Sales &nbsp;·&nbsp; Maker &nbsp;·&nbsp; Designer
+            Redwood City, CA &nbsp;·&nbsp; Sales × Engineering × Design
           </p>
         </RevealLine>
 
@@ -140,14 +145,13 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.65 }}
         >
-          <a
-            href="mailto:bretdubois1@gmail.com"
+          <button
+            onClick={scrollToContact}
             className="btn-primary"
             style={{ fontSize: "0.9rem", padding: "0.7rem 1.6rem" }}
           >
-            <Mail size={15} />
             Get in Touch
-          </a>
+          </button>
           <button
             onClick={scrollDown}
             style={{
@@ -174,7 +178,7 @@ export default function Hero() {
             Explore Work <ArrowDown size={14} />
           </button>
           <a
-            href="https://www.linkedin.com/in/bret-dubois/"
+            href="https://www.linkedin.com/in/bretdubois/"
             target="_blank"
             rel="noopener noreferrer"
             style={{

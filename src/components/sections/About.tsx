@@ -94,8 +94,9 @@ export default function About() {
             className="mt-4 max-w-2xl mx-auto text-lg"
             style={{ color: "var(--text-secondary)" }}
           >
-            I never chose between technical and human-centered—I pursued both. Every role
-            has added a layer. Here&apos;s how they connect.
+            Technical people say I&apos;m too focused on people. Sales people say I&apos;m
+            too focused on specs. Both are right—and that intersection is exactly the value.
+            Here&apos;s the timeline.
           </motion.p>
         </motion.div>
 
@@ -240,7 +241,7 @@ export default function About() {
           >
             <span>📍 Redwood City, CA</span>
             <span>·</span>
-            <span>🎓 B.S. Cognitive Science + HCI · UCSD 2024</span>
+            <span>🎓 B.S. Cognitive Science + HCI, UCSD &nbsp;·&nbsp; A.S. Computer Science, CSM</span>
             <span>·</span>
             <span>🦅 Eagle Scout</span>
           </motion.div>

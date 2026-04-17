@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 
 function LinkedInIcon({ size = 14 }: { size?: number }) {
   return (
@@ -16,11 +16,10 @@ function LinkedInIcon({ size = 14 }: { size?: number }) {
 import { fadeUp, viewportConfig } from "@/lib/animation";
 
 const links = [
-  { icon: Mail, label: "bretdubois1@gmail.com", href: "mailto:bretdubois1@gmail.com" },
   {
     icon: LinkedInIcon,
     label: "linkedin.com/in/bretdubois",
-    href: "https://www.linkedin.com/in/bret-dubois/",
+    href: "https://www.linkedin.com/in/bretdubois/",
   },
 ];
 

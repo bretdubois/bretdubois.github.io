@@ -180,7 +180,7 @@ export default function Skills() {
 
         {/* Clusters grid */}
         <motion.div
-          className="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
+          className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 items-start"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"

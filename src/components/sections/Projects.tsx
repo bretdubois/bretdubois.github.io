@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Radio, Network, Layers, Code2, ChevronDown, ChevronUp } from "lucide-react";
+import { Radio, Network, Layers, Code2, TrendingUp, Cpu, Globe, ChevronDown, ChevronUp } from "lucide-react";
 import { staggerContainer, fadeUp, scaleUp, viewportConfig } from "@/lib/animation";
 import { RevealLine } from "@/components/ui/TextReveal";
 import { projects } from "@/data/projects";
@@ -12,6 +12,9 @@ const iconMap: Record<string, typeof Radio> = {
   network: Network,
   product: Layers,
   code: Code2,
+  finance: TrendingUp,
+  pi: Cpu,
+  web: Globe,
 };
 
 function CodeBlock({ language, code }: { language: string; code: string }) {

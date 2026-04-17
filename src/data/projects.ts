@@ -107,4 +107,77 @@ def enrich_leads(df: pd.DataFrame) -> pd.DataFrame:
     return df`,
     },
   },
+  {
+    id: "market-research-tools",
+    title: "Market Research & Trading Automation",
+    category: "Software / Finance",
+    description:
+      "Python-based tools for financial market research—pulling price and fundamental data from public APIs, computing momentum signals, and generating structured analysis outputs with minimal manual work.",
+    details:
+      "Built around pandas, yfinance, and custom Bash schedulers. Scripts handle data ingestion, signal computation, and output to CSVs or local dashboards. Emphasis on automating the repetitive data-gathering layer to spend time on interpretation rather than collection. Tied into broader interest in systematic, data-driven decision frameworks.",
+    tags: ["Python", "pandas", "yfinance", "Financial Data", "Bash", "Data Analysis", "Automation"],
+    highlight: "Where code meets compound interest",
+    icon: "finance",
+    accent: "#15803D",
+    codeSnippet: {
+      language: "python",
+      code: `import pandas as pd
+import yfinance as yf
+
+def momentum_screen(tickers: list[str], lookback: int = 63) -> pd.DataFrame:
+    """Rank tickers by risk-adjusted momentum over lookback days."""
+    data = yf.download(tickers, period="1y", auto_adjust=True)["Close"]
+    returns = data.pct_change().dropna()
+    score = returns.tail(lookback).mean() / returns.tail(lookback).std()
+    return score.sort_values(ascending=False).rename("momentum_score")`,
+    },
+  },
+  {
+    id: "raspberry-pi",
+    title: "Raspberry Pi Home Lab & IoT",
+    category: "Hardware / IoT",
+    description:
+      "Self-hosted home infrastructure on Raspberry Pi—running local LLMs, network monitoring tools, and IoT sensor integrations with Arduino, with experiments in LoRaWAN for long-range low-power communications.",
+    details:
+      "Containerized stack running Ollama for local AI inference, network health dashboards, and Arduino-based sensor nodes. VLAN-isolated IoT segment ties into the UniFi network infrastructure. LoRaWAN experiments cover protocol fundamentals, gateway configuration, and DePIN-adjacent use cases. Privacy-first, off-cloud by default.",
+    tags: ["Raspberry Pi", "Arduino", "Docker", "LoRaWAN", "Linux", "Ollama", "IoT", "Edge Computing"],
+    highlight: "Off-cloud, privacy-first home lab",
+    icon: "pi",
+    accent: "#C2410C",
+    codeSnippet: {
+      language: "bash",
+      code: `# docker-compose.yml (excerpt)
+services:
+  ollama:
+    image: ollama/ollama
+    ports: ["11434:11434"]
+    volumes: ["./models:/root/.ollama"]
+    restart: unless-stopped
+
+  netdata:
+    image: netdata/netdata
+    pid: host
+    network_mode: host
+    cap_add: [SYS_PTRACE, SYS_ADMIN]
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro`,
+    },
+  },
+  {
+    id: "portfolio-site",
+    title: "This Portfolio Website",
+    category: "Web / Design Engineering",
+    description:
+      "Designed and engineered this site from scratch—combining React Three Fiber 3D graphics, GSAP scroll-driven animations, Framer Motion clip-mask reveals, and Lenis smooth scroll into a cohesive, timeless piece.",
+    details:
+      "Built on Next.js 16 (Turbopack) with Tailwind CSS v4 and a fully custom design system. Features a lerp-follower cursor, word-by-word spring reveals, dual-strip CSS marquee, and a WebGL canvas with a 22-node particle network behind the hero. Deployed as a static export; Cloudflare Pages-ready with a custom domain.",
+    tags: ["Next.js 16", "React Three Fiber", "GSAP", "Framer Motion", "Tailwind v4", "TypeScript", "Lenis", "WebGL"],
+    highlight: "You're looking at it right now",
+    icon: "web",
+    accent: "#9333EA",
+    links: [
+      { label: "View Source", href: "https://github.com/bretdubois/bretdubois.github.io" },
+    ],
+  },
 ];

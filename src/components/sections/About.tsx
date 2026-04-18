@@ -183,17 +183,57 @@ export default function About() {
                     className="card p-4 md:p-5 flex items-start gap-4 overflow-hidden"
                     style={{ borderTop: `3px solid ${ACCENT}` }}
                   >
-                    {/* Logo / icon */}
-                    <OrgLogo item={item} />
+                    {/* Logo / icon — clickable if url present */}
+                    {item.url ? (
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded-2xl"
+                        tabIndex={-1}
+                        aria-hidden
+                      >
+                        <OrgLogo item={item} />
+                      </a>
+                    ) : (
+                      <OrgLogo item={item} />
+                    )}
 
                     {/* Text */}
                     <div className="flex-1 min-w-0">
-                      <p
-                        className="text-xs font-mono font-semibold uppercase tracking-wider mb-1"
-                        style={{ color: "var(--text-muted)" }}
-                      >
-                        {item.company}
-                      </p>
+                      {item.url ? (
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group/link inline-flex items-center gap-1 text-xs font-mono font-semibold uppercase tracking-wider mb-1 transition-colors hover:underline"
+                          style={{ color: "var(--text-muted)" }}
+                        >
+                          {item.company}
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 12 12"
+                            width="9"
+                            height="9"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="opacity-0 group-hover/link:opacity-100 transition-opacity"
+                            aria-hidden
+                          >
+                            <path d="M1 11 10 2M4 2h6v6" />
+                          </svg>
+                        </a>
+                      ) : (
+                        <p
+                          className="text-xs font-mono font-semibold uppercase tracking-wider mb-1"
+                          style={{ color: "var(--text-muted)" }}
+                        >
+                          {item.company}
+                        </p>
+                      )}
                       <h3
                         className="font-display font-bold leading-tight mb-2"
                         style={{

@@ -97,6 +97,7 @@ export interface TimelineItem {
   description: string;
   type: "sales" | "technical" | "education" | "maker";
   logo?: string;
+  url?: string;
 }
 
 export const timeline: TimelineItem[] = [
@@ -116,6 +117,7 @@ export const timeline: TimelineItem[] = [
       "Earned the highest rank in Scouting, completing a community leadership project and developing skills in planning, teamwork, and accountability.",
     type: "education",
     logo: "/logos/bsa.png",
+    url: "https://www.scouting.org/programs/scouts-bsa/",
   },
   {
     year: "2019",
@@ -125,6 +127,7 @@ export const timeline: TimelineItem[] = [
       "Joined as Sales Specialist, earned two promotions in under three years to Technical Specialist then Technical Expert. Partnered with iPhone engineering and mentored teammates.",
     type: "sales",
     logo: "/logos/apple.png",
+    url: "https://www.apple.com/retail/genius-bar/",
   },
   {
     year: "2020",
@@ -133,6 +136,7 @@ export const timeline: TimelineItem[] = [
     description:
       "Designing and deploying Ubiquiti UniFi networks—AP placement, switch config, IP cameras, VLAN segmentation, and post-deployment support.",
     type: "technical",
+    url: "https://ui.com/",
   },
   {
     year: "2021",
@@ -142,6 +146,7 @@ export const timeline: TimelineItem[] = [
       "Completed a CS degree while working at Apple—data structures, algorithms, OOP, databases, networking, and operating systems.",
     type: "education",
     logo: "/logos/csm.png",
+    url: "https://collegeofsanmateo.edu/",
   },
   {
     year: "2022",
@@ -150,6 +155,7 @@ export const timeline: TimelineItem[] = [
     description:
       "Transferred after finishing the A.S. to pursue Cognitive Science with a specialization in Design & HCI.",
     type: "education",
+    url: "https://ucsd.edu/",
   },
   {
     year: "2024",
@@ -158,6 +164,7 @@ export const timeline: TimelineItem[] = [
     description:
       "Led the design and marketing overhaul of 'Afterhours,' a food-accessibility platform. Roadmaps, workshops, full lifecycle from research to deployment.",
     type: "sales",
+    url: "https://www.instagram.com/pmcatucsd/",
   },
   {
     year: "2024",
@@ -166,6 +173,7 @@ export const timeline: TimelineItem[] = [
     description:
       "Graduated with a specialization in Design & Human-Computer Interaction.",
     type: "education",
+    url: "https://cogsci.ucsd.edu/undergraduates/major/design-interaction.html",
   },
   {
     year: "2025",
@@ -174,5 +182,6 @@ export const timeline: TimelineItem[] = [
     description:
       "Bridging AI product complexity with real restaurant owner needs—discovery-led selling, HubSpot CRM, and consultative close.",
     type: "sales",
+    url: "https://www.spothopperapp.com/",
   },
 ];

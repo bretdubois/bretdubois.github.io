@@ -19,6 +19,8 @@ function CompanyLogo({ logo, company, accent }: { logo?: string; company: string
           width={36}
           height={36}
           className="w-9 h-9 object-contain"
+          referrerPolicy="no-referrer"
+          crossOrigin="anonymous"
           onError={() => setFailed(true)}
         />
       </div>

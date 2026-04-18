@@ -141,7 +141,7 @@ function SkillClusterCard({
 }
 
 export default function Skills() {
-  const [openId, setOpenId] = useState<string | null>("sales");
+  const [openId, setOpenId] = useState<string | null>(null);
 
   const toggle = (id: string) => setOpenId((prev) => (prev === id ? null : id));
 

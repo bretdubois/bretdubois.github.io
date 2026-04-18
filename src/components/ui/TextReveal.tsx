@@ -28,7 +28,7 @@ export function RevealLine({
   const shouldAnimate = immediate ? true : isInView;
 
   return (
-    <span ref={ref} className={`block overflow-hidden ${className}`}>
+    <span ref={ref} className={`block overflow-hidden ${className}`} style={{ paddingBottom: "0.15em", marginBottom: "-0.15em" }}>
       <motion.span
         className="block"
         initial={{ y: "105%" }}

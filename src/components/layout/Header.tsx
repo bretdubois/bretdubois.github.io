@@ -105,7 +105,7 @@ export default function Header() {
             ))}
           </motion.nav>
 
-          {/* Right: dark mode + resume + mobile menu */}
+          {/* Right: dark mode + contact CTA + mobile menu */}
           <motion.div
             className="flex items-center gap-2"
             initial={{ opacity: 0, x: 20 }}

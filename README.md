@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# bretdubois.github.io
 
-## Getting Started
+Personal portfolio of **Bret DuBois** — technical sales professional with an HCI / engineering background.
 
-First, run the development server:
+Live at [bretdubois.github.io](https://bretdubois.github.io).
+
+## Stack
+
+- **Next.js 16** (Turbopack) with `output: "export"` — deployed as static HTML to GitHub Pages
+- **TypeScript** — strict mode
+- **Tailwind CSS v4** — custom warm design tokens via `@theme`
+- **Framer Motion 12** — scroll-triggered reveals, stagger, clip-path text reveals
+- **GSAP + ScrollTrigger** — timeline scroll-linked line draw
+- **React Three Fiber + Drei** — the animated network graph behind the hero
+- **Lenis** — smooth scroll, integrated with the GSAP ticker
+- **next/og** `ImageResponse` — favicon, apple-touch-icon, and OG image generated at build time
+
+## Local development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev    # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Other scripts:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint   # ESLint
+npm run build  # static export → out/
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deploy
 
-## Learn More
+Pushes to `main` trigger `.github/workflows/deploy.yml`, which runs `npm ci && npm run build` and publishes `out/` via `actions/deploy-pages@v4`. The repo name matches the host (`bretdubois.github.io`) so the URL has no path prefix.
 
-To learn more about Next.js, take a look at the following resources:
+## Layout
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+  app/
+    layout.tsx          root metadata, JSON-LD Person schema, FOUC script
+    page.tsx            single-page layout — all sections mount here
+    icon.tsx            favicon (64×64, ImageResponse)
+    apple-icon.tsx      apple-touch-icon (180×180)
+    opengraph-image.tsx 1200×630 OG card
+    globals.css         design tokens + base styles
+  components/
+    layout/             Header (nav + dark toggle + scroll progress) and Footer
+    sections/           Hero, About, Work, Projects, Skills, Contact
+    three/              NetworkScene — the R3F hero background
+    ui/                 TextReveal, AnimatedCounter
+  data/
+    work.ts             case studies + timeline entries
+    projects.ts         personal/technical projects
+    skills.ts           skill clusters + proficiencies
+  lib/
+    animation.ts        shared Framer Motion variants
+    utils.ts            smoothScrollTo helper (prefers Lenis)
+  providers/
+    LenisProvider.tsx   Lenis + GSAP ticker wiring, reduced-motion aware
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Notes
 
-## Deploy on Vercel
+- Dark mode is applied via a blocking inline script in `<head>` before hydration to prevent FOUC. The toggle persists choice in `localStorage`.
+- `prefers-reduced-motion` is honored in CSS (disables animations/transitions) and in `LenisProvider` (skips smooth scroll).
+- Contact email is intentionally not on the page — scraper-bait. LinkedIn is the entry point.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[MIT](./LICENSE)

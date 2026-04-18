@@ -150,7 +150,6 @@ export const timeline: TimelineItem[] = [
     description:
       "Transferred after finishing the A.S. to pursue Cognitive Science with a specialization in Design & HCI.",
     type: "education",
-    logo: "/logos/ucsd.jpg",
   },
   {
     year: "2024",
@@ -159,7 +158,6 @@ export const timeline: TimelineItem[] = [
     description:
       "Led the design and marketing overhaul of 'Afterhours,' a food-accessibility platform. Roadmaps, workshops, full lifecycle from research to deployment.",
     type: "sales",
-    logo: "/logos/ucsd.jpg",
   },
   {
     year: "2024",
@@ -168,7 +166,6 @@ export const timeline: TimelineItem[] = [
     description:
       "Graduated with a specialization in Design & Human-Computer Interaction.",
     type: "education",
-    logo: "/logos/ucsd.jpg",
   },
   {
     year: "2025",
@@ -177,6 +174,5 @@ export const timeline: TimelineItem[] = [
     description:
       "Bridging AI product complexity with real restaurant owner needs—discovery-led selling, HubSpot CRM, and consultative close.",
     type: "sales",
-    logo: "https://logo.clearbit.com/spothopper.com",
   },
 ];

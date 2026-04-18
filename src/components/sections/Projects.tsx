@@ -39,7 +39,7 @@ function CodeBlock({ language, code }: { language: string; code: string }) {
   );
 }
 
-function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
+function ProjectCard({ project }: { project: typeof projects[0] }) {
   const [expanded, setExpanded] = useState(false);
   const Icon = iconMap[project.icon] || Code2;
 
@@ -137,6 +137,24 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
                     code={project.codeSnippet.code}
                   />
                 )}
+
+                {/* External links */}
+                {project.links && project.links.length > 0 && (
+                  <div className="flex flex-wrap gap-3 mt-4">
+                    {project.links.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
+                        style={{ color: project.accent }}
+                      >
+                        {link.label} →
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             </motion.div>
           )}
@@ -188,9 +206,9 @@ export default function Projects() {
           whileInView="visible"
           viewport={viewportConfig}
         >
-          {projects.map((project, i) => (
+          {projects.map((project) => (
             <div key={project.id} className="relative">
-              <ProjectCard project={project} index={i} />
+              <ProjectCard project={project} />
             </div>
           ))}
         </motion.div>
@@ -208,7 +226,7 @@ export default function Projects() {
             These are personal and independent projects—not covered by NDAs. For a fuller picture of
             professional work, see the case studies above or{" "}
             <a
-              href="https://www.linkedin.com/in/bret-dubois/"
+              href="https://www.linkedin.com/in/bretdubois/"
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium transition-colors"

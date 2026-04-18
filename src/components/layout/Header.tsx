@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Menu, X, Moon, Sun } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, smoothScrollTo } from "@/lib/utils";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -16,17 +16,14 @@ const navLinks = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [dark, setDark] = useState(false);
+  // Lazy-init from DOM so the server-rendered markup and the first client
+  // render agree (the inline script in layout.tsx sets .dark pre-paint).
+  const [dark, setDark] = useState<boolean>(() => {
+    if (typeof document === "undefined") return false;
+    return document.documentElement.classList.contains("dark");
+  });
   const { scrollYProgress } = useScroll();
   const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-
-  useEffect(() => {
-    const stored = localStorage.getItem("theme");
-    if (stored === "dark") {
-      setDark(true);
-      document.documentElement.classList.add("dark");
-    }
-  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -45,11 +42,7 @@ export default function Header() {
 
   const scrollTo = useCallback((href: string) => {
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
+    smoothScrollTo(href);
   }, []);
 
   return (
@@ -75,7 +68,12 @@ export default function Header() {
           {/* Logo */}
           <motion.a
             href="#"
-            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+            onClick={(e) => {
+              e.preventDefault();
+              const lenis = (window as unknown as { __lenis?: { scrollTo: (t: number) => void } }).__lenis;
+              if (lenis) lenis.scrollTo(0);
+              else window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
             className="flex items-center gap-2 group"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -122,12 +120,12 @@ export default function Header() {
               {dark ? <Sun size={16} /> : <Moon size={16} />}
             </button>
 
-            <a
-              href="mailto:bretdubois1@gmail.com"
+            <button
+              onClick={() => scrollTo("#contact")}
               className="btn-primary hidden md:inline-flex text-sm py-2 px-4"
             >
               Get in Touch
-            </a>
+            </button>
 
             <button
               className="md:hidden w-8 h-8 flex items-center justify-center text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
@@ -162,12 +160,12 @@ export default function Header() {
                     {link.label}
                   </motion.button>
                 ))}
-                <a
-                  href="mailto:bretdubois1@gmail.com"
+                <button
+                  onClick={() => scrollTo("#contact")}
                   className="btn-primary mt-2 justify-center text-sm"
                 >
                   Get in Touch
-                </a>
+                </button>
               </div>
             </motion.div>
           )}

@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { RevealLine } from "@/components/ui/TextReveal";
+import { smoothScrollTo } from "@/lib/utils";
 
 const NetworkScene = dynamic(() => import("@/components/three/NetworkScene"), {
   ssr: false,
@@ -23,15 +24,8 @@ function LinkedInIcon({ size = 14 }: { size?: number }) {
 }
 
 export default function Hero() {
-  const scrollDown = () => {
-    const el = document.getElementById("about");
-    if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: "smooth" });
-  };
-
-  const scrollToContact = () => {
-    const el = document.getElementById("contact");
-    if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: "smooth" });
-  };
+  const scrollDown = () => smoothScrollTo("#about");
+  const scrollToContact = () => smoothScrollTo("#contact");
 
   return (
     <section

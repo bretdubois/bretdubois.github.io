@@ -5,16 +5,30 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, Sphere, MeshDistortMaterial, Stars } from "@react-three/drei";
 import * as THREE from "three";
 
+// Tiny deterministic PRNG (mulberry32) so node positions are stable
+// across renders and satisfy React 19's purity rule.
+function mulberry32(seed: number) {
+  let state = seed >>> 0;
+  return () => {
+    state = (state + 0x6d2b79f5) >>> 0;
+    let t = state;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
 function NetworkNodes() {
   const groupRef = useRef<THREE.Group>(null!);
 
   const nodes = useMemo(() => {
+    const rand = mulberry32(0xBD); // seed — reproducible layout
     const pts: THREE.Vector3[] = [];
     const count = 22;
     for (let i = 0; i < count; i++) {
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(Math.random() * 2 - 1);
-      const r = 1.8 + Math.random() * 1.6;
+      const theta = rand() * Math.PI * 2;
+      const phi = Math.acos(rand() * 2 - 1);
+      const r = 1.8 + rand() * 1.6;
       pts.push(
         new THREE.Vector3(
           r * Math.sin(phi) * Math.cos(theta),

@@ -34,7 +34,7 @@ function CompanyLogo({ logo, company, accent }: { logo?: string; company: string
   );
 }
 
-function CaseStudyCard({ study, index }: { study: typeof caseStudies[0]; index: number }) {
+function CaseStudyCard({ study }: { study: typeof caseStudies[0] }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -75,7 +75,13 @@ function CaseStudyCard({ study, index }: { study: typeof caseStudies[0]; index: 
 
         {/* Metrics (if present) or qualitative highlights */}
         {study.metrics.length > 0 ? (
-          <div className="grid grid-cols-3 gap-4 mb-6 p-4 rounded-xl" style={{ background: "var(--bg-alt)" }}>
+          <div
+            className="grid gap-4 mb-6 p-4 rounded-xl"
+            style={{
+              background: "var(--bg-alt)",
+              gridTemplateColumns: `repeat(${study.metrics.length}, minmax(0, 1fr))`,
+            }}
+          >
             {study.metrics.map((m, i) => (
               <div key={i} className="text-center">
                 <div
@@ -235,8 +241,8 @@ export default function Work() {
           whileInView="visible"
           viewport={viewportConfig}
         >
-          {caseStudies.map((study, i) => (
-            <CaseStudyCard key={study.id} study={study} index={i} />
+          {caseStudies.map((study) => (
+            <CaseStudyCard key={study.id} study={study} />
           ))}
         </motion.div>
 

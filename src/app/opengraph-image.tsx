@@ -73,7 +73,7 @@ export default function OGImage() {
               letterSpacing: "-0.01em",
             }}
           >
-            — where technical depth meets human connection
+            — where the spec sheet meets the discovery call
           </div>
         </div>
 

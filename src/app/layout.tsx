@@ -24,7 +24,7 @@ const jetbrainsMono = JetBrains_Mono({
 const SITE_URL = "https://bretdubois.github.io";
 const SITE_TITLE = "Bret DuBois — Technical Sales × Engineering × Design";
 const SITE_DESCRIPTION =
-  "Portfolio of Bret DuBois — where technical depth meets human connection. B2B SaaS, IoT, networking, AI, and HCI design, from Redwood City, CA.";
+  "Portfolio of Bret DuBois — where the spec sheet meets the discovery call. Technical sales, B2B SaaS, IoT, networking, AI, and HCI design, from Redwood City, CA.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

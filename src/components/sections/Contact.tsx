@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, ExternalLink, Briefcase } from "lucide-react";
+import { MapPin, ExternalLink, Calendar, Briefcase } from "lucide-react";
 import { RevealLine } from "@/components/ui/TextReveal";
 import { staggerContainer, fadeUp, scaleUp, viewportConfig } from "@/lib/animation";
 
@@ -17,22 +17,22 @@ function LinkedInIcon({ size = 20 }: { size?: number }) {
 
 const contactMethods = [
   {
+    icon: Calendar,
+    label: "Book a 30-min chat",
+    value: "calendly.com/bretdubois1/30min",
+    href: "https://calendly.com/bretdubois1/30min",
+    cta: "Pick a time",
+    accent: "#C2410C",
+    description: "Fastest way to talk — recruiters, teams, or just to trade notes",
+  },
+  {
     icon: LinkedInIcon,
     label: "LinkedIn",
     value: "linkedin.com/in/bretdubois",
     href: "https://www.linkedin.com/in/bretdubois/",
     cta: "Connect on LinkedIn",
     accent: "#0077B5",
-    description: "Best way to reach me",
-  },
-  {
-    icon: Briefcase,
-    label: "Currently exploring",
-    value: "Technical Sales · Sales Engineering · GTM at AI / SaaS",
-    href: "https://www.linkedin.com/in/bretdubois/",
-    cta: "Open to the right fit",
-    accent: "#C2410C",
-    description: "Full-cycle, BDR→AE, or SE roles at growing companies",
+    description: "Where I post, share, and keep the professional record",
   },
 ];
 
@@ -83,10 +83,24 @@ export default function Contact() {
             a good conversation.
           </motion.p>
 
-          <motion.div variants={fadeUp} className="flex justify-center mt-4">
-            <div className="flex items-center gap-2 text-sm" style={{ color: "var(--text-muted)" }}>
+          <motion.div
+            variants={fadeUp}
+            className="flex flex-col items-center gap-2 mt-5 text-sm"
+            style={{ color: "var(--text-muted)" }}
+          >
+            <div className="flex items-center gap-2">
+              <Briefcase size={14} />
+              <span>
+                Targeting{" "}
+                <span style={{ color: "var(--text-secondary)", fontWeight: 500 }}>
+                  Sales Engineer · Solutions Engineer · Technical AE
+                </span>{" "}
+                roles at AI, dev tools, or technical B2B SaaS
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
               <MapPin size={14} />
-              <span>Based in Redwood City, CA · Open to remote &amp; hybrid roles</span>
+              <span>Redwood City, CA · Open to remote &amp; hybrid</span>
             </div>
           </motion.div>
         </motion.div>

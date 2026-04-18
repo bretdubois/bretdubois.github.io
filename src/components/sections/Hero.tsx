@@ -128,7 +128,7 @@ export default function Hero() {
               letterSpacing: "-0.01em",
             }}
           >
-            — where technical depth meets human connection
+            — where the spec sheet meets the discovery call
           </p>
         </RevealLine>
 

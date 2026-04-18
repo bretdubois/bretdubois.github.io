@@ -246,18 +246,6 @@ export default function Work() {
           ))}
         </motion.div>
 
-        {/* Bottom note */}
-        <motion.div
-          className="mt-12 text-center"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig}
-        >
-          <p className="text-sm italic" style={{ color: "var(--text-muted)" }}>
-            Also: UC San Diego Product Management Club · Independent network deployments · Drone operations
-          </p>
-        </motion.div>
       </div>
     </section>
   );

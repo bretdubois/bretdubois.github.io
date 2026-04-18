@@ -39,7 +39,6 @@ export const caseStudies: CaseStudy[] = [
     ],
     tags: ["B2B SaaS", "AI Platform", "HubSpot CRM", "Consultative Selling", "Restaurant Tech"],
     accent: "#C2410C",
-    logo: "https://logo.clearbit.com/spothopper.com",
   },
   {
     id: "apple",
@@ -61,7 +60,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     tags: ["Technical Support", "Enterprise Sales", "Customer Experience", "iOS Ecosystem", "Product Feedback"],
     accent: "#B45309",
-    logo: "https://logo.clearbit.com/apple.com",
+    logo: "/logos/apple.png",
   },
   {
     id: "asurion",
@@ -87,7 +86,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     tags: ["B2C Field Sales", "Device Onboarding", "Consultative Selling", "CRM", "Verizon · AT&T"],
     accent: "#4D7C0F",
-    logo: "https://logo.clearbit.com/asurion.com",
+    logo: "/logos/asurion.png",
   },
 ];
 
@@ -116,7 +115,7 @@ export const timeline: TimelineItem[] = [
     description:
       "Earned the highest rank in Scouting, completing a community leadership project and developing skills in planning, teamwork, and accountability.",
     type: "education",
-    logo: "https://logo.clearbit.com/scouting.org",
+    logo: "/logos/bsa.png",
   },
   {
     year: "2019",
@@ -125,7 +124,7 @@ export const timeline: TimelineItem[] = [
     description:
       "Joined as Sales Specialist, earned two promotions in under three years to Technical Specialist then Technical Expert. Partnered with iPhone engineering and mentored teammates.",
     type: "sales",
-    logo: "https://logo.clearbit.com/apple.com",
+    logo: "/logos/apple.png",
   },
   {
     year: "2020",
@@ -142,7 +141,7 @@ export const timeline: TimelineItem[] = [
     description:
       "Completed a CS degree while working at Apple—data structures, algorithms, OOP, databases, networking, and operating systems.",
     type: "education",
-    logo: "https://logo.clearbit.com/collegeofsanmateo.edu",
+    logo: "/logos/csm.png",
   },
   {
     year: "2022",
@@ -151,7 +150,7 @@ export const timeline: TimelineItem[] = [
     description:
       "Transferred after finishing the A.S. to pursue Cognitive Science with a specialization in Design & HCI.",
     type: "education",
-    logo: "https://logo.clearbit.com/ucsd.edu",
+    logo: "/logos/ucsd.jpg",
   },
   {
     year: "2024",
@@ -160,7 +159,7 @@ export const timeline: TimelineItem[] = [
     description:
       "Led the design and marketing overhaul of 'Afterhours,' a food-accessibility platform. Roadmaps, workshops, full lifecycle from research to deployment.",
     type: "sales",
-    logo: "https://logo.clearbit.com/ucsd.edu",
+    logo: "/logos/ucsd.jpg",
   },
   {
     year: "2024",
@@ -169,7 +168,7 @@ export const timeline: TimelineItem[] = [
     description:
       "Graduated with a specialization in Design & Human-Computer Interaction.",
     type: "education",
-    logo: "https://logo.clearbit.com/ucsd.edu",
+    logo: "/logos/ucsd.jpg",
   },
   {
     year: "2025",

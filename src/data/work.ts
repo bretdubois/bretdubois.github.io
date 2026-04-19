@@ -17,76 +17,76 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
-    id: "spothopper",
-    company: "SpotHopper",
-    role: "Business Development Representative",
-    period: "April 2025 – Present",
-    location: "San Francisco Bay Area, CA",
-    summary:
-      "Representing an AI-enabled marketing platform for restaurants, translating complex AI features into outcomes restaurant owners actually care about.",
-    challenge:
-      "Restaurant owners are skeptical of tech—they're busy, margin-conscious, and burned by past vendor promises. The product is powerful but requires a non-technical buyer to see the ROI quickly.",
-    approach:
-      "Led with discovery, not features. I listened for the real pain (slow Monday nights, relying on DoorDash, losing regulars) before showing how the platform addressed it. Sharpened my next-step closes to reduce follow-up cycles.",
-    outcome:
-      "Became a top activity contributor on the team, with qualified conversations consistently converting to booked meetings and contributing to closed-won revenue.",
-    metrics: [],
-    highlights: [
-      "Top team activity contributor",
-      "Discovery-led methodology",
-      "Consultative close process",
-      "AI platform expertise",
-    ],
-    tags: ["B2B SaaS", "AI Platform", "HubSpot CRM", "Consultative Selling", "Restaurant Tech"],
-    accent: "#C2410C",
-  },
-  {
     id: "apple",
     company: "Apple",
     role: "Sales Specialist → Technical Specialist → Technical Expert",
     period: "October 2019 – August 2022",
     location: "San Mateo, CA",
     summary:
-      "Joined as a Sales Specialist and earned two promotions in under three years—advancing to Technical Specialist, then Technical Expert at the Genius Bar. 300+ perfect NPS scores and $150K+ in enterprise lifetime value from a single referral.",
+      "Three years at Apple, promoted twice into increasingly technical roles. At the Genius Bar: hardware and software triage across hundreds of devices per month, 300+ perfect NPS scores, and a single customer interaction that surfaced $150K in enterprise lifetime value.",
     challenge:
-      "High-volume, high-stakes interactions where every conversation was someone's bad day. The challenge was delivering consistent, outstanding experiences under pressure while spotting business opportunities hidden inside consumer conversations.",
+      "High-volume, high-stakes diagnostic environment. Every appointment was someone's broken workflow. The job was to identify the real issue—not just the symptom—communicate the fix clearly to non-technical users, and recognize when a consumer repair conversation was actually an enterprise one.",
     approach:
-      "Started on the floor in sales—which grounded me in customer psychology before I ever touched a diagnostic tool. Earned promotion into technical roles by pairing those instincts with deep device-level expertise. Diagnosed fast, communicated clearly to non-technical users, and stayed present enough to notice when an iPhone repair was actually an enterprise procurement conversation in disguise.",
+      "Started on the sales floor, which trained my instincts for customer communication before I ever ran a diagnostic. Earned promotion to Technical Specialist, then Technical Expert, by pairing systematic hardware and software triage with root-cause explanations that non-technical customers actually understood. Partnered with iPhone engineering on repair documentation and product feedback. Trained and mentored newer technicians on both diagnostic workflows and customer interaction.",
     outcome:
-      "Recognized company-wide for NPS performance. One enterprise referral generated over $150K in lifetime spend. Partnered with iPhone engineering to inform repair documentation and product design feedback. Trained and mentored newer teammates on both support workflows and customer interaction.",
+      "300+ consecutive 100/100 NPS surveys. One repair interaction surfaced an enterprise account generating $150K+ in lifetime spend. Contributed to iPhone repair documentation and product feedback cycles. Recognized company-wide for customer satisfaction performance.",
     metrics: [
       { value: "300", label: "Perfect NPS surveys (100/100)", suffix: "+" },
-      { value: "150", label: "Lifetime value, one referral", prefix: "$", suffix: "K+" },
+      { value: "150", label: "Lifetime value, one enterprise referral", prefix: "$", suffix: "K+" },
     ],
-    tags: ["Technical Support", "Enterprise Sales", "Customer Experience", "iOS Ecosystem", "Product Feedback"],
+    tags: ["Technical Diagnostics", "Hardware/Software Triage", "Enterprise Discovery", "iOS Ecosystem", "Customer Communication"],
     accent: "#B45309",
     logo: "/logos/apple.png",
   },
   {
     id: "asurion",
     company: "Asurion",
-    role: "Field Tech Sales Expert",
+    role: "Field Technical Consultant",
     period: "September 2024 – April 2025",
     location: "San Diego, CA",
     summary:
-      "B2C in-home tech consultant for Verizon and AT&T customers—conducting needs-based consultations, delivering device setup and training, handling objections in real time, and managing a structured CRM pipeline across a wide range of device ecosystems.",
+      "In-home technical consulting for Verizon and AT&T customers. Each engagement: assess the device ecosystem, diagnose issues, configure and integrate devices, train the customer, and recommend a support plan matched to their actual situation—not a script.",
     challenge:
-      "Showing up at someone's front door to talk about tech and protection plans requires earning trust in the first 60 seconds. Customers are skeptical, busy, and quick to object on price or timing.",
+      "On-site, no prep time. Every customer had a different device mix, different technical literacy, and a different problem. Fast environment assessment, clear communication of findings, and recommendations that fit the customer—not a pre-set pitch.",
     approach:
-      "Led every visit with a genuine needs assessment—listening for pain points before recommending solutions. Handled budget and timing objections by anchoring to real cost-saving value. Used CRM tools to manage structured follow-ups that turned one-time visits into long-term customer relationships. Rounded every consultation with product training and technical demos to build customer confidence.",
+      "Opened every visit with a structured ecosystem audit: devices present, current configuration, pain points, and usage patterns. Scoped what was resolvable on-site versus what required follow-up. Configured and integrated devices in the field. Delivered training matched to the customer's technical level. Managed a CRM pipeline for customers requiring phased support.",
     outcome:
-      "Consistently exceeded conversion targets and maintained top satisfaction ratings. Ranked among top regional field performers with high close rates driven by consultative selling and technical credibility.",
+      "Ranked among top regional performers. High repeat-contact rates from customers who trusted the technical assessment. Turned complex multi-device environments into clearly documented follow-up plans.",
     metrics: [],
     highlights: [
-      "In-home B2C technical consultations",
-      "Needs-based protection plan selling",
-      "Real-time objection handling",
-      "CRM pipeline & follow-up management",
-      "Product training & technical demos",
+      "On-site ecosystem assessment & device configuration",
+      "Multi-device setup, integration, and testing",
+      "Real-time technical troubleshooting",
+      "Customer training matched to technical literacy",
+      "CRM-managed follow-up pipeline",
     ],
-    tags: ["B2C Field Sales", "Device Onboarding", "Consultative Selling", "CRM", "Verizon · AT&T"],
+    tags: ["Field Technical Consulting", "Ecosystem Assessment", "Configuration & Integration", "Customer Training", "CRM"],
     accent: "#4D7C0F",
     logo: "/logos/asurion.png",
+  },
+  {
+    id: "spothopper",
+    company: "SpotHopper",
+    role: "Technical Sales, AI Marketing Platform",
+    period: "April 2025 – Present",
+    location: "San Francisco Bay Area, CA",
+    summary:
+      "Representing an AI-driven marketing platform to restaurant operators—a non-technical buyer base. The work: understand how the ML features actually function, then translate that into concrete business outcomes the customer cares about.",
+    challenge:
+      "Restaurant owners are skeptical of tech vendors. They've been burned by overpromised platforms, are margin-conscious, and have no patience for demos that don't speak to their specific situation. Generic feature pitches fail every time.",
+    approach:
+      "Built deep product knowledge of the AI and ML components—not just feature names, but how the system generates recommendations, manages campaigns, and integrates with POS systems. Led every conversation with discovery: mapping customer-specific operational pain to product-specific capability before proposing a solution. Iterated demo flows based on ICP feedback.",
+    outcome:
+      "Consistent conversion of discovery conversations to qualified pipeline. Strong technical credibility with both business owners and their operations staff. Recognized as a top activity contributor on the team.",
+    metrics: [],
+    highlights: [
+      "AI/ML product knowledge — mechanisms, not marketing",
+      "Discovery-led solution mapping",
+      "ICP-specific demo customization",
+      "Technical translation for non-technical buyers",
+    ],
+    tags: ["AI/ML Platform", "Technical Product Knowledge", "Solution Mapping", "B2B SaaS", "HubSpot CRM"],
+    accent: "#C2410C",
   },
 ];
 
@@ -121,11 +121,11 @@ export const timeline: TimelineItem[] = [
   },
   {
     year: "2019",
-    title: "Apple Genius Bar",
+    title: "Apple Genius Bar — Technical Expert",
     company: "Apple · San Mateo, CA",
     description:
-      "Joined as Sales Specialist, earned two promotions in under three years to Technical Specialist then Technical Expert. Partnered with iPhone engineering and mentored teammates.",
-    type: "sales",
+      "Joined as Sales Specialist, earned two promotions in under three years to Technical Specialist then Technical Expert. Hardware/software diagnostics, partnered with iPhone engineering, mentored teammates.",
+    type: "technical",
     logo: "/logos/apple.png",
     url: "https://www.apple.com/retail/genius-bar/",
   },
@@ -134,7 +134,7 @@ export const timeline: TimelineItem[] = [
     title: "Network Engineering",
     company: "Independent · Redwood City, CA",
     description:
-      "Designing and deploying Ubiquiti UniFi networks—AP placement, switch config, IP cameras, VLAN segmentation, and post-deployment support.",
+      "Designing and deploying Ubiquiti UniFi networks—site surveys, AP placement, switch config, VLAN segmentation, IP cameras, and post-deployment client documentation.",
     type: "technical",
     url: "https://ui.com/",
   },
@@ -153,7 +153,7 @@ export const timeline: TimelineItem[] = [
     title: "Transferred to UC San Diego",
     company: "UC San Diego",
     description:
-      "Transferred after finishing the A.S. to pursue Cognitive Science with a specialization in Design & HCI.",
+      "Transferred after finishing the A.S. to pursue Cognitive Science with a specialization in Design & Human-Computer Interaction.",
     type: "education",
     url: "https://ucsd.edu/",
   },
@@ -162,8 +162,8 @@ export const timeline: TimelineItem[] = [
     title: "Technical Product Owner",
     company: "Product Management Club · UCSD",
     description:
-      "Led the design and marketing overhaul of 'Afterhours,' a food-accessibility platform. Roadmaps, workshops, full lifecycle from research to deployment.",
-    type: "sales",
+      "Led the design and technical overhaul of Afterhours, a food-accessibility platform. Requirements gathering, technical roadmaps, stakeholder workshops, full lifecycle from research to deployment.",
+    type: "technical",
     url: "https://www.instagram.com/pmcatucsd/",
   },
   {
@@ -171,16 +171,16 @@ export const timeline: TimelineItem[] = [
     title: "B.S. Cognitive Science + HCI",
     company: "UC San Diego",
     description:
-      "Graduated with a specialization in Design & Human-Computer Interaction.",
+      "Graduated with a specialization in Design & Human-Computer Interaction — systems thinking, user research, and interaction design at the intersection of technology and people.",
     type: "education",
     url: "https://cogsci.ucsd.edu/undergraduates/major/design-interaction.html",
   },
   {
     year: "2025",
-    title: "BDR — AI-Era B2B Sales",
+    title: "Technical Sales — AI Marketing Platform",
     company: "SpotHopper · SF Bay Area, CA",
     description:
-      "Bridging AI product complexity with real restaurant owner needs—discovery-led selling, HubSpot CRM, and consultative close.",
+      "Translating AI/ML product capability into concrete outcomes for non-technical buyers. Discovery-led solution mapping, deep product knowledge, and ICP-specific demo delivery.",
     type: "sales",
     url: "https://www.spothopperapp.com/",
   },

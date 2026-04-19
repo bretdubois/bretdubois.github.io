@@ -6,7 +6,7 @@ import { Menu, X, Moon, Sun } from "lucide-react";
 import { cn, smoothScrollTo } from "@/lib/utils";
 
 const navLinks = [
-  { label: "About", href: "#about" },
+  { label: "How I Work", href: "#how-i-work" },
   { label: "Work", href: "#work" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },

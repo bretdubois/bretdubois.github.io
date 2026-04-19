@@ -104,15 +104,15 @@ export default function About() {
           viewport={viewportConfig}
         >
           <motion.p variants={fadeUp} className="section-label mb-3">
-            The Story
+            Background
           </motion.p>
           <h2
             className="font-display text-4xl md:text-5xl font-bold"
             style={{ color: "var(--text-primary)" }}
           >
             <RevealLine delay={0.1}>
-              A path that doesn&apos;t fit{" "}
-              <em className="gradient-text not-italic">one box.</em>
+              Built for the{" "}
+              <em className="gradient-text not-italic">technical middle.</em>
             </RevealLine>
           </h2>
           <motion.p
@@ -121,7 +121,10 @@ export default function About() {
             style={{ color: "var(--text-secondary)" }}
           >
             Technical people say I&apos;m too focused on people. Sales people say I&apos;m
-            too focused on specs. Both are right—and that intersection is exactly the value.
+            too focused on specs. Both are right. In pre-sales and solutions work,
+            that&apos;s the whole job—I&apos;m the person who can map a customer&apos;s
+            production environment to a product&apos;s architecture, explain every tradeoff
+            without condescension, and stay in the room until it&apos;s working.
           </motion.p>
         </motion.div>
 
@@ -270,8 +273,9 @@ export default function About() {
             className="font-display text-xl md:text-2xl italic leading-relaxed"
             style={{ color: "var(--text-primary)" }}
           >
-            &ldquo;What connects all of it is curiosity—about how things work, and about
-            the people who use them.&rdquo;
+            &ldquo;The best solutions don&apos;t come from knowing the product best.
+            They come from understanding the customer&apos;s problem deeply enough that
+            the right answer becomes obvious.&rdquo;
           </motion.blockquote>
           <motion.div variants={fadeUp} className="mt-4">
             <div className="divider mx-auto" />

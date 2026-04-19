@@ -93,7 +93,7 @@ export default function Hero() {
               letterSpacing: "0.18em",
             }}
           >
-            Redwood City, CA &nbsp;·&nbsp; Sales × Engineering × Design
+            Redwood City, CA &nbsp;·&nbsp; Solutions Engineering · Infrastructure · Automation
           </p>
         </RevealLine>
 
@@ -128,7 +128,7 @@ export default function Hero() {
               letterSpacing: "-0.01em",
             }}
           >
-            — where the spec sheet meets the discovery call
+            — where customer requirements meet technical architecture
           </p>
         </RevealLine>
 

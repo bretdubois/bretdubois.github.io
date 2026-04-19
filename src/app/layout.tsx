@@ -22,9 +22,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 const SITE_URL = "https://bretdubois.github.io";
-const SITE_TITLE = "Bret DuBois — Technical Sales × Engineering × Design";
+const SITE_TITLE = "Bret DuBois — Solutions Engineering · Infrastructure · Automation";
 const SITE_DESCRIPTION =
-  "Portfolio of Bret DuBois — where the spec sheet meets the discovery call. Technical sales, B2B SaaS, IoT, networking, AI, and HCI design, from Redwood City, CA.";
+  "Portfolio of Bret DuBois — Solutions Engineer and technical consultant specializing in network infrastructure, systems automation, API integration, and pre-sales technical advisory. Based in Redwood City, CA.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -35,15 +35,18 @@ export const metadata: Metadata = {
   creator: "Bret DuBois",
   keywords: [
     "Bret DuBois",
-    "technical sales",
-    "sales engineer",
+    "solutions engineer",
+    "customer engineer",
+    "technical consultant",
+    "pre-sales engineering",
+    "network infrastructure",
+    "Ubiquiti UniFi",
+    "systems automation",
+    "API integration",
     "B2B SaaS",
-    "portfolio",
-    "HCI",
-    "networking",
     "IoT",
-    "FPV drones",
-    "Next.js portfolio",
+    "technical advisory",
+    "infrastructure design",
   ],
   openGraph: {
     title: SITE_TITLE,
@@ -85,7 +88,7 @@ const personSchema = {
   "@type": "Person",
   name: "Bret DuBois",
   url: SITE_URL,
-  jobTitle: "Technical Sales Professional",
+  jobTitle: "Solutions Engineer",
   description: SITE_DESCRIPTION,
   address: {
     "@type": "PostalAddress",

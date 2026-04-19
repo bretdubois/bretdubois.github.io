@@ -1,20 +1,20 @@
 "use client";
 
 const ITEMS = [
-  "Technical Sales",
-  "B2B SaaS",
-  "IoT & Networks",
-  "HCI Design",
-  "FPV Drones",
-  "Python",
-  "AI Workflows",
+  "Solutions Engineering",
+  "Network Architecture",
+  "API Integration",
+  "Technical Advisory",
+  "Pre-Sales Engineering",
+  "Infrastructure Design",
+  "Systems Automation",
+  "Customer Engineering",
   "Ubiquiti UniFi",
-  "Cognitive Science",
-  "Eagle Scout",
-  "Consultative Selling",
-  "TypeScript",
-  "Prompt Engineering",
-  "React Three Fiber",
+  "Python · Bash",
+  "AI Workflows",
+  "B2B SaaS",
+  "VLAN & Segmentation",
+  "PoC Delivery",
 ];
 
 function Strip({ reverse = false }: { reverse?: boolean }) {

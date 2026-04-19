@@ -93,9 +93,9 @@ export default function Contact() {
               <span>
                 Targeting{" "}
                 <span style={{ color: "var(--text-secondary)", fontWeight: 500 }}>
-                  Sales Engineer · Solutions Engineer · Technical AE
+                  Solutions Engineer · Customer Engineer · Technical Consultant
                 </span>{" "}
-                roles at AI, dev tools, or technical B2B SaaS
+                roles at infrastructure, AI tooling, or technical B2B SaaS
               </span>
             </div>
             <div className="flex items-center gap-2">

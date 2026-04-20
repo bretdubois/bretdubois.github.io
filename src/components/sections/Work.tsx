@@ -228,8 +228,8 @@ export default function Work() {
             className="mt-4 max-w-xl text-lg"
             style={{ color: "var(--text-secondary)" }}
           >
-            Three roles that shaped how I think about selling, serving, and solving. Numbers
-            tell part of the story—expand each card to read the rest.
+            Three roles that built the technical instincts, communication depth, and customer
+            focus that Solutions Engineering requires. Expand each card for the full story.
           </motion.p>
         </motion.div>
 

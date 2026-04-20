@@ -23,18 +23,25 @@ export const caseStudies: CaseStudy[] = [
     period: "October 2019 – August 2022",
     location: "San Mateo, CA",
     summary:
-      "Three years at Apple, promoted twice into increasingly technical roles. At the Genius Bar: hardware and software triage across hundreds of devices per month, 300+ perfect NPS scores, and a single customer interaction that surfaced $150K in enterprise lifetime value.",
+      "Three years at Apple's Genius Bar—promoted twice to Technical Expert. The job was hardware and software triage in 15-30 minute windows: diagnose the root cause, communicate the finding clearly to a non-technical customer, and recommend the right solution under time pressure. 300+ consecutive perfect satisfaction scores while running that loop at high volume.",
     challenge:
-      "High-volume, high-stakes diagnostic environment. Every appointment was someone's broken workflow. The job was to identify the real issue—not just the symptom—communicate the fix clearly to non-technical users, and recognize when a consumer repair conversation was actually an enterprise one.",
+      "Every appointment is a constraint-heavy diagnostic exercise: unknown device history, a user who can't describe what went wrong technically, limited time, and the expectation that you'll not only fix it but explain it in a way the customer trusts. The harder skill—the one most technicians skip—is recognizing when the consumer in front of you represents something much larger than a single broken device.",
     approach:
-      "Started on the sales floor, which trained my instincts for customer communication before I ever ran a diagnostic. Earned promotion to Technical Specialist, then Technical Expert, by pairing systematic hardware and software triage with root-cause explanations that non-technical customers actually understood. Partnered with iPhone engineering on repair documentation and product feedback. Trained and mentored newer technicians on both diagnostic workflows and customer interaction.",
+      "Developed a structured intake method: environment questions first ('what changed, what else is on the account, what happened right before') before touching the device. This surfaces root causes faster than diving straight into diagnostics and gives the customer a role in the process. Earned two promotions by pairing systematic triage with communication quality. Mentored newer technicians on the same intake methodology. Partnered with iPhone engineering on repair edge-case documentation.",
     outcome:
-      "300+ consecutive 100/100 NPS surveys. One repair interaction surfaced an enterprise account generating $150K+ in lifetime spend. Contributed to iPhone repair documentation and product feedback cycles. Recognized company-wide for customer satisfaction performance.",
+      "300+ consecutive 100/100 satisfaction scores—a measure of whether the customer understood and trusted the diagnosis, not just that the device got fixed. One intake conversation surfaced a multi-device enterprise environment; routed to Apple's enterprise team, that account generated $150K+ in downstream spend. Recognized company-wide for satisfaction performance. Contributed to iOS repair documentation and product feedback cycles.",
     metrics: [
-      { value: "300", label: "Perfect NPS surveys (100/100)", suffix: "+" },
-      { value: "150", label: "Lifetime value, one enterprise referral", prefix: "$", suffix: "K+" },
+      { value: "300", label: "Perfect satisfaction scores (100/100)", suffix: "+" },
+      { value: "150", label: "Enterprise account sourced via intake discovery", prefix: "$", suffix: "K+" },
     ],
-    tags: ["Technical Diagnostics", "Hardware/Software Triage", "Enterprise Discovery", "iOS Ecosystem", "Customer Communication"],
+    highlights: [
+      "Structured intake methodology — environment questions before device diagnostics",
+      "Root-cause triage: iPhones, Macs, iPads, peripherals at high volume",
+      "Technical findings translated to non-technical customers in real time",
+      "Enterprise pattern recognition from consumer intake conversations",
+      "Mentored technicians on intake method and customer communication",
+    ],
+    tags: ["Technical Diagnostics", "Hardware/Software Triage", "Enterprise Discovery", "iOS/macOS", "Root-Cause Analysis"],
     accent: "#B45309",
     logo: "/logos/apple.png",
   },
@@ -101,14 +108,6 @@ export interface TimelineItem {
 }
 
 export const timeline: TimelineItem[] = [
-  {
-    year: "2016",
-    title: "Started Building FPV Drones",
-    company: "Independent",
-    description:
-      "Began designing and flying custom first-person-view drones—learning electrical engineering, RF fundamentals, and control theory through hands-on builds.",
-    type: "maker",
-  },
   {
     year: "2018",
     title: "Eagle Scout",

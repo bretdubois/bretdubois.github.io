@@ -15,14 +15,27 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "unifi-network",
-    title: "Ubiquiti UniFi Network Deployments",
+    title: "UniFi Network Deployment — Case Study",
     category: "Network Architecture / Systems Engineering",
     description:
-      "Full-lifecycle network design and deployment for residential and small-business clients. Site survey → topology design → AP placement via signal propagation analysis → VLAN segmentation → PoE integration → IP camera systems → client handoff with runbook documentation.",
+      "Client: 3,000 sq ft two-story home with a converted home office. Problem: ISP-provided router with dead zones throughout, IoT devices and work machines on the same flat network, IP cameras accessible from any connected device. Working from home 5 days/week — video calls dropping regularly due to camera traffic competing on the same segment. Requirement: full coverage, network segmentation, maintainable without calling for support.",
     details:
-      "Projects ranged from single-floor home networks to multi-floor mixed-use deployments. Every engagement followed the same structure: requirements gathering and site survey, topology proposal, switch and AP configuration, VLAN design (main, IoT, cameras, guest) with inter-VLAN firewall rules, post-install validation testing, and delivery of a client-facing runbook and network diagram. Documentation exported from the controller and kept under version control.",
+      `CONSTRAINTS
+• Could not rewire — had to work with existing Cat5e runs
+• Non-technical client who needed to manage guest SSIDs independently
+• $1,200 hardware ceiling
+• ISP modem couldn't be removed (lease agreement)
+
+ARCHITECTURE DECISIONS
+Deployed USG behind the ISP modem in double-NAT rather than bridging — bridging was unreliable on this ISP and an outage during setup was the higher risk. 24-port managed PoE switch at the network closet. Three APs placed after an RF walkaround targeting -65 dBm or better in all living areas (the controller's auto-placement didn't account for the concrete partition walls in the home office conversion — manual placement was necessary). Four VLANs: Main (work + personal), IoT (thermostats, lights, speakers — inter-VLAN blocked), Cameras (uplink-only, no LAN access), Guest (client-isolated, 25 Mbps cap).
+
+TRADEOFFS
+Chose UAP-AC-Pro over less expensive APs — slightly over the hardware budget but the client was actively adding smart home devices and I anticipated needing 3-stream capacity within 12 months. The cost delta was smaller than the cost of returning to replace APs.
+
+OUTCOME
+Full coverage verified at -65 dBm or better throughout. Video call drops stopped — camera traffic isolated to its own VLAN and no longer competing on the work segment. Client manages SSIDs and guest access via the controller UI without support calls. Delivered a 3-page runbook: network diagram, VLAN table, how to add a device to the correct network, admin password reset procedure.`,
     tags: ["Ubiquiti UniFi", "Network Architecture", "VLANs", "PoE", "IP Cameras", "Wi-Fi 6", "Site Survey", "Network Security"],
-    highlight: "Full lifecycle delivered with documentation",
+    highlight: "Requirements → architecture → tradeoffs → documented handoff",
     icon: "network",
     accent: "#1D4ED8",
     codeSnippet: {
@@ -35,7 +48,8 @@ export const projects: Project[] = [
     "cameras_vlan": { "id": 30, "name": "Cameras", "subnet": "10.30.0.0/24",
                       "uplink_only": true },
     "guest_vlan":   { "id": 40, "name": "Guest",   "subnet": "10.40.0.0/24",
-                      "client_isolation": true }
+                      "client_isolation": true,
+                      "rate_limit_mbps": 25 }
   }
 }`,
     },
@@ -103,6 +117,22 @@ def enrich_leads(df: pd.DataFrame) -> pd.DataFrame:
     },
   },
   {
+    id: "portfolio-site",
+    title: "This Portfolio Website",
+    category: "Web / Design Engineering",
+    description:
+      "Designed and engineered this site from scratch—React Three Fiber 3D graphics, GSAP scroll-driven animations, Framer Motion clip-mask reveals, and Lenis smooth scroll, deployed as a static export to GitHub Pages.",
+    details:
+      "Built on Next.js 16 (Turbopack) with Tailwind CSS v4 and a fully custom design system. The hero background is a WebGL canvas with a 22-node particle network built in React Three Fiber. Framer Motion handles scroll-triggered reveals and stagger animations. GSAP ScrollTrigger drives the timeline line-draw in the About section. Zero runtime CMS — all content is TypeScript data files.",
+    tags: ["Next.js 16", "React Three Fiber", "GSAP", "Framer Motion", "Tailwind v4", "TypeScript", "Lenis", "WebGL"],
+    highlight: "You're looking at it right now",
+    icon: "web",
+    accent: "#9333EA",
+    links: [
+      { label: "View Source", href: "https://github.com/bretdubois/bretdubois.github.io" },
+    ],
+  },
+  {
     id: "fpv-drone",
     title: "Custom FPV Drone Builds",
     category: "Hardware / RF Engineering",
@@ -165,21 +195,5 @@ def momentum_screen(tickers: list[str], lookback: int = 63) -> pd.DataFrame:
     score = returns.tail(lookback).mean() / returns.tail(lookback).std()
     return score.sort_values(ascending=False).rename("momentum_score")`,
     },
-  },
-  {
-    id: "portfolio-site",
-    title: "This Portfolio Website",
-    category: "Web / Design Engineering",
-    description:
-      "Designed and engineered this site from scratch—React Three Fiber 3D graphics, GSAP scroll-driven animations, Framer Motion clip-mask reveals, and Lenis smooth scroll, deployed as a static export to GitHub Pages.",
-    details:
-      "Built on Next.js 16 (Turbopack) with Tailwind CSS v4 and a fully custom design system. The hero background is a WebGL canvas with a 22-node particle network built in React Three Fiber. Framer Motion handles scroll-triggered reveals and stagger animations. GSAP ScrollTrigger drives the timeline line-draw in the About section. Zero runtime CMS — all content is TypeScript data files.",
-    tags: ["Next.js 16", "React Three Fiber", "GSAP", "Framer Motion", "Tailwind v4", "TypeScript", "Lenis", "WebGL"],
-    highlight: "You're looking at it right now",
-    icon: "web",
-    accent: "#9333EA",
-    links: [
-      { label: "View Source", href: "https://github.com/bretdubois/bretdubois.github.io" },
-    ],
   },
 ];

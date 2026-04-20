@@ -177,7 +177,7 @@ export default function Projects() {
           viewport={viewportConfig}
         >
           <motion.p variants={fadeUp} className="section-label mb-3">
-            Things I&apos;ve Built
+            Technical Work
           </motion.p>
           <h2
             className="font-display text-4xl md:text-5xl font-bold max-w-2xl"
@@ -193,8 +193,8 @@ export default function Projects() {
             className="mt-4 max-w-xl text-lg"
             style={{ color: "var(--text-secondary)" }}
           >
-            From FPV drones to enterprise networks to AI automation—these are the builds
-            that happen when curiosity has no guardrails. Expand any card to see the technical details.
+            Independent technical work that shows how I approach a problem end-to-end—from
+            requirements through deployment and documentation. Expand any card for the full technical story.
           </motion.p>
         </motion.div>
 

@@ -2,6 +2,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import HowIWork from "@/components/sections/HowIWork";
+import WhySE from "@/components/sections/WhySE";
 import About from "@/components/sections/About";
 import Work from "@/components/sections/Work";
 import Projects from "@/components/sections/Projects";
@@ -17,6 +18,7 @@ export default function Home() {
         <Hero />
         <Marquee />
         <HowIWork />
+        <WhySE />
         <About />
         <Work />
         <Projects />

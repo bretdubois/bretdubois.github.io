@@ -24,7 +24,7 @@ function LinkedInIcon({ size = 14 }: { size?: number }) {
 }
 
 export default function Hero() {
-  const scrollDown = () => smoothScrollTo("#about");
+  const scrollDown = () => smoothScrollTo("#how-i-work");
   const scrollToContact = () => smoothScrollTo("#contact");
 
   return (
@@ -118,7 +118,7 @@ export default function Hero() {
         </h1>
 
         {/* Tagline */}
-        <RevealLine delay={0.46} immediate className="mb-8 md:mb-10">
+        <RevealLine delay={0.46} immediate className="mb-5 md:mb-6">
           <p
             style={{
               fontFamily: "var(--font-display)",
@@ -129,6 +129,20 @@ export default function Hero() {
             }}
           >
             — where customer requirements meet technical architecture
+          </p>
+        </RevealLine>
+
+        {/* Credential proof strip */}
+        <RevealLine delay={0.57} immediate className="mb-8 md:mb-10">
+          <p
+            className="font-mono"
+            style={{
+              fontSize: "clamp(0.65rem, 1vw, 0.75rem)",
+              color: "rgba(250,247,242,0.28)",
+              letterSpacing: "0.12em",
+            }}
+          >
+            Apple Technical Expert · 3 yrs &nbsp;·&nbsp; UniFi Network Architecture &nbsp;·&nbsp; API &amp; Automation Pipelines
           </p>
         </RevealLine>
 

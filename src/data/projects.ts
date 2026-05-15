@@ -15,25 +15,25 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "unifi-network",
-    title: "UniFi Network Deployment — Case Study",
+    title: "UniFi Network Deployment · Case Study",
     category: "Network Architecture / Systems Engineering",
     description:
-      "Client: 3,000 sq ft two-story home with a converted home office. Problem: ISP-provided router with dead zones throughout, IoT devices and work machines on the same flat network, IP cameras accessible from any connected device. Working from home 5 days/week — video calls dropping regularly due to camera traffic competing on the same segment. Requirement: full coverage, network segmentation, maintainable without calling for support.",
+      "Client: 3,000 sq ft two-story home with a converted home office. Problem: ISP-provided router with dead zones throughout, IoT devices and work machines on the same flat network, IP cameras accessible from any connected device. Working from home 5 days/week, with video calls dropping regularly due to camera traffic competing on the same segment. Requirement: full coverage, network segmentation, maintainable without calling for support.",
     details:
       `CONSTRAINTS
-• Could not rewire — had to work with existing Cat5e runs
+• Could not rewire; had to work with existing Cat5e runs
 • Non-technical client who needed to manage guest SSIDs independently
 • $1,200 hardware ceiling
 • ISP modem couldn't be removed (lease agreement)
 
 ARCHITECTURE DECISIONS
-Deployed USG behind the ISP modem in double-NAT rather than bridging — bridging was unreliable on this ISP and an outage during setup was the higher risk. 24-port managed PoE switch at the network closet. Three APs placed after an RF walkaround targeting -65 dBm or better in all living areas (the controller's auto-placement didn't account for the concrete partition walls in the home office conversion — manual placement was necessary). Four VLANs: Main (work + personal), IoT (thermostats, lights, speakers — inter-VLAN blocked), Cameras (uplink-only, no LAN access), Guest (client-isolated, 25 Mbps cap).
+Deployed USG behind the ISP modem in double-NAT rather than bridging. Bridging was unreliable on this ISP and an outage during setup was the higher risk. 24-port managed PoE switch at the network closet. Three APs placed after an RF walkaround targeting -65 dBm or better in all living areas; the controller's auto-placement didn't account for the concrete partition walls in the home office conversion, so manual placement was necessary. Four VLANs: Main (work + personal), IoT (thermostats, lights, speakers, inter-VLAN blocked), Cameras (uplink-only, no LAN access), Guest (client-isolated, 25 Mbps cap).
 
 TRADEOFFS
-Chose UAP-AC-Pro over less expensive APs — slightly over the hardware budget but the client was actively adding smart home devices and I anticipated needing 3-stream capacity within 12 months. The cost delta was smaller than the cost of returning to replace APs.
+Chose UAP-AC-Pro over less expensive APs. Slightly over the hardware budget but the client was actively adding smart home devices and I anticipated needing 3-stream capacity within 12 months. The cost delta was smaller than the cost of returning to replace APs later.
 
 OUTCOME
-Full coverage verified at -65 dBm or better throughout. Video call drops stopped — camera traffic isolated to its own VLAN and no longer competing on the work segment. Client manages SSIDs and guest access via the controller UI without support calls. Delivered a 3-page runbook: network diagram, VLAN table, how to add a device to the correct network, admin password reset procedure.`,
+Full coverage verified at -65 dBm or better throughout. Video call drops stopped. Camera traffic isolated to its own VLAN and no longer competing on the work segment. Client manages SSIDs and guest access via the controller UI without support calls. Delivered a 3-page runbook: network diagram, VLAN table, how to add a device to the correct network, and admin password reset procedure.`,
     tags: ["Ubiquiti UniFi", "Network Architecture", "VLANs", "PoE", "IP Cameras", "Wi-Fi 6", "Site Survey", "Network Security"],
     highlight: "Requirements → architecture → tradeoffs → documented handoff",
     icon: "network",
@@ -59,7 +59,7 @@ Full coverage verified at -65 dBm or better throughout. Video call drops stopped
     title: "Self-Hosted Infrastructure & Edge Computing Lab",
     category: "Infrastructure / Systems Design",
     description:
-      "Designed and operate a privacy-first home infrastructure stack on Raspberry Pi: containerized services, real-time network monitoring, local AI inference, and IoT edge integration—all VLAN-isolated and off-cloud by default.",
+      "Designed and operate a privacy-first home infrastructure stack on Raspberry Pi: containerized services, real-time network monitoring, local AI inference, and IoT edge integration, all VLAN-isolated and off-cloud by default.",
     details:
       "Stack: Docker Compose orchestrating Ollama (local LLM inference on-device), Netdata (real-time system and network health dashboards), and Arduino-based sensor nodes connected via a lightweight MQTT broker. LoRaWAN gateway experiments covering protocol fundamentals, gateway configuration, and low-power sensor integration for DePIN-adjacent use cases. The lab sits on its own VLAN, isolated from primary network traffic at the firewall layer. Emphasis on auditability, observability, and zero-cloud data paths.",
     tags: ["Raspberry Pi", "Docker", "Linux", "MQTT", "Arduino", "LoRaWAN", "Ollama", "IoT", "Edge Computing", "Network Monitoring"],
@@ -91,7 +91,7 @@ services:
     title: "AI-Driven Workflow Automation",
     category: "Systems Automation / API Integration",
     description:
-      "Built multi-step automation pipelines using n8n, local LLMs, and Python to eliminate repetitive data work—connecting external APIs, running LLM-based classification, and routing structured outputs to CRM and data stores.",
+      "Built multi-step automation pipelines using n8n, local LLMs, and Python to eliminate repetitive data work: connecting external APIs, running LLM-based classification, and routing structured outputs to CRM and data stores.",
     details:
       "Architecture: webhook triggers → data ingestion from multiple APIs → LLM summarization and classification via Ollama → structured output to spreadsheets or HubSpot CRM. Python handles data transformation (pandas) and system-level scripting via Bash schedulers. Focus was on reducing manual intervention in the data-gathering layer while maintaining auditability of the LLM classification outputs. Webhooks and n8n nodes documented for reproducibility.",
     tags: ["Python", "n8n", "Ollama", "LLM", "API Integration", "Webhooks", "Bash", "pandas", "Automation"],
@@ -121,9 +121,9 @@ def enrich_leads(df: pd.DataFrame) -> pd.DataFrame:
     title: "This Portfolio Website",
     category: "Web / Design Engineering",
     description:
-      "Designed and engineered this site from scratch—React Three Fiber 3D graphics, GSAP scroll-driven animations, Framer Motion clip-mask reveals, and Lenis smooth scroll, deployed as a static export to GitHub Pages.",
+      "Designed and engineered this site from scratch: React Three Fiber 3D graphics, GSAP scroll-driven animations, Framer Motion clip-mask reveals, and Lenis smooth scroll, deployed as a static export to GitHub Pages.",
     details:
-      "Built on Next.js 16 (Turbopack) with Tailwind CSS v4 and a fully custom design system. The hero background is a WebGL canvas with a 22-node particle network built in React Three Fiber. Framer Motion handles scroll-triggered reveals and stagger animations. GSAP ScrollTrigger drives the timeline line-draw in the About section. Zero runtime CMS — all content is TypeScript data files.",
+      "Built on Next.js 16 (Turbopack) with Tailwind CSS v4 and a fully custom design system. The hero background is a WebGL canvas with a 22-node particle network built in React Three Fiber. Framer Motion handles scroll-triggered reveals and stagger animations. GSAP ScrollTrigger drives the timeline line-draw in the About section. Zero runtime CMS; all content is TypeScript data files.",
     tags: ["Next.js 16", "React Three Fiber", "GSAP", "Framer Motion", "Tailwind v4", "TypeScript", "Lenis", "WebGL"],
     highlight: "You're looking at it right now",
     icon: "web",
@@ -137,7 +137,7 @@ def enrich_leads(df: pd.DataFrame) -> pd.DataFrame:
     title: "Custom FPV Drone Builds",
     category: "Hardware / RF Engineering",
     description:
-      "Designed, assembled, and tuned custom first-person-view racing and freestyle drones from scratch—component selection, PCB-level soldering, flight controller configuration, PID tuning, and RF system design across 5.8GHz video and UHF control links.",
+      "Designed, assembled, and tuned custom first-person-view racing and freestyle drones from scratch: component selection, PCB-level soldering, flight controller configuration, PID tuning, and RF system design across 5.8GHz video and UHF control links.",
     details:
       "Each build involves ESC/FC stack configuration, PID tuning in Betaflight, and frequency selection that balances video latency against control range under RF interference. I evaluate motors, frames, and props using thrust-to-weight analysis to hit specific performance targets. A decade of applied work at the intersection of embedded systems, RF, and real-time control theory.",
     tags: ["RF Engineering", "Betaflight", "PID Tuning", "Embedded Systems", "Soldering", "5.8GHz Video", "UHF", "Control Theory"],
@@ -160,7 +160,7 @@ set throttle_limit_percent = 100`,
   },
   {
     id: "afterhours",
-    title: "Afterhours Platform — Technical Product Ownership",
+    title: "Afterhours Platform · Technical Product Ownership",
     category: "Product Management / Systems Design",
     description:
       "Technical Product Owner for Afterhours, a food-accessibility platform at the UC San Diego PM Club. Led requirements gathering, technical roadmap development, stakeholder workshops, and full product lifecycle from research through deployment.",
@@ -176,7 +176,7 @@ set throttle_limit_percent = 100`,
     title: "Market Research & Data Automation",
     category: "Software / Data Engineering",
     description:
-      "Python-based tools for financial data ingestion and analysis—pulling price and fundamental data from public APIs, computing momentum signals, and generating structured analysis outputs with minimal manual work.",
+      "Python-based tools for financial data ingestion and analysis: pulling price and fundamental data from public APIs, computing momentum signals, and generating structured analysis outputs with minimal manual work.",
     details:
       "Built around pandas, yfinance, and Bash schedulers. Scripts handle data ingestion, signal computation, and output to CSVs or local dashboards. Emphasis on automating the data-gathering layer to reduce manual collection overhead and focus time on interpretation.",
     tags: ["Python", "pandas", "yfinance", "Data Engineering", "Bash", "Automation", "API Integration"],

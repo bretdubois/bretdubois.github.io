@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const dynamic = "force-static";
-export const alt = "Bret DuBois — Technical Sales × Engineering × Design";
+export const alt = "Bret DuBois · Solutions Engineering · Infrastructure · Automation";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -73,7 +73,7 @@ export default function OGImage() {
               letterSpacing: "-0.01em",
             }}
           >
-            — where customer requirements meet technical architecture
+            Pre-sales technical work for infrastructure, AI tooling, and B2B SaaS.
           </div>
         </div>
 

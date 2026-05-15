@@ -120,18 +120,18 @@ export default function About() {
             className="mt-4 max-w-2xl mx-auto text-lg"
             style={{ color: "var(--text-secondary)" }}
           >
-            Technical people say I&apos;m too focused on people. Sales people say I&apos;m
-            too focused on specs. Both are right. In pre-sales and solutions work,
-            that&apos;s the whole job—I&apos;m the person who can map a customer&apos;s
-            production environment to a product&apos;s architecture, explain every tradeoff
-            without condescension, and stay in the room until it&apos;s working.
+            I sit between engineering and sales. Engineers tend to think I&apos;m too
+            sales-flavored; sales reps tend to think I&apos;m too technical. In pre-sales
+            work that gap is the seat. The job is to take a customer&apos;s actual
+            environment, map it to the product&apos;s architecture, walk through the real
+            tradeoffs in plain language, and stay in the room until the integration runs.
           </motion.p>
         </motion.div>
 
         {/* Timeline */}
         <div className="relative max-w-3xl mx-auto">
 
-          {/* Vertical line — sits between year and card */}
+          {/* Vertical line: sits between year and card */}
           <div
             className="absolute top-0 bottom-0 w-px bg-[var(--border)]"
             style={{ left: "calc(5.5rem + 20px)" }}
@@ -149,7 +149,7 @@ export default function About() {
                 key={i}
                 className="timeline-item flex items-start gap-0 pb-8 last:pb-0"
               >
-                {/* ── YEAR — big left anchor ── */}
+                {/* YEAR: big left anchor */}
                 <div
                   className="flex-shrink-0 text-right pr-5"
                   style={{ width: "5.5rem" }}
@@ -166,7 +166,7 @@ export default function About() {
                   </span>
                 </div>
 
-                {/* ── DOT ── */}
+                {/* DOT */}
                 <div
                   className="flex-shrink-0 z-10"
                   style={{ paddingTop: "1.25rem" }}
@@ -180,13 +180,13 @@ export default function About() {
                   />
                 </div>
 
-                {/* ── CARD: logo + content ── */}
+                {/* CARD: logo + content */}
                 <div className="flex-1 pl-5 min-w-0">
                   <div
                     className="card p-4 md:p-5 flex items-start gap-4 overflow-hidden"
                     style={{ borderTop: `3px solid ${ACCENT}` }}
                   >
-                    {/* Logo / icon — clickable if url present */}
+                    {/* Logo / icon, clickable if url present */}
                     {item.url ? (
                       <a
                         href={item.url}
@@ -260,7 +260,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* Bottom note */}
+        {/* Bottom credentials */}
         <motion.div
           className="mt-16 text-center max-w-2xl mx-auto"
           variants={staggerContainer}
@@ -268,28 +268,21 @@ export default function About() {
           whileInView="visible"
           viewport={viewportConfig}
         >
-          <motion.blockquote
-            variants={fadeUp}
-            className="font-display text-xl md:text-2xl italic leading-relaxed"
-            style={{ color: "var(--text-primary)" }}
-          >
-            &ldquo;The best solutions don&apos;t come from knowing the product best.
-            They come from understanding the customer&apos;s problem deeply enough that
-            the right answer becomes obvious.&rdquo;
-          </motion.blockquote>
-          <motion.div variants={fadeUp} className="mt-4">
-            <div className="divider mx-auto" />
+          <motion.div variants={fadeUp}>
+            <div className="divider mx-auto mb-6" />
           </motion.div>
           <motion.div
             variants={fadeUp}
-            className="flex flex-wrap justify-center gap-3 mt-6 text-sm"
+            className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-sm"
             style={{ color: "var(--text-muted)" }}
           >
-            <span>📍 Redwood City, CA</span>
+            <span>Redwood City, CA</span>
             <span>·</span>
-            <span>🎓 B.S. Cognitive Science + HCI, UCSD &nbsp;·&nbsp; A.S. Computer Science, CSM</span>
+            <span>B.S. Cognitive Science + HCI, UCSD</span>
             <span>·</span>
-            <span>🦅 Eagle Scout</span>
+            <span>A.S. Computer Science, CSM</span>
+            <span>·</span>
+            <span>Eagle Scout</span>
           </motion.div>
         </motion.div>
 

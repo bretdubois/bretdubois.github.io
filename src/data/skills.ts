@@ -34,7 +34,7 @@ export const skillClusters: SkillCluster[] = [
     id: "technical-enablement",
     title: "Technical Enablement",
     icon: "Cpu",
-    description: "Translating technical complexity into clear value—for customers, stakeholders, and product teams.",
+    description: "Translating technical complexity into clear value for customers, stakeholders, and product teams.",
     accent: "#B45309",
     skills: [
       { name: "Technical Requirements Gathering", level: "core" },

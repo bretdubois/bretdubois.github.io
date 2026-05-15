@@ -128,7 +128,7 @@ export default function Hero() {
               letterSpacing: "-0.01em",
             }}
           >
-            — where customer requirements meet technical architecture
+            Pre-sales technical work for infrastructure, AI tooling, and B2B SaaS.
           </p>
         </RevealLine>
 

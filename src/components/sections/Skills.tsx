@@ -36,7 +36,7 @@ function SkillClusterCard({
 
   return (
     <motion.div variants={scaleUp} className="card overflow-hidden">
-      {/* Header — always visible, clickable */}
+      {/* Header: always visible, clickable */}
       <button
         onClick={onToggle}
         className="w-full text-left p-5 flex items-start gap-4 group"
@@ -173,8 +173,7 @@ export default function Skills() {
             className="mt-4 max-w-xl text-lg"
             style={{ color: "var(--text-secondary)" }}
           >
-            Five distinct skill clusters—each one real, each one earned. Click any to
-            see what&apos;s inside.
+            Five skill clusters. Click any to see what&apos;s inside.
           </motion.p>
         </motion.div>
 

@@ -11,21 +11,21 @@ const steps = [
     icon: Search,
     title: "Diagnose the actual problem",
     description:
-      "Customers describe symptoms. I map those to root causes—architecture gaps, workflow breakdowns, integration failures. The real requirement is usually different from the stated one, and surfacing that early is where solutions engineering earns its keep.",
+      "Customers describe symptoms. I map those to root causes: architecture gaps, workflow breakdowns, integration failures. The real requirement is usually different from the stated one, and surfacing that early is where solutions engineering earns its keep.",
   },
   {
     number: "02",
     icon: GitMerge,
     title: "Architect the fit",
     description:
-      "I scope what the product can do, what it can't, and what the integration looks like end-to-end. Tradeoffs documented, not hidden. The right solution isn't always the most technically impressive one—it's the one the customer can actually operate.",
+      "I scope what the product can do, what it can't, and what the integration looks like end-to-end. Tradeoffs documented, not hidden. The right solution isn't always the most technically impressive one. It's the one the customer can actually operate.",
   },
   {
     number: "03",
     icon: Terminal,
     title: "Build and demonstrate",
     description:
-      "PoCs, live configurations, and demos scoped to the customer's specific question—not canned walkthroughs. If it needs to be built to be understood, I build it. If it can be shown in the customer's own environment, even better.",
+      "PoCs, live configurations, and demos scoped to the customer's specific question, not canned walkthroughs. If it needs to be built to be understood, I build it. If it can be shown in the customer's own environment, even better.",
   },
   {
     number: "04",
@@ -65,7 +65,7 @@ export default function HowIWork() {
             className="mt-4 max-w-xl text-lg"
             style={{ color: "var(--text-secondary)" }}
           >
-            What I do in every pre-sales and technical engagement—from first call to
+            What I do in every pre-sales and technical engagement, from first call to
             final handoff.
           </motion.p>
         </motion.div>
@@ -87,7 +87,7 @@ export default function HowIWork() {
                 className="relative flex flex-col gap-4 p-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)]"
                 style={{ transition: "border-color 0.2s" }}
               >
-                {/* Step number — large, muted, top-right */}
+                {/* Step number: large, muted, top-right */}
                 <span
                   className="absolute top-4 right-5 font-mono font-bold select-none"
                   style={{
@@ -125,7 +125,7 @@ export default function HowIWork() {
                   </p>
                 </div>
 
-                {/* Connector line — hidden on last item and on mobile */}
+                {/* Connector line: hidden on last item and on mobile */}
                 {i < steps.length - 1 && (
                   <div
                     className="hidden lg:block absolute top-[2.75rem] -right-3 w-6 h-px"

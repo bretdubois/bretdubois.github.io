@@ -193,8 +193,8 @@ export default function Projects() {
             className="mt-4 max-w-xl text-lg"
             style={{ color: "var(--text-secondary)" }}
           >
-            Independent technical work that shows how I approach a problem end-to-end—from
-            requirements through deployment and documentation. Expand any card for the full technical story.
+            Independent technical work that shows how I approach a problem end-to-end,
+            from requirements through deployment and documentation. Expand any card for the full technical story.
           </motion.p>
         </motion.div>
 
@@ -223,7 +223,7 @@ export default function Projects() {
           style={{ background: "var(--surface)" }}
         >
           <p className="text-sm" style={{ color: "var(--text-muted)" }}>
-            These are personal and independent projects—not covered by NDAs. For a fuller picture of
+            These are personal and independent projects, not covered by NDAs. For a fuller picture of
             professional work, see the case studies above or{" "}
             <a
               href="https://www.linkedin.com/in/bretdubois/"

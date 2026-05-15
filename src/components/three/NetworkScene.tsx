@@ -22,7 +22,7 @@ function NetworkNodes() {
   const groupRef = useRef<THREE.Group>(null!);
 
   const nodes = useMemo(() => {
-    const rand = mulberry32(0xBD); // seed — reproducible layout
+    const rand = mulberry32(0xBD); // seed: reproducible layout
     const pts: THREE.Vector3[] = [];
     const count = 22;
     for (let i = 0; i < count; i++) {
@@ -64,7 +64,7 @@ function NetworkNodes() {
 
   return (
     <group ref={groupRef}>
-      {/* Glowing connection lines — amber on dark background */}
+      {/* Glowing connection lines: amber on dark background */}
       <lineSegments>
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[linePositions, 3]} />

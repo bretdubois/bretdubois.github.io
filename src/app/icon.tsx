@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-// Route segment config — static PNG generated at build time.
+// Route segment config: static PNG generated at build time.
 export const dynamic = "force-static";
 export const size = { width: 64, height: 64 };
 export const contentType = "image/png";

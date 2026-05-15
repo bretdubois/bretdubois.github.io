@@ -23,19 +23,19 @@ export const caseStudies: CaseStudy[] = [
     period: "October 2019 – August 2022",
     location: "San Mateo, CA",
     summary:
-      "Three years at Apple's Genius Bar—promoted twice to Technical Expert. The job was hardware and software triage in 15-30 minute windows: diagnose the root cause, communicate the finding clearly to a non-technical customer, and recommend the right solution under time pressure. 300+ consecutive perfect satisfaction scores while running that loop at high volume.",
+      "Three years at Apple's Genius Bar, promoted twice to Technical Expert. The job was hardware and software triage in 15-30 minute windows: diagnose the root cause, communicate the finding clearly to a non-technical customer, and recommend the right solution under time pressure. 300+ consecutive perfect satisfaction scores while running that loop at high volume.",
     challenge:
-      "Every appointment is a constraint-heavy diagnostic exercise: unknown device history, a user who can't describe what went wrong technically, limited time, and the expectation that you'll not only fix it but explain it in a way the customer trusts. The harder skill—the one most technicians skip—is recognizing when the consumer in front of you represents something much larger than a single broken device.",
+      "Every appointment is a constraint-heavy diagnostic exercise: unknown device history, a user who can't describe what went wrong technically, limited time, and the expectation that you'll not only fix it but explain it in a way the customer trusts. The harder skill, the one most technicians skip, is recognizing when the consumer in front of you represents something much larger than a single broken device.",
     approach:
       "Developed a structured intake method: environment questions first ('what changed, what else is on the account, what happened right before') before touching the device. This surfaces root causes faster than diving straight into diagnostics and gives the customer a role in the process. Earned two promotions by pairing systematic triage with communication quality. Mentored newer technicians on the same intake methodology. Partnered with iPhone engineering on repair edge-case documentation.",
     outcome:
-      "300+ consecutive 100/100 satisfaction scores—a measure of whether the customer understood and trusted the diagnosis, not just that the device got fixed. One intake conversation surfaced a multi-device enterprise environment; routed to Apple's enterprise team, that account generated $150K+ in downstream spend. Recognized company-wide for satisfaction performance. Contributed to iOS repair documentation and product feedback cycles.",
+      "300+ consecutive 100/100 satisfaction scores. That measures whether the customer understood and trusted the diagnosis, not just that the device got fixed. One intake conversation surfaced a multi-device enterprise environment; routed to Apple's enterprise team, that account generated $150K+ in downstream spend. Recognized company-wide for satisfaction performance. Contributed to iOS repair documentation and product feedback cycles.",
     metrics: [
       { value: "300", label: "Perfect satisfaction scores (100/100)", suffix: "+" },
       { value: "150", label: "Enterprise account sourced via intake discovery", prefix: "$", suffix: "K+" },
     ],
     highlights: [
-      "Structured intake methodology — environment questions before device diagnostics",
+      "Structured intake methodology: environment questions before device diagnostics",
       "Root-cause triage: iPhones, Macs, iPads, peripherals at high volume",
       "Technical findings translated to non-technical customers in real time",
       "Enterprise pattern recognition from consumer intake conversations",
@@ -52,9 +52,9 @@ export const caseStudies: CaseStudy[] = [
     period: "September 2024 – April 2025",
     location: "San Diego, CA",
     summary:
-      "In-home technical consulting for Verizon and AT&T customers. Each engagement: assess the device ecosystem, diagnose issues, configure and integrate devices, train the customer, and recommend a support plan matched to their actual situation—not a script.",
+      "In-home technical consulting for Verizon and AT&T customers. Each engagement: assess the device ecosystem, diagnose issues, configure and integrate devices, train the customer, and recommend a support plan matched to their actual situation rather than a script.",
     challenge:
-      "On-site, no prep time. Every customer had a different device mix, different technical literacy, and a different problem. Fast environment assessment, clear communication of findings, and recommendations that fit the customer—not a pre-set pitch.",
+      "On-site, no prep time. Every customer had a different device mix, different technical literacy, and a different problem. Fast environment assessment, clear communication of findings, and recommendations that fit the customer rather than a pre-set pitch.",
     approach:
       "Opened every visit with a structured ecosystem audit: devices present, current configuration, pain points, and usage patterns. Scoped what was resolvable on-site versus what required follow-up. Configured and integrated devices in the field. Delivered training matched to the customer's technical level. Managed a CRM pipeline for customers requiring phased support.",
     outcome:
@@ -78,16 +78,16 @@ export const caseStudies: CaseStudy[] = [
     period: "April 2025 – Present",
     location: "San Francisco Bay Area, CA",
     summary:
-      "Representing an AI-driven marketing platform to restaurant operators—a non-technical buyer base. The work: understand how the ML features actually function, then translate that into concrete business outcomes the customer cares about.",
+      "Representing an AI-driven marketing platform to restaurant operators, a non-technical buyer base. The work: understand how the ML features actually function, then translate that into concrete business outcomes the customer cares about.",
     challenge:
       "Restaurant owners are skeptical of tech vendors. They've been burned by overpromised platforms, are margin-conscious, and have no patience for demos that don't speak to their specific situation. Generic feature pitches fail every time.",
     approach:
-      "Built deep product knowledge of the AI and ML components—not just feature names, but how the system generates recommendations, manages campaigns, and integrates with POS systems. Led every conversation with discovery: mapping customer-specific operational pain to product-specific capability before proposing a solution. Iterated demo flows based on ICP feedback.",
+      "Built deep product knowledge of the AI and ML components, not at the feature-name level but at the mechanism level: how the system generates recommendations, manages campaigns, and integrates with POS systems. Led every conversation with discovery: mapping customer-specific operational pain to product-specific capability before proposing a solution. Iterated demo flows based on ICP feedback.",
     outcome:
       "Consistent conversion of discovery conversations to qualified pipeline. Strong technical credibility with both business owners and their operations staff. Recognized as a top activity contributor on the team.",
     metrics: [],
     highlights: [
-      "AI/ML product knowledge — mechanisms, not marketing",
+      "AI/ML product knowledge at the mechanism level, not the marketing level",
       "Discovery-led solution mapping",
       "ICP-specific demo customization",
       "Technical translation for non-technical buyers",
@@ -120,7 +120,7 @@ export const timeline: TimelineItem[] = [
   },
   {
     year: "2019",
-    title: "Apple Genius Bar — Technical Expert",
+    title: "Apple Genius Bar · Technical Expert",
     company: "Apple · San Mateo, CA",
     description:
       "Joined as Sales Specialist, earned two promotions in under three years to Technical Specialist then Technical Expert. Hardware/software diagnostics, partnered with iPhone engineering, mentored teammates.",
@@ -133,7 +133,7 @@ export const timeline: TimelineItem[] = [
     title: "Network Engineering",
     company: "Independent · Redwood City, CA",
     description:
-      "Designing and deploying Ubiquiti UniFi networks—site surveys, AP placement, switch config, VLAN segmentation, IP cameras, and post-deployment client documentation.",
+      "Designing and deploying Ubiquiti UniFi networks: site surveys, AP placement, switch config, VLAN segmentation, IP cameras, and post-deployment client documentation.",
     type: "technical",
     url: "https://ui.com/",
   },
@@ -142,7 +142,7 @@ export const timeline: TimelineItem[] = [
     title: "A.S. Computer & Information Science",
     company: "College of San Mateo",
     description:
-      "Completed a CS degree while working at Apple—data structures, algorithms, OOP, databases, networking, and operating systems.",
+      "Completed a CS degree while working at Apple: data structures, algorithms, OOP, databases, networking, and operating systems.",
     type: "education",
     logo: "/logos/csm.png",
     url: "https://collegeofsanmateo.edu/",
@@ -170,13 +170,13 @@ export const timeline: TimelineItem[] = [
     title: "B.S. Cognitive Science + HCI",
     company: "UC San Diego",
     description:
-      "Graduated with a specialization in Design & Human-Computer Interaction — systems thinking, user research, and interaction design at the intersection of technology and people.",
+      "Graduated with a specialization in Design & Human-Computer Interaction: systems thinking, user research, and interaction design at the intersection of technology and people.",
     type: "education",
     url: "https://cogsci.ucsd.edu/undergraduates/major/design-interaction.html",
   },
   {
     year: "2025",
-    title: "Technical Sales — AI Marketing Platform",
+    title: "Technical Sales · AI Marketing Platform",
     company: "SpotHopper · SF Bay Area, CA",
     description:
       "Translating AI/ML product capability into concrete outcomes for non-technical buyers. Discovery-led solution mapping, deep product knowledge, and ICP-specific demo delivery.",

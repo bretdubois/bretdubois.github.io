@@ -10,7 +10,7 @@ const bullets = [
     icon: Cpu,
     title: "Diagnostics under pressure, at Apple's scale",
     description:
-      "Three years of 15–30 minute hardware/software triage windows with non-technical customers. 300+ consecutive perfect satisfaction scores under that constraint. Diagnosing root causes on a clock while making the customer feel confident in the outcome—that's discovery call muscle, built at volume.",
+      "Three years of 15–30 minute hardware/software triage windows with non-technical customers, 300+ consecutive perfect satisfaction scores under that constraint. Diagnosing root causes on a clock while keeping the customer confident in the outcome is the same skill an SE discovery call requires, just in a retail frame.",
   },
   {
     icon: Wifi,
@@ -22,7 +22,7 @@ const bullets = [
     icon: Plug,
     title: "I know what 'can this integrate?' actually means",
     description:
-      "I've built automation pipelines: webhook triggers, API data ingestion, LLM classification, CRM output via HubSpot. When a prospect asks whether a product can connect to their stack, I'm not guessing at the answer—I've done the wiring.",
+      "I've built automation pipelines: webhook triggers, API data ingestion, LLM classification, CRM output via HubSpot. When a prospect asks whether a product can connect to their stack, I'm not guessing. I've done the wiring myself.",
   },
   {
     icon: Compass,
@@ -34,13 +34,13 @@ const bullets = [
     icon: ArrowLeftRight,
     title: "I translate between technical teams and non-technical buyers",
     description:
-      "At Apple, at Asurion, and in every network deployment, the gap between 'what the system does' and 'what the customer needs to hear' was my job to bridge. I've explained VLANs to a restaurant owner and firmware to a retired teacher. The translation skill is muscle memory.",
+      "At Apple, at Asurion, and in every network deployment, the gap between 'what the system does' and 'what the customer needs to hear' was my job to bridge. I've explained VLANs to a restaurant owner and firmware to a retired teacher. At this point that translation is automatic.",
   },
   {
     icon: FileCheck2,
-    title: "I document clean handoffs by default",
+    title: "I document clean handoffs",
     description:
-      "Every network deployment ends with a runbook. Every automation I build is documented for reproducibility. An undocumented solution creates a dependency on me—that's not a good outcome for anyone. I learned this early and it's now a non-negotiable part of how I close engagements.",
+      "Every network deployment ends with a runbook. Every automation I build is documented for reproducibility. An undocumented solution becomes a permanent dependency on me, and that isn't good for anyone. After a few painful handoff cleanups, documentation just became part of the work.",
   },
 ];
 

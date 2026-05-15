@@ -9,13 +9,13 @@ interface RevealLineProps {
   children: React.ReactNode;
   delay?: number;
   className?: string;
-  /** Use animate (not whileInView) — for hero which is already in viewport on load */
+  /** Use animate (not whileInView) for hero which is already in viewport on load */
   immediate?: boolean;
 }
 
 /**
  * Wraps children in an overflow-hidden container.
- * The inner element clips up from the baseline — the signature terminal-industries reveal.
+ * The inner element clips up from the baseline: the signature terminal-industries reveal.
  */
 export function RevealLine({
   children,

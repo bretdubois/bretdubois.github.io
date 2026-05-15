@@ -22,9 +22,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 const SITE_URL = "https://bretdubois.github.io";
-const SITE_TITLE = "Bret DuBois — Solutions Engineering · Infrastructure · Automation";
+const SITE_TITLE = "Bret DuBois · Solutions Engineering · Infrastructure · Automation";
 const SITE_DESCRIPTION =
-  "Portfolio of Bret DuBois — Solutions Engineer and technical consultant specializing in network infrastructure, systems automation, API integration, and pre-sales technical advisory. Based in Redwood City, CA.";
+  "Portfolio of Bret DuBois, Solutions Engineer and technical consultant specializing in network infrastructure, systems automation, API integration, and pre-sales technical advisory. Based in Redwood City, CA.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

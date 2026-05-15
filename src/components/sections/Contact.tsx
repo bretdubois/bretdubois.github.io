@@ -23,7 +23,7 @@ const contactMethods = [
     href: "https://calendly.com/bretdubois1/30min",
     cta: "Pick a time",
     accent: "#C2410C",
-    description: "Fastest way to talk — recruiters, teams, or just to trade notes",
+    description: "Fastest way to talk: recruiters, teams, or just to trade notes",
   },
   {
     icon: LinkedInIcon,
@@ -79,8 +79,8 @@ export default function Contact() {
           >
             Whether you&apos;re a recruiter with a role that needs a hybrid thinker, an
             engineer who wants to trade notes on drones and networks, or a designer who
-            appreciates a portfolio that practices what it preaches—I&apos;m always up for
-            a good conversation.
+            appreciates a portfolio that practices what it preaches, I&apos;m always up
+            for a good conversation.
           </motion.p>
 
           <motion.div
@@ -154,7 +154,7 @@ export default function Contact() {
           })}
         </motion.div>
 
-        {/* Closing statement */}
+        {/* Closing divider */}
         <motion.div
           className="text-center max-w-lg mx-auto"
           variants={staggerContainer}
@@ -163,22 +163,14 @@ export default function Contact() {
           viewport={viewportConfig}
         >
           <motion.div variants={fadeUp}>
-            <div className="divider mx-auto mb-6" />
+            <div className="divider mx-auto" />
           </motion.div>
           <motion.p
             variants={fadeUp}
-            className="font-display italic text-xl"
-            style={{ color: "var(--text-secondary)" }}
+            className="mt-6 text-sm font-mono uppercase"
+            style={{ color: "var(--text-muted)", letterSpacing: "0.18em" }}
           >
-            &ldquo;The best technology disappears—what remains is the outcome it enabled
-            and the trust it built.&rdquo;
-          </motion.p>
-          <motion.p
-            variants={fadeUp}
-            className="mt-3 text-sm font-semibold"
-            style={{ color: "var(--text-muted)" }}
-          >
-            — Bret DuBois · Redwood City, CA
+            Bret DuBois &nbsp;·&nbsp; Redwood City, CA
           </motion.p>
         </motion.div>
       </div>

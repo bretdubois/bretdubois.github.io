@@ -1,0 +1,66 @@
+/* Hallmark · Almanac · portable tokens (OKLCH)
+ * Genre: editorial · Display: Hanken Grotesk · Body: Hanken Grotesk · Serif: Newsreader · Mono: IBM Plex Mono
+ * Paper band: light · Display style: geometric-sans · Accent hue: cool-blue
+ *
+ * Drop this file into another project to inherit the design language.
+ * See ./src/app/globals.css for the full token set + utility classes.
+ */
+:root {
+  --color-paper:      oklch(94% 0.008 245);
+  --color-paper-2:    oklch(91% 0.010 245);
+  --color-paper-3:    oklch(86% 0.012 240);
+  --color-rule:       oklch(74% 0.012 240);
+  --color-rule-2:     oklch(38% 0.018 240);
+  --color-muted:      oklch(46% 0.014 245);
+  --color-neutral:    oklch(28% 0.016 245);
+  --color-ink-2:      oklch(20% 0.018 245);
+  --color-ink:        oklch(16% 0.020 245);
+  --color-accent:     oklch(38% 0.135 250);
+  --color-accent-ink: oklch(98% 0.005 245);
+  --color-focus:      oklch(38% 0.135 250);
+
+  --font-display: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body:    "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-serif:   "Newsreader", ui-serif, Georgia, serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, monospace;
+
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs:  0.75rem;
+  --space-sm:  1rem;
+  --space-md:  1.5rem;
+  --space-lg:  2rem;
+  --space-xl:  3rem;
+  --space-2xl: 4.5rem;
+  --space-3xl: 7rem;
+  --space-4xl: 10rem;
+
+  --text-xs:    0.6875rem;
+  --text-sm:    0.8125rem;
+  --text-base:  0.9375rem;
+  --text-md:    1.0625rem;
+  --text-lg:    1.25rem;
+  --text-xl:    1.5rem;
+  --text-2xl:   1.875rem;
+  --text-3xl:   2.5rem;
+  --text-display:   clamp(2.5rem, 4.5vw + 1rem, 4.5rem);
+  --text-display-s: clamp(1.625rem, 2.5vw + 1rem, 2.5rem);
+  --text-stat:      clamp(6rem, 18vw + 1rem, 18rem);
+
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long:  420ms;
+
+  --radius-card:  0;
+  --radius-pill:  0;
+  --radius-input: 0;
+
+  --page-max:    84rem;
+  --page-gutter: clamp(1.25rem, 4vw, 3rem);
+  --measure:     64ch;
+  --rule-hair:   0.5px;
+  --rule-fine:   1px;
+}

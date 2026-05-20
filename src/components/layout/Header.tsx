@@ -1,9 +1,12 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { Menu, X, Moon, Sun } from "lucide-react";
-import { cn, smoothScrollTo } from "@/lib/utils";
+import { Moon, Sun } from "lucide-react";
+
+/* Hallmark · nav: N6 Newspaper masthead
+ * Centered wordmark · issue/date line above · inline link row below ·
+ * double rule below the whole thing. No sticky-blur, no CTA pill.
+ */
 
 const navLinks = [
   { label: "How I Work", href: "#how-i-work" },
@@ -13,164 +16,143 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
+function formatIssueDate(): string {
+  const d = new Date();
+  return d
+    .toLocaleDateString("en-US", { day: "2-digit", month: "short", year: "numeric" })
+    .toUpperCase()
+    .replace(/,/g, "");
+}
+
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  // Lazy-init from DOM so the server-rendered markup and the first client
-  // render agree (the inline script in layout.tsx sets .dark pre-paint).
   const [dark, setDark] = useState<boolean>(() => {
     if (typeof document === "undefined") return false;
     return document.documentElement.classList.contains("dark");
   });
-  const { scrollYProgress } = useScroll();
-  const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const [issueDate, setIssueDate] = useState<string>("");
 
+  // Set issue date only on client to avoid hydration mismatch
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    setIssueDate(formatIssueDate());
   }, []);
 
   const toggleDark = useCallback(() => {
     setDark((prev) => {
       const next = !prev;
       document.documentElement.classList.toggle("dark", next);
-      localStorage.setItem("theme", next ? "dark" : "light");
+      try {
+        localStorage.setItem("theme", next ? "dark" : "light");
+      } catch {}
       return next;
     });
   }, []);
 
-  const scrollTo = useCallback((href: string) => {
-    setMobileOpen(false);
-    smoothScrollTo(href);
-  }, []);
-
   return (
-    <>
-      {/* Scroll progress bar */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-[2px] z-[60] origin-left"
+    <header className="page-shell" style={{ paddingTop: "var(--space-md)" }}>
+      {/* Issue / date line */}
+      <div
+        className="rule-double nums-tabular"
         style={{
-          width: progressWidth,
-          background: "linear-gradient(90deg, var(--accent), var(--gold))",
+          display: "flex",
+          alignItems: "baseline",
+          justifyContent: "space-between",
+          gap: "var(--space-md)",
+          fontFamily: "var(--font-mono)",
+          fontSize: "var(--text-xs)",
+          letterSpacing: "var(--tracking-label)",
+          textTransform: "uppercase",
+          color: "var(--color-muted)",
         }}
-      />
-
-      <header
-        className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          scrolled
-            ? "bg-[var(--bg)]/90 backdrop-blur-md border-b border-[var(--border)] shadow-sm"
-            : "bg-transparent"
-        )}
       >
-        <div className="container-wide flex items-center justify-between h-16">
-          {/* Logo */}
-          <motion.a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              const lenis = (window as unknown as { __lenis?: { scrollTo: (t: number) => void } }).__lenis;
-              if (lenis) lenis.scrollTo(0);
-              else window.scrollTo({ top: 0, behavior: "smooth" });
+        <span>Vol. I &nbsp;·&nbsp; No. 26 &nbsp;·&nbsp; A Portfolio in Long Form</span>
+        <span style={{ display: "flex", alignItems: "baseline", gap: "var(--space-sm)" }}>
+          <span>{issueDate || " "}</span>
+          <button
+            onClick={toggleDark}
+            aria-label="Toggle dark mode"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "1.25rem",
+              height: "1.25rem",
+              background: "transparent",
+              border: "none",
+              color: "var(--color-muted)",
+              cursor: "pointer",
+              padding: 0,
+              transition: "color var(--dur-short) var(--ease-out)",
             }}
-            className="flex items-center gap-2 group"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-ink)")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-muted)")}
           >
-            <div className="w-8 h-8 rounded-lg bg-[var(--accent)] flex items-center justify-center text-white font-bold text-sm font-display transition-transform group-hover:scale-110">
-              BD
-            </div>
-            <span className="font-display font-semibold text-[var(--text-primary)] hidden sm:block">
-              Bret DuBois
-            </span>
-          </motion.a>
+            {dark ? <Sun size={13} aria-hidden /> : <Moon size={13} aria-hidden />}
+          </button>
+        </span>
+      </div>
 
-          {/* Desktop nav */}
-          <motion.nav
-            className="hidden md:flex items-center gap-1"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => scrollTo(link.href)}
-                className="px-3 py-1.5 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--accent)] rounded-lg hover:bg-[var(--bg-alt)] transition-all duration-200 cursor-pointer"
-              >
-                {link.label}
-              </button>
-            ))}
-          </motion.nav>
-
-          {/* Right: dark mode + contact CTA + mobile menu */}
-          <motion.div
-            className="flex items-center gap-2"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-          >
-            <button
-              onClick={toggleDark}
-              className="w-8 h-8 rounded-lg flex items-center justify-center text-[var(--text-secondary)] hover:text-[var(--accent)] hover:bg-[var(--bg-alt)] transition-all"
-              aria-label="Toggle dark mode"
-            >
-              {dark ? <Sun size={16} /> : <Moon size={16} />}
-            </button>
-
-            <button
-              onClick={() => scrollTo("#contact")}
-              className="btn-primary hidden md:inline-flex text-sm py-2 px-4"
-            >
-              Get in Touch
-            </button>
-
-            <button
-              className="md:hidden w-8 h-8 flex items-center justify-center text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-              onClick={() => setMobileOpen((p) => !p)}
-              aria-label="Toggle menu"
-            >
-              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </motion.div>
+      {/* Centered wordmark */}
+      <div
+        style={{
+          textAlign: "center",
+          paddingTop: "var(--space-lg)",
+          paddingBottom: "var(--space-sm)",
+        }}
+      >
+        <a
+          href="#top"
+          style={{
+            fontFamily: "var(--font-display)",
+            fontWeight: 700,
+            fontSize: "clamp(1.5rem, 3vw, 2rem)",
+            letterSpacing: "var(--tracking-display)",
+            color: "var(--color-ink)",
+            lineHeight: 1,
+          }}
+        >
+          Bret DuBois
+        </a>
+        <div
+          className="serif-italic"
+          style={{
+            marginTop: "var(--space-2xs)",
+            fontSize: "var(--text-sm)",
+            color: "var(--color-muted)",
+          }}
+        >
+          A working record, not a marketing site.
         </div>
+      </div>
 
-        {/* Mobile menu */}
-        <AnimatePresence>
-          {mobileOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="md:hidden overflow-hidden bg-[var(--bg)]/95 backdrop-blur-md border-b border-[var(--border)]"
-            >
-              <div className="container-wide py-4 flex flex-col gap-1">
-                {navLinks.map((link, i) => (
-                  <motion.button
-                    key={link.href}
-                    onClick={() => scrollTo(link.href)}
-                    className="text-left px-4 py-3 text-[var(--text-primary)] font-medium rounded-lg hover:bg-[var(--bg-alt)] hover:text-[var(--accent)] transition-all cursor-pointer"
-                    initial={{ opacity: 0, x: -16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                  >
-                    {link.label}
-                  </motion.button>
-                ))}
-                <button
-                  onClick={() => scrollTo("#contact")}
-                  className="btn-primary mt-2 justify-center text-sm"
-                >
-                  Get in Touch
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
-    </>
+      {/* Inline link row */}
+      <nav
+        aria-label="Sections"
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: "var(--space-md)",
+          paddingBottom: "var(--space-xs)",
+          borderBottom: "var(--rule-fine) solid var(--color-ink)",
+          borderTop: "var(--rule-hair) solid var(--color-rule)",
+          paddingTop: "var(--space-2xs)",
+          fontFamily: "var(--font-mono)",
+          fontSize: "var(--text-xs)",
+          letterSpacing: "var(--tracking-label)",
+          textTransform: "uppercase",
+        }}
+      >
+        {navLinks.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            className="tlink-quiet"
+            style={{ whiteSpace: "nowrap" }}
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+    </header>
   );
 }

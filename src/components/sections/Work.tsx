@@ -1,252 +1,245 @@
+/* Hallmark · section: Work Highlights
+ * Stacked editorial case studies. No grid, no card with side-stripe,
+ * no animated counters. Each case study is an inline article with
+ * heading, summary, metrics inline, and expandable detail.
+ */
+
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, ChevronUp, Briefcase } from "lucide-react";
-import { staggerContainer, fadeUp, scaleUp, viewportConfig } from "@/lib/animation";
-import { RevealLine } from "@/components/ui/TextReveal";
-import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import { caseStudies } from "@/data/work";
 
-function CompanyLogo({ logo, company, accent }: { logo?: string; company: string; accent: string }) {
-  const [failed, setFailed] = useState(false);
-  if (logo && !failed) {
-    return (
-      <div className="w-12 h-12 rounded-xl bg-white border border-[var(--border)] flex items-center justify-center overflow-hidden shadow-sm flex-shrink-0">
-        <img
-          src={logo}
-          alt={company}
-          width={36}
-          height={36}
-          className="w-9 h-9 object-contain"
-          onError={() => setFailed(true)}
-        />
-      </div>
-    );
-  }
+function CaseStudy({ study, index }: { study: typeof caseStudies[0]; index: number }) {
+  const [expanded, setExpanded] = useState(false);
   return (
-    <div
-      className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-      style={{ background: `${accent}20` }}
+    <article
+      style={{
+        paddingTop: "var(--space-2xl)",
+        paddingBottom: "var(--space-2xl)",
+        borderTop:
+          index === 0
+            ? "var(--rule-fine) solid var(--color-ink)"
+            : "var(--rule-hair) solid var(--color-rule)",
+      }}
     >
-      <Briefcase size={20} style={{ color: accent }} />
-    </div>
+      <header style={{ marginBottom: "var(--space-md)" }}>
+        <p
+          className="nums-tabular"
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: "var(--text-xs)",
+            letterSpacing: "var(--tracking-label)",
+            textTransform: "uppercase",
+            color: "var(--color-muted)",
+            marginBottom: "var(--space-2xs)",
+          }}
+        >
+          {study.period} &nbsp;·&nbsp; {study.location}
+        </p>
+        <h3
+          className="display"
+          style={{
+            fontSize: "var(--text-2xl)",
+            color: "var(--color-ink)",
+            marginBottom: "var(--space-3xs)",
+          }}
+        >
+          {study.company}
+        </h3>
+        <p
+          className="serif-italic"
+          style={{
+            fontSize: "var(--text-md)",
+            color: "var(--color-accent)",
+          }}
+        >
+          {study.role}
+        </p>
+      </header>
+
+      <p
+        style={{
+          fontSize: "var(--text-md)",
+          lineHeight: "var(--lh-relaxed)",
+          color: "var(--color-ink-2)",
+          maxWidth: "68ch",
+          marginBottom: "var(--space-md)",
+        }}
+      >
+        {study.summary}
+      </p>
+
+      {study.metrics.length > 0 && (
+        <dl
+          className="nums-tabular"
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "var(--space-xl) var(--space-2xl)",
+            margin: "var(--space-md) 0 var(--space-md)",
+            paddingTop: "var(--space-md)",
+            borderTop: "var(--rule-hair) solid var(--color-rule)",
+          }}
+        >
+          {study.metrics.map((m, i) => (
+            <div key={i} style={{ minWidth: "12rem" }}>
+              <dt
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "var(--text-xs)",
+                  letterSpacing: "var(--tracking-label)",
+                  textTransform: "uppercase",
+                  color: "var(--color-muted)",
+                  marginBottom: "var(--space-3xs)",
+                }}
+              >
+                {m.label}
+              </dt>
+              <dd
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontWeight: 700,
+                  fontSize: "var(--text-3xl)",
+                  color: "var(--color-ink)",
+                  margin: 0,
+                  letterSpacing: "var(--tracking-display)",
+                }}
+              >
+                {m.prefix ?? ""}
+                {m.value}
+                {m.suffix ?? ""}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      )}
+
+      {study.highlights && study.highlights.length > 0 && (
+        <ul
+          style={{
+            listStyle: "none",
+            padding: 0,
+            margin: "var(--space-md) 0",
+            display: "flex",
+            flexDirection: "column",
+            gap: "var(--space-2xs)",
+          }}
+        >
+          {study.highlights.map((h, i) => (
+            <li
+              key={i}
+              style={{
+                position: "relative",
+                paddingLeft: "var(--space-md)",
+                color: "var(--color-ink-2)",
+                fontSize: "var(--text-base)",
+                lineHeight: "var(--lh-snug)",
+                maxWidth: "68ch",
+              }}
+            >
+              <span
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  top: "0.4em",
+                  width: "0.5rem",
+                  height: "1px",
+                  background: "var(--color-accent)",
+                }}
+              />
+              {h}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <button
+        onClick={() => setExpanded(!expanded)}
+        className="tlink"
+        style={{
+          background: "transparent",
+          border: "none",
+          padding: 0,
+          paddingBottom: "0.125rem",
+          cursor: "pointer",
+          fontSize: "var(--text-base)",
+          fontFamily: "var(--font-body)",
+        }}
+        aria-expanded={expanded}
+      >
+        {expanded ? "Less" : "The full story"}
+      </button>
+
+      {expanded && (
+        <div style={{ marginTop: "var(--space-lg)" }}>
+          <Block label="The challenge" body={study.challenge} />
+          <Block label="My approach" body={study.approach} />
+          <Block label="The outcome" body={study.outcome} />
+        </div>
+      )}
+    </article>
   );
 }
 
-function CaseStudyCard({ study }: { study: typeof caseStudies[0] }) {
-  const [expanded, setExpanded] = useState(false);
-
+function Block({ label, body }: { label: string; body: string }) {
   return (
-    <motion.article
-      variants={scaleUp}
-      className="card overflow-hidden group"
-    >
-      {/* Top accent bar */}
-      <div className="h-1 w-full" style={{ background: study.accent }} />
-
-      <div className="p-6 md:p-8">
-        {/* Header */}
-        <div className="flex items-start justify-between gap-4 mb-6">
-          <div className="flex items-start gap-4">
-            <CompanyLogo logo={study.logo} company={study.company} accent={study.accent} />
-            <div>
-              <span className="section-label block mb-1" style={{ color: study.accent }}>
-                {study.period}
-              </span>
-              <h3
-                className="font-display text-2xl font-bold mb-1"
-                style={{ color: "var(--text-primary)" }}
-              >
-                {study.company}
-              </h3>
-              <p className="text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
-                {study.role}
-              </p>
-            </div>
-          </div>
-          <span className="tag hidden sm:inline-flex flex-shrink-0">{study.location.split(",")[1]?.trim()}</span>
-        </div>
-
-        {/* Summary */}
-        <p className="mb-6 leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-          {study.summary}
-        </p>
-
-        {/* Metrics (if present) or qualitative highlights */}
-        {study.metrics.length > 0 ? (
-          <div
-            className="grid gap-4 mb-6 p-4 rounded-xl"
-            style={{
-              background: "var(--bg-alt)",
-              gridTemplateColumns: `repeat(${study.metrics.length}, minmax(0, 1fr))`,
-            }}
-          >
-            {study.metrics.map((m, i) => (
-              <div key={i} className="text-center">
-                <div
-                  className="font-display font-bold text-2xl md:text-3xl"
-                  style={{ color: study.accent }}
-                >
-                  <AnimatedCounter
-                    to={parseInt(m.value)}
-                    prefix={m.prefix}
-                    suffix={m.suffix}
-                  />
-                </div>
-                <div className="text-xs mt-1 leading-tight" style={{ color: "var(--text-muted)" }}>
-                  {m.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : study.highlights && study.highlights.length > 0 ? (
-          <div className="flex flex-wrap gap-2 mb-6">
-            {study.highlights.map((h, i) => (
-              <span
-                key={i}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide"
-                style={{
-                  background: `${study.accent}18`,
-                  color: study.accent,
-                  border: `1px solid ${study.accent}30`,
-                }}
-              >
-                <span
-                  style={{
-                    display: "inline-block",
-                    width: 5,
-                    height: 5,
-                    borderRadius: "50%",
-                    background: study.accent,
-                    opacity: 0.7,
-                    flexShrink: 0,
-                  }}
-                />
-                {h}
-              </span>
-            ))}
-          </div>
-        ) : null}
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {study.tags.map((tag) => (
-            <span key={tag} className="tag">{tag}</span>
-          ))}
-        </div>
-
-        {/* Expand button */}
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="flex items-center gap-1.5 text-sm font-medium transition-colors"
-          style={{ color: study.accent }}
-        >
-          {expanded ? "Show less" : "The full story"}
-          {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-        </button>
-
-        {/* Expanded content */}
-        <AnimatePresence>
-          {expanded && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="overflow-hidden"
-            >
-              <div className="mt-6 pt-6 border-t border-[var(--border)] space-y-5">
-                <div>
-                  <h4
-                    className="font-semibold text-sm uppercase tracking-wider mb-2"
-                    style={{ color: study.accent }}
-                  >
-                    The Challenge
-                  </h4>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-                    {study.challenge}
-                  </p>
-                </div>
-                <div>
-                  <h4
-                    className="font-semibold text-sm uppercase tracking-wider mb-2"
-                    style={{ color: study.accent }}
-                  >
-                    My Approach
-                  </h4>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-                    {study.approach}
-                  </p>
-                </div>
-                <div>
-                  <h4
-                    className="font-semibold text-sm uppercase tracking-wider mb-2"
-                    style={{ color: study.accent }}
-                  >
-                    The Outcome
-                  </h4>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-                    {study.outcome}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </motion.article>
+    <div style={{ marginBottom: "var(--space-md)", maxWidth: "68ch" }}>
+      <p
+        style={{
+          fontFamily: "var(--font-mono)",
+          fontSize: "var(--text-xs)",
+          letterSpacing: "var(--tracking-label)",
+          textTransform: "uppercase",
+          color: "var(--color-accent)",
+          marginBottom: "var(--space-2xs)",
+        }}
+      >
+        {label}
+      </p>
+      <p
+        style={{
+          fontSize: "var(--text-base)",
+          lineHeight: "var(--lh-normal)",
+          color: "var(--color-ink-2)",
+        }}
+      >
+        {body}
+      </p>
+    </div>
   );
 }
 
 export default function Work() {
   return (
-    <section id="work" className="section-padding">
-      <div className="container-wide">
-        {/* Header */}
-        <motion.div
-          className="mb-14"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig}
+    <section id="work" className="page-shell s-snug">
+      <header style={{ marginBottom: "var(--space-md)", maxWidth: "60ch" }}>
+        <h2
+          className="display"
+          style={{
+            fontSize: "var(--text-display-s)",
+            color: "var(--color-ink)",
+            marginBottom: "var(--space-sm)",
+          }}
         >
-          <motion.p variants={fadeUp} className="section-label mb-3">
-            Work Highlights
-          </motion.p>
-          <h2
-            className="font-display text-4xl md:text-5xl font-bold max-w-2xl"
-            style={{ color: "var(--text-primary)" }}
-          >
-            <RevealLine delay={0.1}>
-              Results I&apos;ve{" "}
-              <span className="gradient-text">driven.</span>
-            </RevealLine>
-          </h2>
-          <motion.p
-            variants={fadeUp}
-            className="mt-4 max-w-xl text-lg"
-            style={{ color: "var(--text-secondary)" }}
-          >
-            Three roles that built the technical instincts, communication depth, and customer
-            focus that Solutions Engineering requires. Expand each card for the full story.
-          </motion.p>
-        </motion.div>
-
-        {/* Cards */}
-        <motion.div
-          className="grid gap-6 lg:grid-cols-3"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig}
+          Three roles, one through-line.
+        </h2>
+        <p
+          style={{
+            fontSize: "var(--text-md)",
+            color: "var(--color-muted)",
+            maxWidth: "52ch",
+          }}
         >
-          {caseStudies.map((study) => (
-            <CaseStudyCard key={study.id} study={study} />
-          ))}
-        </motion.div>
+          Each shaped the technical instincts, communication depth, and
+          customer focus a Solutions Engineer needs. Expand each to read
+          the full story.
+        </p>
+      </header>
 
-      </div>
+      {caseStudies.map((study, i) => (
+        <CaseStudy key={study.id} study={study} index={i} />
+      ))}
     </section>
   );
 }

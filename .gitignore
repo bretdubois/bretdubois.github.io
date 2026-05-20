@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# skills CLI (nutlope/skills) - installed skills vendored locally
+.agents/
+.claude/
+skills-lock.json

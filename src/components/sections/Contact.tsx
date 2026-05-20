@@ -1,178 +1,90 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { MapPin, ExternalLink, Calendar, Briefcase } from "lucide-react";
-import { RevealLine } from "@/components/ui/TextReveal";
-import { staggerContainer, fadeUp, scaleUp, viewportConfig } from "@/lib/animation";
-
-function LinkedInIcon({ size = 20 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-      <rect x="2" y="9" width="4" height="12" />
-      <circle cx="4" cy="4" r="2" />
-    </svg>
-  );
-}
-
-const contactMethods = [
-  {
-    icon: Calendar,
-    label: "Book a 30-min chat",
-    value: "calendly.com/bretdubois1/30min",
-    href: "https://calendly.com/bretdubois1/30min",
-    cta: "Pick a time",
-    accent: "#C2410C",
-    description: "Fastest way to talk: recruiters, teams, or just to trade notes",
-  },
-  {
-    icon: LinkedInIcon,
-    label: "LinkedIn",
-    value: "linkedin.com/in/bretdubois",
-    href: "https://www.linkedin.com/in/bretdubois/",
-    cta: "Connect on LinkedIn",
-    accent: "#0077B5",
-    description: "Where I post, share, and keep the professional record",
-  },
-];
+/* Hallmark · section: Contact
+ * Typographic statement, not a card grid. No aurora-blob radial gradients,
+ * no icon tiles, no 2-up grid. One sentence that names what to do, with
+ * the actual links exposed inline.
+ */
 
 export default function Contact() {
   return (
-    <section id="contact" className="section-padding bg-[var(--bg-alt)] relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute -bottom-40 -right-40 w-[600px] h-[600px] rounded-full opacity-10 blur-3xl"
-          style={{ background: "radial-gradient(circle, #C2410C 0%, transparent 70%)" }}
-        />
-        <div
-          className="absolute -top-32 -left-24 w-[400px] h-[400px] rounded-full opacity-10 blur-3xl"
-          style={{ background: "radial-gradient(circle, #D97706 0%, transparent 70%)" }}
-        />
-      </div>
-
-      <div className="container-wide relative z-10">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-14"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig}
+    <section id="contact" className="page-shell s-wide">
+      <div
+        style={{
+          maxWidth: "60ch",
+          borderTop: "var(--rule-fine) solid var(--color-ink)",
+          paddingTop: "var(--space-xl)",
+        }}
+      >
+        <p
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: "var(--text-xs)",
+            letterSpacing: "var(--tracking-label)",
+            textTransform: "uppercase",
+            color: "var(--color-accent)",
+            marginBottom: "var(--space-md)",
+          }}
         >
-          <motion.p variants={fadeUp} className="section-label mb-3">
-            Let&apos;s Connect
-          </motion.p>
-          <h2
-            className="font-display text-4xl md:text-5xl lg:text-6xl font-bold"
-            style={{ color: "var(--text-primary)" }}
-          >
-            <RevealLine delay={0.1}>
-              I&apos;d love to{" "}
-              <em className="gradient-text not-italic">talk.</em>
-            </RevealLine>
-          </h2>
-          <motion.p
-            variants={fadeUp}
-            className="mt-5 max-w-xl mx-auto text-lg leading-relaxed"
-            style={{ color: "var(--text-secondary)" }}
-          >
-            Whether you&apos;re a recruiter with a role that needs a hybrid thinker, an
-            engineer who wants to trade notes on drones and networks, or a designer who
-            appreciates a portfolio that practices what it preaches, I&apos;m always up
-            for a good conversation.
-          </motion.p>
+          Get in touch
+        </p>
 
-          <motion.div
-            variants={fadeUp}
-            className="flex flex-col items-center gap-2 mt-5 text-sm"
-            style={{ color: "var(--text-muted)" }}
-          >
-            <div className="flex items-center gap-2">
-              <Briefcase size={14} />
-              <span>
-                Targeting{" "}
-                <span style={{ color: "var(--text-secondary)", fontWeight: 500 }}>
-                  Solutions Engineer · Customer Engineer · Technical Consultant
-                </span>{" "}
-                roles at infrastructure, AI tooling, or technical B2B SaaS
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <MapPin size={14} />
-              <span>Redwood City, CA · Open to remote &amp; hybrid</span>
-            </div>
-          </motion.div>
-        </motion.div>
-
-        {/* Contact cards */}
-        <motion.div
-          className="grid gap-5 md:grid-cols-2 max-w-2xl mx-auto mb-14"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig}
+        <h2
+          className="display"
+          style={{
+            fontSize: "var(--text-display-s)",
+            color: "var(--color-ink)",
+            marginBottom: "var(--space-lg)",
+            maxWidth: "16ch",
+          }}
         >
-          {contactMethods.map((method) => {
-            const Icon = method.icon;
-            return (
-              <motion.a
-                key={method.label}
-                href={method.href}
-                target={method.href.startsWith("http") ? "_blank" : undefined}
-                rel={method.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                variants={scaleUp}
-                className="card p-6 flex flex-col gap-3 group"
-                whileHover={{ y: -4 }}
-              >
-                <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110"
-                  style={{ background: `${method.accent}18` }}
-                >
-                  <Icon size={20} style={{ color: method.accent }} />
-                </div>
-                <div>
-                  <div className="font-semibold text-sm mb-0.5" style={{ color: "var(--text-primary)" }}>
-                    {method.label}
-                  </div>
-                  <div className="text-xs" style={{ color: "var(--text-muted)" }}>
-                    {method.description}
-                  </div>
-                </div>
-                <div className="font-mono text-xs break-all" style={{ color: method.accent }}>
-                  {method.value}
-                </div>
-                <div
-                  className="flex items-center gap-1 text-sm font-medium mt-auto transition-gap"
-                  style={{ color: method.accent }}
-                >
-                  {method.cta}
-                  <ExternalLink size={12} className="opacity-70" />
-                </div>
-              </motion.a>
-            );
-          })}
-        </motion.div>
+          The shortest path is a call.
+        </h2>
 
-        {/* Closing divider */}
-        <motion.div
-          className="text-center max-w-lg mx-auto"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig}
+        <p
+          style={{
+            fontSize: "var(--text-lg)",
+            lineHeight: "var(--lh-relaxed)",
+            color: "var(--color-ink-2)",
+            marginBottom: "var(--space-xl)",
+          }}
         >
-          <motion.div variants={fadeUp}>
-            <div className="divider mx-auto" />
-          </motion.div>
-          <motion.p
-            variants={fadeUp}
-            className="mt-6 text-sm font-mono uppercase"
-            style={{ color: "var(--text-muted)", letterSpacing: "0.18em" }}
+          The fastest way to talk is a 30-minute slot at{" "}
+          <a
+            href="https://calendly.com/bretdubois1/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="tlink"
           >
-            Bret DuBois &nbsp;·&nbsp; Redwood City, CA
-          </motion.p>
-        </motion.div>
+            calendly.com/bretdubois1/30min
+          </a>
+          . If you prefer asynchronous, the professional record lives on{" "}
+          <a
+            href="https://www.linkedin.com/in/bretdubois/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="tlink"
+          >
+            LinkedIn
+          </a>
+          .
+        </p>
+
+        <p
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: "var(--text-xs)",
+            letterSpacing: "var(--tracking-label)",
+            textTransform: "uppercase",
+            color: "var(--color-muted)",
+            lineHeight: 1.8,
+          }}
+        >
+          Targeting <span style={{ color: "var(--color-ink)" }}>Solutions Engineer</span>,{" "}
+          <span style={{ color: "var(--color-ink)" }}>Customer Engineer</span>, and{" "}
+          <span style={{ color: "var(--color-ink)" }}>Technical Consultant</span> roles
+          at infrastructure, AI tooling, and technical B2B SaaS companies.
+          <br />
+          Redwood City, California. Open to remote and hybrid.
+        </p>
       </div>
     </section>
   );

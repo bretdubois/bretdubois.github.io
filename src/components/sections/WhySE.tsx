@@ -67,7 +67,7 @@ export default function WhySE() {
             >
               <RevealLine delay={0.1}>
                 Why I&apos;m a strong{" "}
-                <span className="gradient-text">Solutions Engineer.</span>
+                <em style={{ color: "var(--accent)" }}>Solutions Engineer.</em>
               </RevealLine>
             </h2>
             <motion.p

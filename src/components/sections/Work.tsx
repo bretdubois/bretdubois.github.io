@@ -220,7 +220,7 @@ export default function Work() {
           >
             <RevealLine delay={0.1}>
               Results I&apos;ve{" "}
-              <span className="gradient-text">driven.</span>
+              <em style={{ color: "var(--accent)" }}>driven.</em>
             </RevealLine>
           </h2>
           <motion.p

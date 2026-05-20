@@ -185,7 +185,7 @@ export default function Projects() {
           >
             <RevealLine delay={0.1}>
               Projects that prove{" "}
-              <span className="gradient-text">depth.</span>
+              <em style={{ color: "var(--accent)" }}>depth.</em>
             </RevealLine>
           </h2>
           <motion.p

@@ -57,7 +57,7 @@ export default function HowIWork() {
           >
             <RevealLine delay={0.1}>
               From requirement to{" "}
-              <span className="gradient-text">working solution.</span>
+              <em style={{ color: "var(--accent)" }}>working solution.</em>
             </RevealLine>
           </h2>
           <motion.p

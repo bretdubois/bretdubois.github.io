@@ -165,7 +165,7 @@ export default function Skills() {
           >
             <RevealLine delay={0.1}>
               What I bring{" "}
-              <span className="gradient-text">to the table.</span>
+              <em style={{ color: "var(--accent)" }}>to the table.</em>
             </RevealLine>
           </h2>
           <motion.p

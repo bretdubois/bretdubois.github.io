@@ -112,7 +112,7 @@ export default function About() {
           >
             <RevealLine delay={0.1}>
               Built for the{" "}
-              <em className="gradient-text not-italic">technical middle.</em>
+              <em style={{ color: "var(--accent)" }}>technical middle.</em>
             </RevealLine>
           </h2>
           <motion.p

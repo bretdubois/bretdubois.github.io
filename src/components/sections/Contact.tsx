@@ -69,7 +69,7 @@ export default function Contact() {
           >
             <RevealLine delay={0.1}>
               I&apos;d love to{" "}
-              <em className="gradient-text not-italic">talk.</em>
+              <em style={{ color: "var(--accent)" }}>talk.</em>
             </RevealLine>
           </h2>
           <motion.p

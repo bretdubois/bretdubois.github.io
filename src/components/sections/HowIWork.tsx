@@ -1,113 +1,143 @@
-/* Hallmark · section: How I Work
- * Single-column ordinal narrative. The numbers are genuinely sequential
- * (Long Document / Manifesto eyebrow rule applies). No icon tiles,
- * no equal-column grid, no card uniformity.
- */
+"use client";
+
+import { motion } from "framer-motion";
+import { Search, GitMerge, Terminal, FileText } from "lucide-react";
+import { staggerContainer, fadeUp, viewportConfig } from "@/lib/animation";
+import { RevealLine } from "@/components/ui/TextReveal";
 
 const steps = [
   {
-    number: "1.0",
-    title: "Diagnose the actual problem.",
-    body: "Customers describe symptoms. I map those to root causes: architecture gaps, workflow breakdowns, integration failures. The real requirement is usually different from the stated one. Surfacing that early is where solutions engineering earns its keep.",
+    number: "01",
+    icon: Search,
+    title: "Diagnose the actual problem",
+    description:
+      "Customers describe symptoms. I map those to root causes: architecture gaps, workflow breakdowns, integration failures. The real requirement is usually different from the stated one, and surfacing that early is where solutions engineering earns its keep.",
   },
   {
-    number: "2.0",
-    title: "Architect the fit.",
-    body: "I scope what the product can do, what it can't, and what the integration looks like end-to-end. Tradeoffs documented, not hidden. The right solution isn't always the most technically impressive one. It's the one the customer can actually operate.",
+    number: "02",
+    icon: GitMerge,
+    title: "Architect the fit",
+    description:
+      "I scope what the product can do, what it can't, and what the integration looks like end-to-end. Tradeoffs documented, not hidden. The right solution isn't always the most technically impressive one. It's the one the customer can actually operate.",
   },
   {
-    number: "3.0",
-    title: "Build and demonstrate.",
-    body: "PoCs, live configurations, and demos scoped to the customer's specific question, not canned walkthroughs. If it needs to be built to be understood, I build it. If it can be shown in the customer's own environment, even better.",
+    number: "03",
+    icon: Terminal,
+    title: "Build and demonstrate",
+    description:
+      "PoCs, live configurations, and demos scoped to the customer's specific question, not canned walkthroughs. If it needs to be built to be understood, I build it. If it can be shown in the customer's own environment, even better.",
   },
   {
-    number: "4.0",
-    title: "Document and hand off clean.",
-    body: "Technical specs, network diagrams, runbooks, and integration notes that make the customer successful without me in the room. A good handoff is part of the solution, not an afterthought.",
+    number: "04",
+    icon: FileText,
+    title: "Document and hand off clean",
+    description:
+      "Technical specs, network diagrams, runbooks, and integration notes that make the customer successful without me in the room. A good handoff is part of the solution, not an afterthought.",
   },
 ];
 
 export default function HowIWork() {
   return (
-    <section id="how-i-work" className="page-shell s-snug">
-      <header style={{ marginBottom: "var(--space-2xl)", maxWidth: "52ch" }}>
-        <h2
-          className="display"
-          style={{
-            fontSize: "var(--text-display-s)",
-            color: "var(--color-ink)",
-            marginBottom: "var(--space-sm)",
-          }}
+    <section id="how-i-work" className="section-padding">
+      <div className="container-wide">
+        {/* Header */}
+        <motion.div
+          className="mb-14"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
         >
-          How I work.
-        </h2>
-        <p
-          style={{
-            fontSize: "var(--text-md)",
-            color: "var(--color-muted)",
-            maxWidth: "48ch",
-          }}
-        >
-          A four-stage motion. The same shape on every pre-sales or
-          technical engagement, from first call to final handoff.
-        </p>
-      </header>
-
-      <ol style={{ listStyle: "none", padding: 0, margin: 0 }}>
-        {steps.map((step, i) => (
-          <li
-            key={step.number}
-            style={{
-              display: "grid",
-              gridTemplateColumns: "minmax(3.5rem, 5rem) 1fr",
-              gap: "var(--space-md)",
-              paddingTop: "var(--space-lg)",
-              paddingBottom: "var(--space-lg)",
-              borderTop:
-                i === 0
-                  ? "var(--rule-fine) solid var(--color-ink)"
-                  : "var(--rule-hair) solid var(--color-rule)",
-              alignItems: "baseline",
-            }}
+          <motion.p variants={fadeUp} className="section-label mb-3">
+            How I Work
+          </motion.p>
+          <h2
+            className="font-display text-4xl md:text-5xl font-bold max-w-2xl"
+            style={{ color: "var(--text-primary)" }}
           >
-            <span
-              className="nums-tabular"
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "var(--text-sm)",
-                color: "var(--color-accent)",
-                letterSpacing: "0.04em",
-                paddingTop: "0.35rem",
-              }}
-            >
-              {step.number}
-            </span>
-            <div>
-              <h3
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontWeight: 600,
-                  fontSize: "var(--text-xl)",
-                  letterSpacing: "var(--tracking-tight)",
-                  color: "var(--color-ink)",
-                  marginBottom: "var(--space-2xs)",
-                }}
+            <RevealLine delay={0.1}>
+              From requirement to{" "}
+              <span className="gradient-text">working solution.</span>
+            </RevealLine>
+          </h2>
+          <motion.p
+            variants={fadeUp}
+            className="mt-4 max-w-xl text-lg"
+            style={{ color: "var(--text-secondary)" }}
+          >
+            What I do in every pre-sales and technical engagement, from first call to
+            final handoff.
+          </motion.p>
+        </motion.div>
+
+        {/* Steps grid */}
+        <motion.div
+          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+        >
+          {steps.map((step, i) => {
+            const Icon = step.icon;
+            return (
+              <motion.div
+                key={step.number}
+                variants={fadeUp}
+                className="relative flex flex-col gap-4 p-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)]"
+                style={{ transition: "border-color 0.2s" }}
               >
-                {step.title}
-              </h3>
-              <p
-                style={{
-                  color: "var(--color-ink-2)",
-                  lineHeight: "var(--lh-normal)",
-                  maxWidth: "62ch",
-                }}
-              >
-                {step.body}
-              </p>
-            </div>
-          </li>
-        ))}
-      </ol>
+                {/* Step number: large, muted, top-right */}
+                <span
+                  className="absolute top-4 right-5 font-mono font-bold select-none"
+                  style={{
+                    fontSize: "2.5rem",
+                    lineHeight: 1,
+                    color: "var(--border)",
+                    letterSpacing: "-0.04em",
+                  }}
+                  aria-hidden
+                >
+                  {step.number}
+                </span>
+
+                {/* Icon */}
+                <div
+                  className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                  style={{ background: "var(--accent)", opacity: 1 }}
+                >
+                  <Icon size={20} color="#FAF7F2" />
+                </div>
+
+                {/* Text */}
+                <div className="flex flex-col gap-2 pr-8">
+                  <h3
+                    className="font-display font-bold text-lg leading-snug"
+                    style={{ color: "var(--text-primary)" }}
+                  >
+                    {step.title}
+                  </h3>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    {step.description}
+                  </p>
+                </div>
+
+                {/* Connector line: hidden on last item and on mobile */}
+                {i < steps.length - 1 && (
+                  <div
+                    className="hidden lg:block absolute top-[2.75rem] -right-3 w-6 h-px"
+                    style={{ background: "var(--border)" }}
+                    aria-hidden
+                  />
+                )}
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </div>
     </section>
   );
 }

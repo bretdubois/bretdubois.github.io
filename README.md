@@ -1,36 +1,19 @@
 # bretdubois.github.io
 
-Personal portfolio of **Bret DuBois** — Solutions Engineering and technical consulting with a networking and HCI background.
+Personal portfolio of **Bret DuBois**, Solutions Engineering and technical consulting with a networking and HCI background.
 
 Live at [bretdubois.github.io](https://bretdubois.github.io).
-
-## Design
-
-Designed with the [Hallmark](https://github.com/nutlope/hallmark) anti-AI-slop discipline applied at the **Almanac** theme.
-
-- **Genre:** editorial
-- **Macrostructure:** Stat-Led
-- **Theme:** Almanac (OKLCH cool-blue paper, cool-blue accent)
-- **Display:** Hanken Grotesk
-- **Serif:** Newsreader
-- **Mono:** IBM Plex Mono
-- **Nav:** N6 Newspaper masthead
-- **Footer:** Ft4 Dense typographic colophon
-- **Enrichment:** none, typography only
-- **Motion:** one orchestrated reveal on first paint, otherwise silent
-
-Design tokens live in [`tokens.css`](./tokens.css) at the project root, portable to any other project that wants the same language.
 
 ## Stack
 
 - **Next.js 16** (Turbopack) with `output: "export"`, deployed as static HTML to GitHub Pages
 - **TypeScript** in strict mode
-- **Tailwind CSS v4** with `@theme` design tokens
-- **next/font/google** for Hanken Grotesk, Newsreader, IBM Plex Mono
-- **lucide-react** for the two icons used in the dark-mode toggle
+- **Tailwind CSS v4** with custom warm design tokens via `@theme`
+- **Framer Motion 12** for scroll-triggered reveals, stagger, and clip-path text reveals
+- **GSAP + ScrollTrigger** for the timeline scroll-linked line draw
+- **React Three Fiber + Drei** for the animated network graph behind the hero
+- **Lenis** for smooth scroll, integrated with the GSAP ticker
 - **next/og** `ImageResponse` for the favicon, apple-touch-icon, and OG image generated at build time
-
-No framer-motion, no gsap, no lenis, no Three.js, no marquees. The page is just there.
 
 ## Local development
 
@@ -60,25 +43,28 @@ src/
     icon.tsx            favicon (64×64, ImageResponse)
     apple-icon.tsx      apple-touch-icon (180×180)
     opengraph-image.tsx 1200×630 OG card
-    globals.css         Almanac tokens + utility classes
+    globals.css         design tokens + base styles
   components/
-    layout/             Header (N6 masthead), Footer (Ft4 colophon)
-    sections/           Hero (Stat-Led), HowIWork, WhySE, About, Work, Projects, Skills, Contact
+    layout/             Header (nav + dark toggle + scroll progress) and Footer
+    sections/           Hero, HowIWork, WhySE, About, Work, Projects, Skills, Contact
+    three/              NetworkScene, the R3F hero background
+    ui/                 TextReveal, AnimatedCounter
   data/
-    work.ts             case studies + timeline entries (factual reference)
-    projects.ts         personal/technical projects (factual reference)
-    skills.ts           skill clusters
+    work.ts             case studies + timeline entries
+    projects.ts         personal/technical projects
+    skills.ts           skill clusters + proficiencies
   lib/
-    utils.ts            `cn` helper for class composition
-tokens.css              portable design tokens (drop into another project)
-.hallmark/              Hallmark project memory (preflight cache + run log)
+    animation.ts        shared Framer Motion variants
+    utils.ts            smoothScrollTo helper (prefers Lenis)
+  providers/
+    LenisProvider.tsx   Lenis + GSAP ticker wiring, reduced-motion aware
 ```
 
 ## Notes
 
 - Dark mode is applied via a blocking inline script in `<head>` before hydration to prevent FOUC. The toggle persists choice in `localStorage`.
-- `prefers-reduced-motion` is honored in CSS (disables the single reveal animation).
-- Contact email is intentionally not on the page. LinkedIn and Calendly are the entry points.
+- `prefers-reduced-motion` is honored in CSS (disables animations/transitions) and in `LenisProvider` (skips smooth scroll).
+- Contact email is intentionally not on the page; LinkedIn is the entry point.
 
 ## License
 

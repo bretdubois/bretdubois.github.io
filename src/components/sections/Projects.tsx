@@ -1,229 +1,242 @@
-/* Hallmark · section: Technical Work
- * Asymmetric typographic list. No card grid, no left side-stripe,
- * no icon tiles, no highlight pill. Each project is an inline entry
- * with year/category as label, title, prose summary, and an expandable
- * detail block with optional code.
- */
-
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Radio, Network, Layers, Code2, TrendingUp, Cpu, Globe, ChevronDown, ChevronUp } from "lucide-react";
+import { staggerContainer, fadeUp, scaleUp, viewportConfig } from "@/lib/animation";
+import { RevealLine } from "@/components/ui/TextReveal";
 import { projects } from "@/data/projects";
 
-function Project({ project, index }: { project: typeof projects[0]; index: number }) {
-  const [expanded, setExpanded] = useState(false);
-  return (
-    <article
-      style={{
-        paddingTop: "var(--space-xl)",
-        paddingBottom: "var(--space-xl)",
-        borderTop:
-          index === 0
-            ? "var(--rule-fine) solid var(--color-ink)"
-            : "var(--rule-hair) solid var(--color-rule)",
-        display: "grid",
-        gridTemplateColumns: "minmax(0, 0.9fr) minmax(0, 2fr)",
-        gap: "var(--space-lg) var(--space-xl)",
-      }}
-      className="proj-row"
-    >
-      <header>
-        <p
-          style={{
-            fontFamily: "var(--font-mono)",
-            fontSize: "var(--text-xs)",
-            letterSpacing: "var(--tracking-label)",
-            textTransform: "uppercase",
-            color: "var(--color-accent)",
-            marginBottom: "var(--space-2xs)",
-          }}
-        >
-          {project.category}
-        </p>
-        <h3
-          className="display"
-          style={{
-            fontSize: "var(--text-xl)",
-            color: "var(--color-ink)",
-            marginBottom: "var(--space-sm)",
-            letterSpacing: "var(--tracking-tight)",
-          }}
-        >
-          {project.title}
-        </h3>
-        <p
-          style={{
-            fontFamily: "var(--font-mono)",
-            fontSize: "var(--text-xs)",
-            color: "var(--color-muted)",
-            letterSpacing: "0.02em",
-          }}
-        >
-          {project.highlight}
-        </p>
-      </header>
+const iconMap: Record<string, typeof Radio> = {
+  drone: Radio,
+  network: Network,
+  product: Layers,
+  code: Code2,
+  finance: TrendingUp,
+  pi: Cpu,
+  web: Globe,
+};
 
-      <div>
-        <p
-          style={{
-            fontSize: "var(--text-base)",
-            lineHeight: "var(--lh-relaxed)",
-            color: "var(--color-ink-2)",
-            marginBottom: "var(--space-md)",
-            maxWidth: "68ch",
-          }}
-        >
+function CodeBlock({ language, code }: { language: string; code: string }) {
+  return (
+    <div className="mt-4 rounded-xl overflow-hidden border border-[var(--border)]">
+      <div
+        className="flex items-center gap-2 px-4 py-2 border-b border-[var(--border)]"
+        style={{ background: "var(--dark-surface, #231A15)" }}
+      >
+        <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+        <div className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
+        <span className="ml-2 text-xs font-mono text-stone-400">{language}</span>
+      </div>
+      <pre
+        className="overflow-x-auto text-xs p-4 font-mono leading-relaxed"
+        style={{ background: "#1A1210", color: "#D4C5B5" }}
+      >
+        <code>{code}</code>
+      </pre>
+    </div>
+  );
+}
+
+function ProjectCard({ project }: { project: typeof projects[0] }) {
+  const [expanded, setExpanded] = useState(false);
+  const Icon = iconMap[project.icon] || Code2;
+
+  return (
+    <motion.article variants={scaleUp} className="card overflow-hidden group">
+      {/* Left accent border */}
+      <div
+        className="absolute left-0 top-0 bottom-0 w-1 transition-all duration-300 group-hover:w-1.5"
+        style={{ background: project.accent }}
+      />
+
+      <div className="p-6 pl-7">
+        {/* Header */}
+        <div className="flex items-start gap-4 mb-4">
+          <div
+            className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"
+            style={{ background: `${project.accent}18` }}
+          >
+            <Icon size={20} style={{ color: project.accent }} />
+          </div>
+          <div className="flex-1 min-w-0">
+            <span className="section-label text-xs mb-1 block" style={{ color: project.accent }}>
+              {project.category}
+            </span>
+            <h3
+              className="font-display text-xl font-bold"
+              style={{ color: "var(--text-primary)" }}
+            >
+              {project.title}
+            </h3>
+          </div>
+        </div>
+
+        {/* Description */}
+        <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--text-secondary)" }}>
           {project.description}
         </p>
 
-        <p
-          style={{
-            fontFamily: "var(--font-mono)",
-            fontSize: "var(--text-xs)",
-            color: "var(--color-muted)",
-            letterSpacing: "0.02em",
-            marginBottom: "var(--space-md)",
-          }}
-        >
-          {project.tags.join(" · ")}
-        </p>
+        {/* Highlight badge */}
+        <div className="mb-4">
+          <span
+            className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full"
+            style={{ background: `${project.accent}15`, color: project.accent }}
+          >
+            ✦ {project.highlight}
+          </span>
+        </div>
 
+        {/* Tags */}
+        <div className="flex flex-wrap gap-1.5 mb-4">
+          {project.tags.slice(0, 4).map((tag) => (
+            <span key={tag} className="tag">{tag}</span>
+          ))}
+          {project.tags.length > 4 && (
+            <span className="tag">+{project.tags.length - 4}</span>
+          )}
+        </div>
+
+        {/* Expand button */}
         <button
           onClick={() => setExpanded(!expanded)}
-          className="tlink"
-          style={{
-            background: "transparent",
-            border: "none",
-            padding: 0,
-            paddingBottom: "0.125rem",
-            cursor: "pointer",
-            fontSize: "var(--text-base)",
-            fontFamily: "var(--font-body)",
-          }}
-          aria-expanded={expanded}
+          className="flex items-center gap-1.5 text-sm font-medium transition-colors"
+          style={{ color: project.accent }}
         >
-          {expanded ? "Less" : "Read more"}
+          {expanded ? "Show less" : "Read more + code"}
+          {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
         </button>
 
-        {expanded && (
-          <div style={{ marginTop: "var(--space-md)" }}>
-            <p
-              style={{
-                fontSize: "var(--text-base)",
-                lineHeight: "var(--lh-relaxed)",
-                color: "var(--color-ink-2)",
-                whiteSpace: "pre-line",
-                maxWidth: "68ch",
-              }}
+        {/* Expanded */}
+        <AnimatePresence>
+          {expanded && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="overflow-hidden"
             >
-              {project.details}
-            </p>
+              <div className="mt-4 pt-4 border-t border-[var(--border)]">
+                <p className="text-sm leading-relaxed mb-3" style={{ color: "var(--text-secondary)" }}>
+                  {project.details}
+                </p>
 
-            {project.codeSnippet && (
-              <pre
-                style={{
-                  marginTop: "var(--space-md)",
-                  padding: "var(--space-md)",
-                  background: "var(--color-paper-2)",
-                  border: "var(--rule-fine) solid var(--color-rule)",
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "var(--text-xs)",
-                  color: "var(--color-ink)",
-                  overflowX: "auto",
-                  lineHeight: 1.6,
-                }}
-              >
-                <code>{project.codeSnippet.code}</code>
-              </pre>
-            )}
+                {/* All tags when expanded */}
+                <div className="flex flex-wrap gap-1.5 mb-3">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="tag">{tag}</span>
+                  ))}
+                </div>
 
-            {project.links && project.links.length > 0 && (
-              <div style={{ marginTop: "var(--space-md)" }}>
-                {project.links.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="tlink"
-                    style={{ fontSize: "var(--text-base)" }}
-                  >
-                    {link.label}
-                  </a>
-                ))}
+                {/* Code snippet */}
+                {project.codeSnippet && (
+                  <CodeBlock
+                    language={project.codeSnippet.language}
+                    code={project.codeSnippet.code}
+                  />
+                )}
+
+                {/* External links */}
+                {project.links && project.links.length > 0 && (
+                  <div className="flex flex-wrap gap-3 mt-4">
+                    {project.links.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
+                        style={{ color: project.accent }}
+                      >
+                        {link.label} →
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          .proj-row {
-            grid-template-columns: 1fr !important;
-            gap: var(--space-md) !important;
-          }
-        }
-      `}</style>
-    </article>
+    </motion.article>
   );
 }
 
 export default function Projects() {
   return (
-    <section id="projects" className="page-shell s-snug">
-      <header style={{ marginBottom: "var(--space-md)", maxWidth: "60ch" }}>
-        <h2
-          className="display"
-          style={{
-            fontSize: "var(--text-display-s)",
-            color: "var(--color-ink)",
-            marginBottom: "var(--space-sm)",
-          }}
+    <section id="projects" className="section-padding bg-[var(--bg-alt)]">
+      <div className="container-wide">
+        {/* Header */}
+        <motion.div
+          className="mb-14"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
         >
-          Independent technical work.
-        </h2>
-        <p
-          style={{
-            fontSize: "var(--text-md)",
-            color: "var(--color-muted)",
-            maxWidth: "52ch",
-          }}
-        >
-          End-to-end builds I&apos;ve done outside paid roles, from
-          requirements through deployment and documentation. Expand each for
-          the full technical story.
-        </p>
-      </header>
+          <motion.p variants={fadeUp} className="section-label mb-3">
+            Technical Work
+          </motion.p>
+          <h2
+            className="font-display text-4xl md:text-5xl font-bold max-w-2xl"
+            style={{ color: "var(--text-primary)" }}
+          >
+            <RevealLine delay={0.1}>
+              Projects that prove{" "}
+              <span className="gradient-text">depth.</span>
+            </RevealLine>
+          </h2>
+          <motion.p
+            variants={fadeUp}
+            className="mt-4 max-w-xl text-lg"
+            style={{ color: "var(--text-secondary)" }}
+          >
+            Independent technical work that shows how I approach a problem end-to-end,
+            from requirements through deployment and documentation. Expand any card for the full technical story.
+          </motion.p>
+        </motion.div>
 
-      {projects.map((project, i) => (
-        <Project key={project.id} project={project} index={i} />
-      ))}
-
-      <p
-        style={{
-          marginTop: "var(--space-xl)",
-          paddingTop: "var(--space-md)",
-          borderTop: "var(--rule-hair) solid var(--color-rule)",
-          fontFamily: "var(--font-mono)",
-          fontSize: "var(--text-xs)",
-          letterSpacing: "0.02em",
-          color: "var(--color-muted)",
-          maxWidth: "62ch",
-        }}
-      >
-        These are personal and independent projects, not covered by NDAs.
-        For professional work covered by NDA, see the case studies above or{" "}
-        <a
-          href="https://www.linkedin.com/in/bretdubois/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="tlink-quiet"
+        {/* Grid */}
+        <motion.div
+          className="grid gap-6 md:grid-cols-2"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
         >
-          connect on LinkedIn
-        </a>
-        .
-      </p>
+          {projects.map((project) => (
+            <div key={project.id} className="relative">
+              <ProjectCard project={project} />
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Bottom context */}
+        <motion.div
+          className="mt-12 p-6 rounded-2xl border border-[var(--border)] text-center"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          style={{ background: "var(--surface)" }}
+        >
+          <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+            These are personal and independent projects, not covered by NDAs. For a fuller picture of
+            professional work, see the case studies above or{" "}
+            <a
+              href="https://www.linkedin.com/in/bretdubois/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium transition-colors"
+              style={{ color: "var(--accent)" }}
+            >
+              connect on LinkedIn.
+            </a>
+          </p>
+        </motion.div>
+      </div>
     </section>
   );
 }

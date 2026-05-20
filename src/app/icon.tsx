@@ -15,13 +15,13 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#1B4FA3",
-          color: "#E5E8EE",
-          fontFamily: "sans-serif",
+          background: "#C2410C",
+          color: "#FAF7F2",
+          fontFamily: "serif",
           fontWeight: 700,
-          fontSize: 36,
+          fontSize: 38,
           letterSpacing: "-0.02em",
-          borderRadius: 0,
+          borderRadius: 12,
         }}
       >
         BD

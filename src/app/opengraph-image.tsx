@@ -5,12 +5,6 @@ export const alt = "Bret DuBois · Solutions Engineering · Infrastructure · Au
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const PAPER = "#E5E8EE";
-const INK = "#171A22";
-const INK_2 = "#262B35";
-const MUTED = "#5C6478";
-const ACCENT = "#1B4FA3";
-
 export default function OGImage() {
   return new ImageResponse(
     (
@@ -21,86 +15,86 @@ export default function OGImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          padding: "72px 96px",
-          background: PAPER,
-          color: INK,
-          fontFamily: "sans-serif",
+          padding: "80px",
+          background:
+            "linear-gradient(135deg, #120D0A 0%, #231A15 50%, #2D1E17 100%)",
+          color: "#FAF7F2",
+          fontFamily: "serif",
         }}
       >
-        {/* Issue line */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "baseline",
-            paddingBottom: 14,
-            borderBottom: `2px solid ${INK}`,
-            fontFamily: "monospace",
-            fontSize: 18,
-            color: MUTED,
-            letterSpacing: "0.16em",
-            textTransform: "uppercase",
-          }}
-        >
-          <span>Vol. I · No. 26 · A Portfolio in Long Form</span>
-          <span>Redwood City, CA</span>
-        </div>
-
-        {/* Body */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+        {/* top row: monogram + location */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div
             style={{
-              fontSize: 28,
-              color: ACCENT,
-              fontFamily: "monospace",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
+              width: 80,
+              height: 80,
+              borderRadius: 16,
+              background: "#C2410C",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontWeight: 700,
+              fontSize: 44,
+              color: "#FAF7F2",
             }}
           >
-            300+
+            BD
           </div>
           <div
             style={{
-              fontSize: 124,
+              fontFamily: "monospace",
+              fontSize: 20,
+              color: "rgba(250,247,242,0.5)",
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+            }}
+          >
+            Redwood City, CA
+          </div>
+        </div>
+
+        {/* name + tagline */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          <div
+            style={{
+              fontSize: 144,
               fontWeight: 700,
               lineHeight: 0.95,
-              letterSpacing: "-0.025em",
-              color: INK,
+              letterSpacing: "-0.03em",
             }}
           >
             Bret DuBois
           </div>
           <div
             style={{
-              fontSize: 36,
-              color: INK_2,
+              fontSize: 44,
               fontStyle: "italic",
-              fontFamily: "serif",
-              lineHeight: 1.25,
-              maxWidth: 880,
+              color: "rgba(250,247,242,0.55)",
+              letterSpacing: "-0.01em",
             }}
           >
             Pre-sales technical work for infrastructure, AI tooling, and B2B SaaS.
           </div>
         </div>
 
-        {/* Bottom rail */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "baseline",
-            paddingTop: 14,
-            borderTop: `1px solid ${MUTED}`,
-            fontFamily: "monospace",
-            fontSize: 18,
-            color: MUTED,
-            letterSpacing: "0.14em",
-            textTransform: "uppercase",
-          }}
-        >
-          <span>Solutions Engineering · Infrastructure · Automation</span>
-          <span style={{ color: ACCENT }}>bretdubois.github.io</span>
+        {/* bottom row: three-pillar tags */}
+        <div style={{ display: "flex", gap: 24 }}>
+          {["Sales", "Engineering", "Design"].map((label) => (
+            <div
+              key={label}
+              style={{
+                padding: "12px 28px",
+                borderRadius: 9999,
+                border: "2px solid #C2410C",
+                color: "#F97316",
+                fontSize: 26,
+                fontWeight: 600,
+                fontFamily: "sans-serif",
+              }}
+            >
+              {label}
+            </div>
+          ))}
         </div>
       </div>
     ),

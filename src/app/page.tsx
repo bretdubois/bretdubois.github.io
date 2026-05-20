@@ -8,13 +8,15 @@ import Work from "@/components/sections/Work";
 import Projects from "@/components/sections/Projects";
 import Skills from "@/components/sections/Skills";
 import Contact from "@/components/sections/Contact";
+import Marquee from "@/components/ui/Marquee";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <main id="main">
+      <main>
         <Hero />
+        <Marquee />
         <HowIWork />
         <WhySE />
         <About />

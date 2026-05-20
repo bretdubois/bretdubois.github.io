@@ -1,27 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { Hanken_Grotesk, Newsreader, IBM_Plex_Mono } from "next/font/google";
+import { Playfair_Display, Inter, JetBrains_Mono } from "next/font/google";
+import LenisProvider from "@/providers/LenisProvider";
 import "./globals.css";
 
-const hanken = Hanken_Grotesk({
+const playfair = Playfair_Display({
   variable: "--font-display",
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const newsreader = Newsreader({
-  variable: "--font-serif",
+const inter = Inter({
+  variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
 });
 
-const plexMono = IBM_Plex_Mono({
+const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500"],
 });
 
 const SITE_URL = "https://bretdubois.github.io";
@@ -78,13 +75,14 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#E5E8EE" },
-    { media: "(prefers-color-scheme: dark)", color: "#1A2030" },
+    { media: "(prefers-color-scheme: light)", color: "#FAF7F2" },
+    { media: "(prefers-color-scheme: dark)", color: "#18110E" },
   ],
   width: "device-width",
   initialScale: 1,
 };
 
+// Person schema for rich search results
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -105,7 +103,8 @@ const personSchema = {
   ],
 };
 
-// Prevents FOUC: applies .dark before first paint based on stored or system preference.
+// Prevents a flash of the wrong theme on first paint. Must run synchronously
+// before React hydrates so the `.dark` class is set before the body paints.
 const themeInitScript = `
 try {
   const t = localStorage.getItem('theme');
@@ -124,7 +123,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${hanken.variable} ${newsreader.variable} ${plexMono.variable} h-full antialiased`}
+      className={`${playfair.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
@@ -135,8 +134,13 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col">
-        <a href="#main" className="skip-link">Skip to main content</a>
-        {children}
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[var(--accent)] focus:text-white focus:font-medium focus:shadow-lg"
+        >
+          Skip to main content
+        </a>
+        <LenisProvider>{children}</LenisProvider>
       </body>
     </html>
   );

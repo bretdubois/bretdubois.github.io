@@ -1,113 +1,135 @@
-/* Hallmark · section: Why I'm a strong SE
- * Single-column list with bold typographic lead-ins. No icon tiles,
- * no 2-column card grid. The structure is restraint: one item per row,
- * the lead-in carries the emphasis.
- */
+"use client";
+
+import { motion } from "framer-motion";
+import { Cpu, Wifi, Plug, Compass, ArrowLeftRight, FileCheck2 } from "lucide-react";
+import { staggerContainer, fadeUp, viewportConfig } from "@/lib/animation";
+import { RevealLine } from "@/components/ui/TextReveal";
 
 const bullets = [
   {
-    lead: "Diagnostics under pressure, at Apple's scale.",
-    body: "Three years of 15-to-30-minute hardware and software triage windows with non-technical customers. 300+ consecutive perfect satisfaction scores under that constraint. Diagnosing root causes on a clock while keeping the customer confident in the outcome is the same skill an SE discovery call requires, just in a retail frame.",
+    icon: Cpu,
+    title: "Diagnostics under pressure, at Apple's scale",
+    description:
+      "Three years of 15–30 minute hardware/software triage windows with non-technical customers, 300+ consecutive perfect satisfaction scores under that constraint. Diagnosing root causes on a clock while keeping the customer confident in the outcome is the same skill an SE discovery call requires, just in a retail frame.",
   },
   {
-    lead: "I've deployed real networks end-to-end.",
-    body: "Not lab configs. Physical gear, physical buildings, real clients. Site survey through VLAN segmentation through AP placement through client runbook delivery. I know what a switch port profile is, what inter-VLAN firewall rules look like, and why double-NAT is sometimes the right call.",
+    icon: Wifi,
+    title: "I've deployed real networks end-to-end",
+    description:
+      "Not lab configs. Physical gear, physical buildings, real clients. Site survey through VLAN segmentation through AP placement through client runbook delivery. I know what a switch port profile is, what inter-VLAN firewall rules look like, and why double-NAT is sometimes the right call.",
   },
   {
-    lead: "I know what “can this integrate?” actually means.",
-    body: "I've built automation pipelines: webhook triggers, API data ingestion, LLM classification, CRM output via HubSpot. When a prospect asks whether a product can connect to their stack, I'm not guessing. I've done the wiring myself.",
+    icon: Plug,
+    title: "I know what 'can this integrate?' actually means",
+    description:
+      "I've built automation pipelines: webhook triggers, API data ingestion, LLM classification, CRM output via HubSpot. When a prospect asks whether a product can connect to their stack, I'm not guessing. I've done the wiring myself.",
   },
   {
-    lead: "Discovery before product, every time.",
-    body: "At SpotHopper I never opened a product screen in the first call. The first call was requirements: operational pain, what they'd tried, what a win looks like for them specifically. That habit is practiced, not trained. Generic demos fail because they skip this step.",
+    icon: Compass,
+    title: "Discovery before product, every time",
+    description:
+      "At SpotHopper I never opened a product screen in the first call. The first call was requirements: operational pain, what they'd tried, what a win looks like for them specifically. That habit is practiced, not trained. Generic demos fail because they skip this step.",
   },
   {
-    lead: "I translate between technical teams and non-technical buyers.",
-    body: "At Apple, at Asurion, and in every network deployment, the gap between what the system does and what the customer needs to hear was my job to bridge. I've explained VLANs to a restaurant owner and firmware to a retired teacher. At this point that translation is automatic.",
+    icon: ArrowLeftRight,
+    title: "I translate between technical teams and non-technical buyers",
+    description:
+      "At Apple, at Asurion, and in every network deployment, the gap between 'what the system does' and 'what the customer needs to hear' was my job to bridge. I've explained VLANs to a restaurant owner and firmware to a retired teacher. At this point that translation is automatic.",
   },
   {
-    lead: "I document clean handoffs.",
-    body: "Every network deployment ends with a runbook. Every automation I build is documented for reproducibility. An undocumented solution becomes a permanent dependency on me, and that isn't good for anyone. After a few painful handoff cleanups, documentation just became part of the work.",
+    icon: FileCheck2,
+    title: "I document clean handoffs",
+    description:
+      "Every network deployment ends with a runbook. Every automation I build is documented for reproducibility. An undocumented solution becomes a permanent dependency on me, and that isn't good for anyone. After a few painful handoff cleanups, documentation just became part of the work.",
   },
 ];
 
 export default function WhySE() {
   return (
-    <section id="why-se" className="page-shell s-wide">
-      <header style={{ marginBottom: "var(--space-2xl)", maxWidth: "60ch" }}>
-        <p
-          style={{
-            fontFamily: "var(--font-mono)",
-            fontSize: "var(--text-xs)",
-            letterSpacing: "var(--tracking-label)",
-            textTransform: "uppercase",
-            color: "var(--color-accent)",
-            marginBottom: "var(--space-xs)",
-          }}
-        >
-          The Case
-        </p>
-        <h2
-          className="display"
-          style={{
-            fontSize: "var(--text-display-s)",
-            color: "var(--color-ink)",
-            marginBottom: "var(--space-sm)",
-          }}
-        >
-          Why I&apos;m a strong Solutions Engineer.
-        </h2>
-        <p
-          className="serif-italic"
-          style={{
-            fontSize: "var(--text-lg)",
-            color: "var(--color-muted)",
-            maxWidth: "52ch",
-          }}
-        >
-          The roles below don&apos;t have &ldquo;Solutions Engineer&rdquo; in
-          the title. Here is why that doesn&apos;t matter.
-        </p>
-      </header>
+    <section id="why-se" className="section-padding bg-[var(--bg-alt)]">
+      <div className="container-wide">
+        <div className="lg:grid lg:grid-cols-5 lg:gap-16 lg:items-start">
 
-      <dl style={{ margin: 0 }}>
-        {bullets.map((b, i) => (
-          <div
-            key={i}
-            style={{
-              paddingTop: "var(--space-lg)",
-              paddingBottom: "var(--space-lg)",
-              borderTop:
-                i === 0
-                  ? "var(--rule-fine) solid var(--color-ink)"
-                  : "var(--rule-hair) solid var(--color-rule)",
-            }}
+          {/* Left: heading */}
+          <motion.div
+            className="lg:col-span-2 mb-12 lg:mb-0"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportConfig}
           >
-            <dt
-              style={{
-                fontFamily: "var(--font-display)",
-                fontWeight: 600,
-                fontSize: "var(--text-lg)",
-                letterSpacing: "var(--tracking-tight)",
-                color: "var(--color-ink)",
-                marginBottom: "var(--space-2xs)",
-              }}
+            <motion.p variants={fadeUp} className="section-label mb-3">
+              The Case
+            </motion.p>
+            <h2
+              className="font-display text-4xl md:text-5xl font-bold mb-5"
+              style={{ color: "var(--text-primary)" }}
             >
-              {b.lead}
-            </dt>
-            <dd
-              style={{
-                margin: 0,
-                color: "var(--color-ink-2)",
-                lineHeight: "var(--lh-normal)",
-                maxWidth: "68ch",
-              }}
+              <RevealLine delay={0.1}>
+                Why I&apos;m a strong{" "}
+                <span className="gradient-text">Solutions Engineer.</span>
+              </RevealLine>
+            </h2>
+            <motion.p
+              variants={fadeUp}
+              className="text-lg leading-relaxed"
+              style={{ color: "var(--text-secondary)" }}
             >
-              {b.body}
-            </dd>
-          </div>
-        ))}
-      </dl>
+              Specific evidence. No generic claims.
+            </motion.p>
+            <motion.p
+              variants={fadeUp}
+              className="mt-3 text-sm leading-relaxed"
+              style={{ color: "var(--text-muted)" }}
+            >
+              The roles below don&apos;t have &ldquo;Solutions Engineer&rdquo; in the title.
+              These bullets are why that doesn&apos;t matter.
+            </motion.p>
+          </motion.div>
+
+          {/* Right: bullets */}
+          <motion.div
+            className="lg:col-span-3 flex flex-col gap-4"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportConfig}
+          >
+            {bullets.map((bullet, i) => {
+              const Icon = bullet.icon;
+              return (
+                <motion.div
+                  key={i}
+                  variants={fadeUp}
+                  className="flex gap-4 p-5 rounded-2xl border border-[var(--border)] bg-[var(--surface)]"
+                >
+                  <div
+                    className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"
+                    style={{ background: "var(--accent)", opacity: 0.95 }}
+                  >
+                    <Icon size={16} color="#FAF7F2" />
+                  </div>
+                  <div>
+                    <div
+                      className="font-display font-bold text-base mb-1 leading-snug"
+                      style={{ color: "var(--text-primary)" }}
+                    >
+                      {bullet.title}
+                    </div>
+                    <div
+                      className="text-sm leading-relaxed"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      {bullet.description}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+
+        </div>
+      </div>
     </section>
   );
 }

@@ -335,6 +335,51 @@ body {
   flex-shrink: 0;
 }
 
+/* ── Resume page + print ─────────────────────────────── */
+.resume-divider {
+  height: 1px;
+  background: var(--border);
+  width: 100%;
+}
+
+@media print {
+  /* Hide site chrome and any element opted out of print */
+  .no-print { display: none !important; }
+
+  /* Force light, ink-friendly tokens regardless of dark mode */
+  .resume-page {
+    --bg: #ffffff;
+    --bg-alt: #ffffff;
+    --surface: #ffffff;
+    --text-primary: #111111;
+    --text-secondary: #333333;
+    --text-muted: #666666;
+    --border: #cccccc;
+    --accent: #C2410C;
+    --gold: #B45309;
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+  .resume-page * {
+    box-shadow: none !important;
+  }
+  .resume-card {
+    border: 1px solid #d8d8d8 !important;
+  }
+  /* Keep individual entries from splitting across pages */
+  .resume-entry,
+  .resume-keeptogether {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  @page {
+    margin: 0.5in;
+  }
+  html, body {
+    background: #ffffff !important;
+  }
+}
+
 /* ── Reduced motion ──────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,

@@ -5,11 +5,14 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { cn, smoothScrollTo } from "@/lib/utils";
 
-const navLinks = [
+type NavLink = { label: string; href: string; route?: boolean };
+
+const navLinks: NavLink[] = [
   { label: "How I Work", href: "#how-i-work" },
   { label: "Work", href: "#work" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
+  { label: "Résumé", href: "/resume", route: true },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -94,15 +97,25 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => scrollTo(link.href)}
-                className="px-3 py-1.5 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--accent)] rounded-lg hover:bg-[var(--bg-alt)] transition-all duration-200 cursor-pointer"
-              >
-                {link.label}
-              </button>
-            ))}
+            {navLinks.map((link) =>
+              link.route ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="px-3 py-1.5 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--accent)] rounded-lg hover:bg-[var(--bg-alt)] transition-all duration-200 cursor-pointer"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <button
+                  key={link.href}
+                  onClick={() => scrollTo(link.href)}
+                  className="px-3 py-1.5 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--accent)] rounded-lg hover:bg-[var(--bg-alt)] transition-all duration-200 cursor-pointer"
+                >
+                  {link.label}
+                </button>
+              )
+            )}
           </motion.nav>
 
           {/* Right: dark mode + contact CTA + mobile menu */}
@@ -148,18 +161,32 @@ export default function Header() {
               className="md:hidden overflow-hidden bg-[var(--bg)]/95 backdrop-blur-md border-b border-[var(--border)]"
             >
               <div className="container-wide py-4 flex flex-col gap-1">
-                {navLinks.map((link, i) => (
-                  <motion.button
-                    key={link.href}
-                    onClick={() => scrollTo(link.href)}
-                    className="text-left px-4 py-3 text-[var(--text-primary)] font-medium rounded-lg hover:bg-[var(--bg-alt)] hover:text-[var(--accent)] transition-all cursor-pointer"
-                    initial={{ opacity: 0, x: -16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                  >
-                    {link.label}
-                  </motion.button>
-                ))}
+                {navLinks.map((link, i) =>
+                  link.route ? (
+                    <motion.a
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="text-left px-4 py-3 text-[var(--text-primary)] font-medium rounded-lg hover:bg-[var(--bg-alt)] hover:text-[var(--accent)] transition-all cursor-pointer"
+                      initial={{ opacity: 0, x: -16 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.05 }}
+                    >
+                      {link.label}
+                    </motion.a>
+                  ) : (
+                    <motion.button
+                      key={link.href}
+                      onClick={() => scrollTo(link.href)}
+                      className="text-left px-4 py-3 text-[var(--text-primary)] font-medium rounded-lg hover:bg-[var(--bg-alt)] hover:text-[var(--accent)] transition-all cursor-pointer"
+                      initial={{ opacity: 0, x: -16 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.05 }}
+                    >
+                      {link.label}
+                    </motion.button>
+                  )
+                )}
                 <button
                   onClick={() => scrollTo("#contact")}
                   className="btn-primary mt-2 justify-center text-sm"

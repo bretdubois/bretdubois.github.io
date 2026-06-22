@@ -23,16 +23,16 @@ export const caseStudies: CaseStudy[] = [
     period: "October 2019 – August 2022",
     location: "San Mateo, CA",
     summary:
-      "Three years at Apple's Genius Bar, promoted twice to Technical Expert. The job was hardware and software triage in 15-30 minute windows: diagnose the root cause, communicate the finding clearly to a non-technical customer, and recommend the right solution under time pressure. 300+ consecutive perfect satisfaction scores while running that loop at high volume.",
+      "Three years at Apple's Genius Bar, promoted twice to Technical Expert. The job was hardware and software triage in 15-30 minute windows: diagnose the root cause, communicate the finding clearly to a non-technical customer, and recommend the right solution under time pressure. 300+ perfect satisfaction scores (100/100) while running that loop at high volume.",
     challenge:
       "Every appointment is a constraint-heavy diagnostic exercise: unknown device history, a user who can't describe what went wrong technically, limited time, and the expectation that you'll not only fix it but explain it in a way the customer trusts. The harder skill, the one most technicians skip, is recognizing when the consumer in front of you represents something much larger than a single broken device.",
     approach:
       "Developed a structured intake method: environment questions first ('what changed, what else is on the account, what happened right before') before touching the device. This surfaces root causes faster than diving straight into diagnostics and gives the customer a role in the process. Earned two promotions by pairing systematic triage with communication quality. Mentored newer technicians on the same intake methodology. Partnered with iPhone engineering on repair edge-case documentation.",
     outcome:
-      "300+ consecutive 100/100 satisfaction scores. That measures whether the customer understood and trusted the diagnosis, not just that the device got fixed. One intake conversation surfaced a multi-device enterprise environment; routed to Apple's enterprise team, that account generated $150K+ in downstream spend. Recognized company-wide for satisfaction performance. Contributed to iOS repair documentation and product feedback cycles.",
+      "300+ perfect 100/100 satisfaction scores. That measures whether the customer understood and trusted the diagnosis, not just that the device got fixed. One intake conversation surfaced a multi-device enterprise environment; I flagged it and routed it to Apple's enterprise team, and that account went on to generate $150K+ in downstream spend. Recognized for satisfaction performance. Contributed to iOS repair documentation and product feedback cycles.",
     metrics: [
       { value: "300", label: "Perfect satisfaction scores (100/100)", suffix: "+" },
-      { value: "150", label: "Enterprise account sourced via intake discovery", prefix: "$", suffix: "K+" },
+      { value: "150", label: "Downstream spend from an enterprise account I flagged & referred", prefix: "$", suffix: "K+" },
     ],
     highlights: [
       "Structured intake methodology: environment questions before device diagnostics",

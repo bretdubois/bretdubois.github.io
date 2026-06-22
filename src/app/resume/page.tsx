@@ -42,7 +42,7 @@ const certifications = [
   { name: "AWS Certified Solutions Architect – Associate", year: "In Progress" },
   { name: "Cloud Computing Fundamentals, IBM", year: "2024" },
   { name: "Apple Certified iOS Technician (ACiT)", year: "2022" },
-  { name: "Eagle Scout, Boy Scouts of America", year: "2018" },
+  { name: "Eagle Scout · Order of the Arrow, Boy Scouts of America", year: "2018" },
 ];
 
 // Selected projects to feature on the résumé
@@ -140,8 +140,9 @@ export default function ResumePage() {
             pipelines on my own hardware — then translates that depth into outcomes
             non-technical buyers can adopt and trust. Background spans enterprise (Apple),
             field technical consulting, and B2B SaaS, on a Cognitive Science /
-            Human-Computer Interaction foundation. I already do the core Solutions
-            Engineering job — turning a technical product into customer value — every day.
+            Human-Computer Interaction foundation. The core of Solutions Engineering —
+            understanding a technical product deeply, then translating it into customer
+            value — is the throughline of every role I&apos;ve had.
           </p>
         </section>
 

@@ -282,7 +282,7 @@ export default function About() {
             <span>·</span>
             <span>A.S. Computer Science, CSM</span>
             <span>·</span>
-            <span>Eagle Scout</span>
+            <span>Eagle Scout · Order of the Arrow</span>
           </motion.div>
         </motion.div>
 

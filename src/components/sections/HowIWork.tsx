@@ -25,7 +25,7 @@ const steps = [
     icon: Terminal,
     title: "Build and demonstrate",
     description:
-      "PoCs, live configurations, and demos scoped to the customer's specific question, not canned walkthroughs. If it needs to be built to be understood, I build it. If it can be shown in the customer's own environment, even better.",
+      "Live configurations and demos scoped to the specific question, not canned walkthroughs. If something needs to be built to be understood, I build it. If it can be shown in the customer's own environment, even better.",
   },
   {
     number: "04",
@@ -65,8 +65,8 @@ export default function HowIWork() {
             className="mt-4 max-w-xl text-lg"
             style={{ color: "var(--text-secondary)" }}
           >
-            What I do in every pre-sales and technical engagement, from first call to
-            final handoff.
+            How I approach a technical problem end-to-end &mdash; the same loop whether
+            it&apos;s a network deployment, a field consult, or a product demo.
           </motion.p>
         </motion.div>
 

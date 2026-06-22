@@ -10,7 +10,7 @@ const bullets = [
     icon: Cpu,
     title: "Diagnostics under pressure, at Apple's scale",
     description:
-      "Three years of 15–30 minute hardware/software triage windows with non-technical customers, 300+ consecutive perfect satisfaction scores under that constraint. Diagnosing root causes on a clock while keeping the customer confident in the outcome is the same skill an SE discovery call requires, just in a retail frame.",
+      "Three years of 15–30 minute hardware/software triage windows with non-technical customers, 300+ perfect satisfaction scores (100/100) under that constraint. Diagnosing root causes on a clock while keeping the customer confident in the outcome is the same skill an SE discovery call requires, just in a retail frame.",
   },
   {
     icon: Wifi,

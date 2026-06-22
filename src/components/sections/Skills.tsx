@@ -217,7 +217,7 @@ export default function Skills() {
             {[
               { name: "Cloud Computing Fundamentals", org: "IBM", year: "2024", status: "Earned" },
               { name: "Apple Certified iOS Technician (ACiT)", org: "Apple", year: "2022", status: "Earned" },
-              { name: "Eagle Scout", org: "Boy Scouts of America", year: "2018", status: "Earned" },
+              { name: "Eagle Scout · Order of the Arrow", org: "Boy Scouts of America", year: "2018", status: "Earned" },
             ].map((cert) => (
               <motion.div
                 key={cert.name}

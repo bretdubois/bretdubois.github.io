@@ -56,12 +56,12 @@ Full coverage verified at -65 dBm or better throughout. Video call drops stopped
   },
   {
     id: "raspberry-pi",
-    title: "Self-Hosted Infrastructure & Edge Computing Lab",
+    title: "Self-Hosted Home Lab",
     category: "Infrastructure / Systems Design",
     description:
-      "Designed and operate a privacy-first home infrastructure stack on Raspberry Pi: containerized services, real-time network monitoring, local AI inference, and IoT edge integration, all VLAN-isolated and off-cloud by default.",
+      "A privacy-first home infrastructure stack on Raspberry Pi: containerized services, real-time network monitoring, local AI inference, and IoT sensor integration, all VLAN-isolated and off-cloud by default.",
     details:
-      "Stack: Docker Compose orchestrating Ollama (local LLM inference on-device), Netdata (real-time system and network health dashboards), and Arduino-based sensor nodes connected via a lightweight MQTT broker. LoRaWAN gateway experiments covering protocol fundamentals, gateway configuration, and low-power sensor integration for DePIN-adjacent use cases. The lab sits on its own VLAN, isolated from primary network traffic at the firewall layer. Emphasis on auditability, observability, and zero-cloud data paths.",
+      "Stack: Docker Compose orchestrating Ollama (local LLM inference on-device), Netdata (real-time system and network health dashboards), and Arduino-based sensor nodes connected via a lightweight MQTT broker. LoRaWAN gateway experiments covering protocol fundamentals, gateway configuration, and low-power sensor integration. The lab sits on its own VLAN, isolated from primary network traffic at the firewall layer. Emphasis on auditability, observability, and keeping data on-prem.",
     tags: ["Raspberry Pi", "Docker", "Linux", "MQTT", "Arduino", "LoRaWAN", "Ollama", "IoT", "Edge Computing", "Network Monitoring"],
     highlight: "End-to-end from sensor to dashboard",
     icon: "pi",
@@ -139,7 +139,7 @@ def enrich_leads(df: pd.DataFrame) -> pd.DataFrame:
     description:
       "Designed, assembled, and tuned custom first-person-view racing and freestyle drones from scratch: component selection, PCB-level soldering, flight controller configuration, PID tuning, and RF system design across 5.8GHz video and UHF control links.",
     details:
-      "Each build involves ESC/FC stack configuration, PID tuning in Betaflight, and frequency selection that balances video latency against control range under RF interference. I evaluate motors, frames, and props using thrust-to-weight analysis to hit specific performance targets. A decade of applied work at the intersection of embedded systems, RF, and real-time control theory.",
+      "Each build involves ESC/FC stack configuration, PID tuning in Betaflight, and frequency selection that balances video latency against control range under RF interference. I evaluate motors, frames, and props using thrust-to-weight analysis to hit specific performance targets. Years of hands-on work across embedded systems, RF, and real-time control.",
     tags: ["RF Engineering", "Betaflight", "PID Tuning", "Embedded Systems", "Soldering", "5.8GHz Video", "UHF", "Control Theory"],
     highlight: "8+ years of continuous builds",
     icon: "drone",

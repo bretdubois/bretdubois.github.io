@@ -10,37 +10,37 @@ const bullets = [
     icon: Cpu,
     title: "Diagnostics under pressure, at Apple's scale",
     description:
-      "Three years of 15–30 minute hardware/software triage windows with non-technical customers, 300+ perfect satisfaction scores (100/100) under that constraint. Diagnosing root causes on a clock while keeping the customer confident in the outcome is the same skill an SE discovery call requires, just in a retail frame.",
+      "Three years of 15–30 minute triage windows, 300+ perfect satisfaction scores (100/100). Diagnosing root causes on a clock while keeping the customer confident is the same skill an SE discovery call needs — just in a retail frame.",
   },
   {
     icon: Wifi,
     title: "I've deployed real networks end-to-end",
     description:
-      "Not lab configs. Physical gear, physical buildings, real clients. Site survey through VLAN segmentation through AP placement through client runbook delivery. I know what a switch port profile is, what inter-VLAN firewall rules look like, and why double-NAT is sometimes the right call.",
+      "Physical gear, real buildings, real clients — site survey → VLAN segmentation → AP placement → client runbook. Not lab configs. I know what inter-VLAN firewall rules look like and why double-NAT is sometimes the right call.",
   },
   {
     icon: Plug,
     title: "I know what 'can this integrate?' actually means",
     description:
-      "I've built automation pipelines: webhook triggers, API data ingestion, LLM classification, CRM output via HubSpot. When a prospect asks whether a product can connect to their stack, I'm not guessing. I've done the wiring myself.",
+      "I've built the automation myself — webhooks, API ingestion, LLM classification, HubSpot output. When a prospect asks whether a product connects to their stack, I'm not guessing.",
   },
   {
     icon: Compass,
     title: "Discovery before product, every time",
     description:
-      "At SpotHopper I never opened a product screen in the first call. The first call was requirements: operational pain, what they'd tried, what a win looks like for them specifically. That habit is practiced, not trained. Generic demos fail because they skip this step.",
+      "At SpotHopper the first call was never a product screen — it was requirements: their pain, what they'd tried, what a win looks like. Generic demos fail because they skip this.",
   },
   {
     icon: ArrowLeftRight,
     title: "I translate between technical teams and non-technical buyers",
     description:
-      "At Apple, at Asurion, and in every network deployment, the gap between 'what the system does' and 'what the customer needs to hear' was my job to bridge. I've explained VLANs to a restaurant owner and firmware to a retired teacher. At this point that translation is automatic.",
+      "I've explained VLANs to a restaurant owner and firmware to a retired teacher. Bridging 'what the system does' and 'what the customer needs to hear' has been the job at Apple, Asurion, and every deployment.",
   },
   {
     icon: FileCheck2,
     title: "I document clean handoffs",
     description:
-      "Every network deployment ends with a runbook. Every automation I build is documented for reproducibility. An undocumented solution becomes a permanent dependency on me, and that isn't good for anyone. After a few painful handoff cleanups, documentation just became part of the work.",
+      "Every deployment ends with a runbook; every automation is documented. An undocumented solution is just a permanent dependency on me — so documentation became part of the work.",
   },
 ];
 

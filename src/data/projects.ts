@@ -18,7 +18,7 @@ export const projects: Project[] = [
     title: "UniFi Network Deployment · Case Study",
     category: "Network Architecture / Systems Engineering",
     description:
-      "Client: 3,000 sq ft two-story home with a converted home office. Problem: ISP-provided router with dead zones throughout, IoT devices and work machines on the same flat network, IP cameras accessible from any connected device. Working from home 5 days/week, with video calls dropping regularly due to camera traffic competing on the same segment. Requirement: full coverage, network segmentation, maintainable without calling for support.",
+      "A 3,000 sq ft home office plagued by dead zones, IP cameras on the same flat network as work machines, and video calls dropping under camera traffic. I designed a segmented UniFi network: full coverage, VLAN isolation, and a setup the client can run without support calls.",
     details:
       `CONSTRAINTS
 • Could not rewire; had to work with existing Cat5e runs
@@ -59,7 +59,7 @@ Full coverage verified at -65 dBm or better throughout. Video call drops stopped
     title: "Self-Hosted Home Lab",
     category: "Infrastructure / Systems Design",
     description:
-      "A privacy-first home infrastructure stack on Raspberry Pi: containerized services, real-time network monitoring, local AI inference, and IoT sensor integration, all VLAN-isolated and off-cloud by default.",
+      "A privacy-first home stack on Raspberry Pi: containerized services, network monitoring, local AI inference, and IoT sensors — VLAN-isolated and off-cloud by default.",
     details:
       "Stack: Docker Compose orchestrating Ollama (local LLM inference on-device), Netdata (real-time system and network health dashboards), and Arduino-based sensor nodes connected via a lightweight MQTT broker. LoRaWAN gateway experiments covering protocol fundamentals, gateway configuration, and low-power sensor integration. The lab sits on its own VLAN, isolated from primary network traffic at the firewall layer. Emphasis on auditability, observability, and keeping data on-prem.",
     tags: ["Raspberry Pi", "Docker", "Linux", "MQTT", "Arduino", "LoRaWAN", "Ollama", "IoT", "Edge Computing", "Network Monitoring"],
@@ -91,7 +91,7 @@ services:
     title: "AI-Driven Workflow Automation",
     category: "Systems Automation / API Integration",
     description:
-      "Built multi-step automation pipelines using n8n, local LLMs, and Python to eliminate repetitive data work: connecting external APIs, running LLM-based classification, and routing structured outputs to CRM and data stores.",
+      "Multi-step pipelines in n8n, local LLMs, and Python that kill repetitive data work — API ingestion, LLM-based classification, and structured output routed to CRM and data stores.",
     details:
       "Architecture: webhook triggers → data ingestion from multiple APIs → LLM summarization and classification via Ollama → structured output to spreadsheets or HubSpot CRM. Python handles data transformation (pandas) and system-level scripting via Bash schedulers. Focus was on reducing manual intervention in the data-gathering layer while maintaining auditability of the LLM classification outputs. Webhooks and n8n nodes documented for reproducibility.",
     tags: ["Python", "n8n", "Ollama", "LLM", "API Integration", "Webhooks", "Bash", "pandas", "Automation"],
@@ -121,7 +121,7 @@ def enrich_leads(df: pd.DataFrame) -> pd.DataFrame:
     title: "This Portfolio Website",
     category: "Web / Design Engineering",
     description:
-      "Designed and engineered this site from scratch: React Three Fiber 3D graphics, GSAP scroll-driven animations, Framer Motion clip-mask reveals, and Lenis smooth scroll, deployed as a static export to GitHub Pages.",
+      "This site, built from scratch: React Three Fiber 3D, GSAP scroll animations, Framer Motion reveals, and Lenis smooth scroll — static-exported to GitHub Pages.",
     details:
       "Built on Next.js 16 (Turbopack) with Tailwind CSS v4 and a fully custom design system. The hero background is a WebGL canvas with a 22-node particle network built in React Three Fiber. Framer Motion handles scroll-triggered reveals and stagger animations. GSAP ScrollTrigger drives the timeline line-draw in the About section. Zero runtime CMS; all content is TypeScript data files.",
     tags: ["Next.js 16", "React Three Fiber", "GSAP", "Framer Motion", "Tailwind v4", "TypeScript", "Lenis", "WebGL"],
@@ -137,7 +137,7 @@ def enrich_leads(df: pd.DataFrame) -> pd.DataFrame:
     title: "Custom FPV Drone Builds",
     category: "Hardware / RF Engineering",
     description:
-      "Designed, assembled, and tuned custom first-person-view racing and freestyle drones from scratch: component selection, PCB-level soldering, flight controller configuration, PID tuning, and RF system design across 5.8GHz video and UHF control links.",
+      "Custom FPV racing and freestyle drones built from scratch: component selection, PCB-level soldering, flight-controller config, PID tuning, and RF design across 5.8 GHz video and UHF control links.",
     details:
       "Each build involves ESC/FC stack configuration, PID tuning in Betaflight, and frequency selection that balances video latency against control range under RF interference. I evaluate motors, frames, and props using thrust-to-weight analysis to hit specific performance targets. Years of hands-on work across embedded systems, RF, and real-time control.",
     tags: ["RF Engineering", "Betaflight", "PID Tuning", "Embedded Systems", "Soldering", "5.8GHz Video", "UHF", "Control Theory"],
@@ -163,7 +163,7 @@ set throttle_limit_percent = 100`,
     title: "Afterhours Platform · Technical Product Ownership",
     category: "Product Management / Systems Design",
     description:
-      "Technical Product Owner for Afterhours, a food-accessibility platform at the UC San Diego PM Club. Led requirements gathering, technical roadmap development, stakeholder workshops, and full product lifecycle from research through deployment.",
+      "Technical Product Owner for Afterhours, a food-access platform (UCSD PM Club): requirements, technical roadmap, stakeholder workshops, and full lifecycle from research to deployment.",
     details:
       "Defined the product backlog, facilitated cross-functional sprint planning, and aligned engineering and design work against user research findings. Rebuilt the information architecture around the core discount-ordering workflow and drove an overhaul of the onboarding flow to reduce drop-off. Delivered handoff documentation to the engineering team and coordinated the production release.",
     tags: ["Product Management", "Technical Roadmap", "Agile / Scrum", "Requirements Gathering", "Stakeholder Management", "UX Research"],
@@ -176,7 +176,7 @@ set throttle_limit_percent = 100`,
     title: "Market Research & Data Automation",
     category: "Software / Data Engineering",
     description:
-      "Python-based tools for financial data ingestion and analysis: pulling price and fundamental data from public APIs, computing momentum signals, and generating structured analysis outputs with minimal manual work.",
+      "Python tools for financial data: pull price and fundamentals from public APIs, compute momentum signals, and output structured analysis — with minimal manual work.",
     details:
       "Built around pandas, yfinance, and Bash schedulers. Scripts handle data ingestion, signal computation, and output to CSVs or local dashboards. Emphasis on automating the data-gathering layer to reduce manual collection overhead and focus time on interpretation.",
     tags: ["Python", "pandas", "yfinance", "Data Engineering", "Bash", "Automation", "API Integration"],

@@ -11,28 +11,28 @@ const steps = [
     icon: Search,
     title: "Diagnose the actual problem",
     description:
-      "Customers describe symptoms. I map those to root causes: architecture gaps, workflow breakdowns, integration failures. The real requirement is usually different from the stated one, and surfacing that early is where solutions engineering earns its keep.",
+      "Customers describe symptoms; I map them to root causes — architecture gaps, workflow breakdowns, integration failures. The real requirement is usually different from the stated one, and surfacing that early is the whole game.",
   },
   {
     number: "02",
     icon: GitMerge,
     title: "Architect the fit",
     description:
-      "I scope what the product can do, what it can't, and what the integration looks like end-to-end. Tradeoffs documented, not hidden. The right solution isn't always the most technically impressive one. It's the one the customer can actually operate.",
+      "Scope what the product can do, what it can't, and what the integration really takes. Tradeoffs documented, not hidden. The right solution is the one the customer can actually operate.",
   },
   {
     number: "03",
     icon: Terminal,
     title: "Build and demonstrate",
     description:
-      "Live configurations and demos scoped to the specific question, not canned walkthroughs. If something needs to be built to be understood, I build it. If it can be shown in the customer's own environment, even better.",
+      "Live configs and demos scoped to the specific question, not canned walkthroughs. If something needs to be built to be understood, I build it — in the customer's own environment when possible.",
   },
   {
     number: "04",
     icon: FileText,
     title: "Document and hand off clean",
     description:
-      "Technical specs, network diagrams, runbooks, and integration notes that make the customer successful without me in the room. A good handoff is part of the solution, not an afterthought.",
+      "Specs, diagrams, runbooks, and integration notes that make the customer successful without me in the room. A good handoff is part of the solution, not an afterthought.",
   },
 ];
 

@@ -78,8 +78,8 @@ export default function Hero() {
           minHeight: "100svh",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "flex-end",
-          paddingBottom: "clamp(5rem, 9vh, 7rem)",
+          justifyContent: "center",
+          paddingBottom: "5rem",
           paddingTop: "6rem",
         }}
       >
@@ -102,11 +102,11 @@ export default function Hero() {
           aria-label="Bret DuBois"
           style={{
             fontFamily: "var(--font-display)",
-            fontSize: "clamp(4.5rem, 10.5vw, 11.5rem)",
-            lineHeight: 0.9,
+            fontSize: "clamp(3.5rem, 7vw, 7.5rem)",
+            lineHeight: 0.95,
             letterSpacing: "-0.03em",
             color: "#FAF7F2",
-            marginBottom: "clamp(1rem, 2vw, 1.75rem)",
+            marginBottom: "clamp(1rem, 2vw, 1.5rem)",
           }}
         >
           <RevealLine delay={0.15} immediate>

@@ -48,6 +48,23 @@ export default function Header() {
     smoothScrollTo(href);
   }, []);
 
+  // At the top the header is transparent over the always-dark hero, so its text
+  // must be light regardless of theme. Once scrolled, the header gets a surface
+  // background and reverts to the theme's text colors.
+  const overHero = !scrolled;
+  const navLinkClass = cn(
+    "px-3 py-1.5 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer hover:text-[var(--accent)]",
+    overHero
+      ? "text-[rgba(250,247,242,0.85)] hover:bg-white/10"
+      : "text-[var(--text-secondary)] hover:bg-[var(--bg-alt)]"
+  );
+  const iconBtnClass = cn(
+    "w-8 h-8 rounded-lg flex items-center justify-center transition-all hover:text-[var(--accent)]",
+    overHero
+      ? "text-[rgba(250,247,242,0.85)] hover:bg-white/10"
+      : "text-[var(--text-secondary)] hover:bg-[var(--bg-alt)]"
+  );
+
   return (
     <>
       {/* Scroll progress bar */}
@@ -85,7 +102,7 @@ export default function Header() {
             <div className="w-8 h-8 rounded-lg bg-[var(--accent)] flex items-center justify-center text-white font-bold text-sm font-display transition-transform group-hover:scale-110">
               BD
             </div>
-            <span className="font-display font-semibold text-[var(--text-primary)] hidden sm:block">
+            <span className={cn("font-display font-semibold hidden sm:block transition-colors", overHero ? "text-[#FAF7F2]" : "text-[var(--text-primary)]")}>
               Bret DuBois
             </span>
           </motion.a>
@@ -102,7 +119,7 @@ export default function Header() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="px-3 py-1.5 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--accent)] rounded-lg hover:bg-[var(--bg-alt)] transition-all duration-200 cursor-pointer"
+                  className={navLinkClass}
                 >
                   {link.label}
                 </a>
@@ -110,7 +127,7 @@ export default function Header() {
                 <button
                   key={link.href}
                   onClick={() => scrollTo(link.href)}
-                  className="px-3 py-1.5 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--accent)] rounded-lg hover:bg-[var(--bg-alt)] transition-all duration-200 cursor-pointer"
+                  className={navLinkClass}
                 >
                   {link.label}
                 </button>
@@ -127,7 +144,7 @@ export default function Header() {
           >
             <button
               onClick={toggleDark}
-              className="w-8 h-8 rounded-lg flex items-center justify-center text-[var(--text-secondary)] hover:text-[var(--accent)] hover:bg-[var(--bg-alt)] transition-all"
+              className={iconBtnClass}
               aria-label="Toggle dark mode"
             >
               {dark ? <Sun size={16} /> : <Moon size={16} />}
@@ -141,7 +158,7 @@ export default function Header() {
             </button>
 
             <button
-              className="md:hidden w-8 h-8 flex items-center justify-center text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              className={cn("md:hidden", iconBtnClass)}
               onClick={() => setMobileOpen((p) => !p)}
               aria-label="Toggle menu"
             >

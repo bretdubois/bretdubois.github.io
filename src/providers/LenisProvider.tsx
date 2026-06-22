@@ -35,7 +35,38 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
     gsap.ticker.add(tickerCb);
     gsap.ticker.lagSmoothing(0);
 
+    // Recompute scroll dimensions after async layout changes. Lenis caches the
+    // page height to derive its scroll limit; if the page reflows *after* that
+    // measurement (web fonts swapping in, images loading, late content), the
+    // limit goes stale and the user can't scroll past a mid-page point — with
+    // a snap-back when they try. Re-measure on every such event.
+    const recompute = () => {
+      lenis.resize();
+      ScrollTrigger.refresh();
+    };
+
+    // Fonts reflow the large display headings; this is the main offender on a
+    // cold load (no font cache).
+    if (typeof document !== "undefined" && document.fonts?.ready) {
+      document.fonts.ready.then(recompute).catch(() => {});
+    }
+    // Images and any other load-time content.
+    window.addEventListener("load", recompute);
+
+    // Catch any later content-height changes (lazy images, dynamic sections).
+    const resizeObserver = new ResizeObserver(() => lenis.resize());
+    resizeObserver.observe(document.body);
+
+    // Belt-and-suspenders: a couple of delayed recomputes cover slow font/image
+    // loads that resolve after the events above on a fresh deploy.
+    const t1 = window.setTimeout(recompute, 600);
+    const t2 = window.setTimeout(recompute, 1800);
+
     return () => {
+      window.clearTimeout(t1);
+      window.clearTimeout(t2);
+      resizeObserver.disconnect();
+      window.removeEventListener("load", recompute);
       gsap.ticker.remove(tickerCb);
       lenis.off("scroll", onScroll);
       lenis.destroy();

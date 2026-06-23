@@ -84,16 +84,16 @@ export default function Hero() {
         }}
       >
         {/* Eyebrow */}
-        <RevealLine delay={0.05} immediate className="mb-4 md:mb-6">
+        <RevealLine delay={0.05} immediate className="mb-6 md:mb-8">
           <p
             className="font-mono tracking-widest uppercase"
             style={{
               fontSize: "clamp(0.65rem, 1vw, 0.78rem)",
-              color: "rgba(250,247,242,0.45)",
-              letterSpacing: "0.18em",
+              color: "rgba(250,247,242,0.55)",
+              letterSpacing: "0.2em",
             }}
           >
-            Redwood City, CA &nbsp;·&nbsp; Solutions Engineering · Infrastructure · Automation
+            Redwood City, CA &nbsp;·&nbsp; Solutions Engineer
           </p>
         </RevealLine>
 
@@ -106,7 +106,7 @@ export default function Hero() {
             lineHeight: 0.95,
             letterSpacing: "-0.03em",
             color: "#FAF7F2",
-            marginBottom: "clamp(1rem, 2vw, 1.5rem)",
+            marginBottom: "clamp(1.5rem, 3vw, 2.25rem)",
           }}
         >
           <RevealLine delay={0.15} immediate>
@@ -118,31 +118,19 @@ export default function Hero() {
         </h1>
 
         {/* Tagline */}
-        <RevealLine delay={0.46} immediate className="mb-5 md:mb-6">
+        <RevealLine delay={0.46} immediate className="mb-10 md:mb-12">
           <p
             style={{
               fontFamily: "var(--font-display)",
               fontStyle: "italic",
-              fontSize: "clamp(1.15rem, 2.6vw, 2.25rem)",
-              color: "rgba(250,247,242,0.55)",
+              fontSize: "clamp(1.15rem, 2.4vw, 2rem)",
+              lineHeight: 1.3,
+              color: "rgba(250,247,242,0.62)",
               letterSpacing: "-0.01em",
+              maxWidth: "38rem",
             }}
           >
             Pre-sales technical work for infrastructure, AI tooling, and B2B SaaS.
-          </p>
-        </RevealLine>
-
-        {/* Credential proof strip */}
-        <RevealLine delay={0.57} immediate className="mb-8 md:mb-10">
-          <p
-            className="font-mono"
-            style={{
-              fontSize: "clamp(0.65rem, 1vw, 0.75rem)",
-              color: "rgba(250,247,242,0.28)",
-              letterSpacing: "0.12em",
-            }}
-          >
-            Apple Technical Expert · 3 yrs &nbsp;·&nbsp; UniFi Network Architecture &nbsp;·&nbsp; API &amp; Automation Pipelines
           </p>
         </RevealLine>
 

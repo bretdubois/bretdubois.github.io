@@ -38,7 +38,7 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
     // Recompute scroll dimensions after async layout changes. Lenis caches the
     // page height to derive its scroll limit; if the page reflows *after* that
     // measurement (web fonts swapping in, images loading, late content), the
-    // limit goes stale and the user can't scroll past a mid-page point — with
+    // limit goes stale and the user can't scroll past a mid-page point, with
     // a snap-back when they try. Re-measure on every such event.
     const recompute = () => {
       lenis.resize();

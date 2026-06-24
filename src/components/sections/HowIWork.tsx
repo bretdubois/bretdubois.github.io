@@ -11,7 +11,7 @@ const steps = [
     icon: Search,
     title: "Diagnose the actual problem",
     description:
-      "Customers describe symptoms; I map them to root causes — architecture gaps, workflow breakdowns, integration failures. The real requirement is usually different from the stated one, and surfacing that early is the whole game.",
+      "Customers describe symptoms; I map them to root causes: architecture gaps, workflow breakdowns, integration failures. The real requirement is usually different from the stated one, and surfacing that early is the whole game.",
   },
   {
     number: "02",
@@ -25,7 +25,7 @@ const steps = [
     icon: Terminal,
     title: "Build and demonstrate",
     description:
-      "Live configs and demos scoped to the specific question, not canned walkthroughs. If something needs to be built to be understood, I build it — in the customer's own environment when possible.",
+      "Live configs and demos scoped to the specific question, not canned walkthroughs. If something needs to be built to be understood, I build it, in the customer's own environment when possible.",
   },
   {
     number: "04",
@@ -65,7 +65,7 @@ export default function HowIWork() {
             className="mt-4 max-w-xl text-lg"
             style={{ color: "var(--text-secondary)" }}
           >
-            How I approach a technical problem end-to-end &mdash; the same loop whether
+            How I approach a technical problem end-to-end, the same loop whether
             it&apos;s a network deployment, a field consult, or a product demo.
           </motion.p>
         </motion.div>

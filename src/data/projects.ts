@@ -59,7 +59,7 @@ Full coverage verified at -65 dBm or better throughout. Video call drops stopped
     title: "Self-Hosted Home Lab",
     category: "Infrastructure / Systems Design",
     description:
-      "A privacy-first home stack on Raspberry Pi: containerized services, network monitoring, local AI inference, and IoT sensors — VLAN-isolated and off-cloud by default.",
+      "A privacy-first home stack on Raspberry Pi: containerized services, network monitoring, local AI inference, and IoT sensors, all VLAN-isolated and off-cloud by default.",
     details:
       "Stack: Docker Compose orchestrating Ollama (local LLM inference on-device), Netdata (real-time system and network health dashboards), and Arduino-based sensor nodes connected via a lightweight MQTT broker. LoRaWAN gateway experiments covering protocol fundamentals, gateway configuration, and low-power sensor integration. The lab sits on its own VLAN, isolated from primary network traffic at the firewall layer. Emphasis on auditability, observability, and keeping data on-prem.",
     tags: ["Raspberry Pi", "Docker", "Linux", "MQTT", "Arduino", "LoRaWAN", "Ollama", "IoT", "Edge Computing", "Network Monitoring"],
@@ -91,7 +91,7 @@ services:
     title: "AI-Driven Workflow Automation",
     category: "Systems Automation / API Integration",
     description:
-      "Multi-step pipelines in n8n, local LLMs, and Python that kill repetitive data work — API ingestion, LLM-based classification, and structured output routed to CRM and data stores.",
+      "Multi-step pipelines in n8n, local LLMs, and Python that kill repetitive data work: API ingestion, LLM-based classification, and structured output routed to CRM and data stores.",
     details:
       "Architecture: webhook triggers → data ingestion from multiple APIs → LLM summarization and classification via Ollama → structured output to spreadsheets or HubSpot CRM. Python handles data transformation (pandas) and system-level scripting via Bash schedulers. Focus was on reducing manual intervention in the data-gathering layer while maintaining auditability of the LLM classification outputs. Webhooks and n8n nodes documented for reproducibility.",
     tags: ["Python", "n8n", "Ollama", "LLM", "API Integration", "Webhooks", "Bash", "pandas", "Automation"],
@@ -121,7 +121,7 @@ def enrich_leads(df: pd.DataFrame) -> pd.DataFrame:
     title: "This Portfolio Website",
     category: "Web / Design Engineering",
     description:
-      "This site, built from scratch: React Three Fiber 3D, GSAP scroll animations, Framer Motion reveals, and Lenis smooth scroll — static-exported to GitHub Pages.",
+      "This site, built from scratch: React Three Fiber 3D, GSAP scroll animations, Framer Motion reveals, and Lenis smooth scroll, static-exported to GitHub Pages.",
     details:
       "Built on Next.js 16 (Turbopack) with Tailwind CSS v4 and a fully custom design system. The hero background is a WebGL canvas with a 22-node particle network built in React Three Fiber. Framer Motion handles scroll-triggered reveals and stagger animations. GSAP ScrollTrigger drives the timeline line-draw in the About section. Zero runtime CMS; all content is TypeScript data files.",
     tags: ["Next.js 16", "React Three Fiber", "GSAP", "Framer Motion", "Tailwind v4", "TypeScript", "Lenis", "WebGL"],
@@ -176,7 +176,7 @@ set throttle_limit_percent = 100`,
     title: "Market Research & Data Automation",
     category: "Software / Data Engineering",
     description:
-      "Python tools for financial data: pull price and fundamentals from public APIs, compute momentum signals, and output structured analysis — with minimal manual work.",
+      "Python tools for financial data: pull price and fundamentals from public APIs, compute momentum signals, and output structured analysis with minimal manual work.",
     details:
       "Built around pandas, yfinance, and Bash schedulers. Scripts handle data ingestion, signal computation, and output to CSVs or local dashboards. Emphasis on automating the data-gathering layer to reduce manual collection overhead and focus time on interpretation.",
     tags: ["Python", "pandas", "yfinance", "Data Engineering", "Bash", "Automation", "API Integration"],

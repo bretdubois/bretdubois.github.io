@@ -7,9 +7,9 @@ import { projects } from "@/data/projects";
 import { skillClusters } from "@/data/skills";
 
 export const metadata: Metadata = {
-  title: "Résumé · Bret DuBois — Solutions Engineer",
+  title: "Résumé · Bret DuBois · Solutions Engineer",
   description:
-    "Résumé of Bret DuBois — Solutions Engineer / Customer Engineer / Technical Consultant. Technical sales, infrastructure, automation, and AI tooling.",
+    "Résumé of Bret DuBois. Solutions Engineer / Customer Engineer / Technical Consultant. Technical sales, infrastructure, automation, and AI tooling.",
   alternates: { canonical: "/resume" },
 };
 
@@ -27,7 +27,7 @@ const earlierRoles = [
 
 const education = [
   {
-    degree: "B.S. Cognitive Science — Specialization in Design & Human-Computer Interaction",
+    degree: "B.S. Cognitive Science, Specialization in Design & Human-Computer Interaction",
     school: "University of California, San Diego",
     year: "2024",
   },
@@ -40,7 +40,7 @@ const education = [
 
 const certifications = [
   { name: "AWS Certified Solutions Architect – Associate", year: "In Progress" },
-  { name: "CCNA — Cisco Certified Network Associate", year: "In Progress" },
+  { name: "CCNA (Cisco Certified Network Associate)", year: "In Progress" },
   { name: "Cloud Computing Fundamentals, IBM", year: "2024" },
   { name: "Apple Certified iOS Technician (ACiT)", year: "2022" },
   { name: "Eagle Scout · Order of the Arrow, Boy Scouts of America", year: "2018" },
@@ -136,14 +136,14 @@ export default function ResumePage() {
         <section className="resume-keeptogether">
           <SectionLabel>Summary</SectionLabel>
           <p className="text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-            Technical sales professional who builds the systems I sell against — a
+            Technical sales professional who builds the systems I sell against: a
             self-hosted AI/LLM and automation stack, network infrastructure, and data
-            pipelines on my own hardware — then translates that depth into outcomes
+            pipelines on my own hardware. I translate that depth into outcomes
             non-technical buyers can adopt and trust. Background spans enterprise (Apple),
             field technical consulting, and B2B SaaS, on a Cognitive Science /
-            Human-Computer Interaction foundation. The core of Solutions Engineering —
-            understanding a technical product deeply, then translating it into customer
-            value — is the throughline of every role I&apos;ve had.
+            Human-Computer Interaction foundation. The core of Solutions Engineering,
+            understanding a technical product deeply and translating it into customer
+            value, has been the throughline of every role I&apos;ve had.
           </p>
         </section>
 
@@ -161,7 +161,7 @@ export default function ResumePage() {
                     style={{ color: "var(--text-primary)" }}
                   >
                     {job.company}
-                    <span style={{ color: "var(--accent)" }}> — {job.role}</span>
+                    <span style={{ color: "var(--accent)" }}> · {job.role}</span>
                   </h3>
                   <span
                     className="font-mono text-xs whitespace-nowrap"

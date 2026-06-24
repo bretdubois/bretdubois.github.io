@@ -10,25 +10,25 @@ const bullets = [
     icon: Cpu,
     title: "Diagnostics under pressure, at Apple's scale",
     description:
-      "Three years of 15–30 minute triage windows, 300+ perfect satisfaction scores (100/100). Diagnosing root causes on a clock while keeping the customer confident is the same skill an SE discovery call needs — just in a retail frame.",
+      "Three years of 15–30 minute triage windows, 300+ perfect satisfaction scores (100/100). Diagnosing root causes on a clock while keeping the customer confident is the same skill an SE discovery call needs, just in a retail frame.",
   },
   {
     icon: Wifi,
     title: "I've deployed real networks end-to-end",
     description:
-      "Physical gear, real buildings, real clients — site survey → VLAN segmentation → AP placement → client runbook. Not lab configs. I know what inter-VLAN firewall rules look like and why double-NAT is sometimes the right call.",
+      "Physical gear, real buildings, real clients: site survey, VLAN segmentation, AP placement, client runbook. Not lab configs. I know what inter-VLAN firewall rules look like and why double-NAT is sometimes the right call.",
   },
   {
     icon: Plug,
     title: "I know what 'can this integrate?' actually means",
     description:
-      "I've built the automation myself — webhooks, API ingestion, LLM classification, HubSpot output. When a prospect asks whether a product connects to their stack, I'm not guessing.",
+      "I've built the automation myself: webhooks, API ingestion, LLM classification, HubSpot output. When a prospect asks whether a product connects to their stack, I'm not guessing.",
   },
   {
     icon: Compass,
     title: "Discovery before product, every time",
     description:
-      "At SpotHopper the first call was never a product screen — it was requirements: their pain, what they'd tried, what a win looks like. Generic demos fail because they skip this.",
+      "At SpotHopper the first call was never a product screen. It was requirements: their pain, what they'd tried, what a win looks like. Generic demos fail because they skip this.",
   },
   {
     icon: ArrowLeftRight,
@@ -40,7 +40,7 @@ const bullets = [
     icon: FileCheck2,
     title: "I document clean handoffs",
     description:
-      "Every deployment ends with a runbook; every automation is documented. An undocumented solution is just a permanent dependency on me — so documentation became part of the work.",
+      "Every deployment ends with a runbook; every automation is documented. An undocumented solution is just a permanent dependency on me, so documentation became part of the work.",
   },
 ];
 

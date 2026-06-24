@@ -40,6 +40,7 @@ const education = [
 
 const certifications = [
   { name: "AWS Certified Solutions Architect – Associate", year: "In Progress" },
+  { name: "CCNA — Cisco Certified Network Associate", year: "In Progress" },
   { name: "Cloud Computing Fundamentals, IBM", year: "2024" },
   { name: "Apple Certified iOS Technician (ACiT)", year: "2022" },
   { name: "Eagle Scout · Order of the Arrow, Boy Scouts of America", year: "2018" },

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  TrendingUp, Cpu, Code2, Wifi, Layers, ChevronDown, ChevronUp
+  TrendingUp, Cpu, Code2, Wifi, Layers, Sparkles, ChevronDown, ChevronUp
 } from "lucide-react";
 import { staggerContainer, fadeUp, scaleUp, viewportConfig } from "@/lib/animation";
 import { RevealLine } from "@/components/ui/TextReveal";
@@ -15,6 +15,7 @@ const iconMap: Record<string, typeof TrendingUp> = {
   Code2,
   Wifi,
   Layers,
+  Sparkles,
 };
 
 const levelConfig = {
@@ -215,6 +216,8 @@ export default function Skills() {
             className="flex flex-wrap justify-center gap-4"
           >
             {[
+              { name: "AWS Solutions Architect – Associate", org: "Amazon Web Services", year: "", status: "In Progress" },
+              { name: "CCNA – Cisco Certified Network Associate", org: "Cisco", year: "", status: "In Progress" },
               { name: "Cloud Computing Fundamentals", org: "IBM", year: "2024", status: "Earned" },
               { name: "Apple Certified iOS Technician (ACiT)", org: "Apple", year: "2022", status: "Earned" },
               { name: "Eagle Scout · Order of the Arrow", org: "Boy Scouts of America", year: "2018", status: "Earned" },

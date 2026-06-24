@@ -65,6 +65,22 @@ export const skillClusters: SkillCluster[] = [
     ],
   },
   {
+    id: "ai",
+    title: "AI & LLM Tooling",
+    icon: "Sparkles",
+    description: "Building and operating LLM-powered systems on my own infrastructure: local + cloud inference, retrieval, and automation.",
+    accent: "#4F46E5",
+    skills: [
+      { name: "Self-Hosted LLM Serving (Ollama, OpenWebUI)", level: "proficient" },
+      { name: "Retrieval / RAG Knowledge Bases", level: "proficient" },
+      { name: "Prompt Engineering", level: "proficient" },
+      { name: "LLM API Integration (Claude, OpenAI)", level: "proficient" },
+      { name: "AI Workflow Automation (n8n + LLMs)", level: "proficient" },
+      { name: "Local Model Selection & Routing", level: "familiar" },
+      { name: "Agentic / Tool-Use Patterns", level: "familiar" },
+    ],
+  },
+  {
     id: "product",
     title: "Product & Systems Thinking",
     icon: "Layers",

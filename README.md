@@ -1,71 +1,36 @@
-# bretdubois.github.io
+# brdubois.com
 
-Personal portfolio of **Bret DuBois**, Solutions Engineering and technical consulting with a networking and HCI background.
+Personal site of **Bret DuBois** — technical seller who builds. Solutions
+engineering, infrastructure, and the systems documented at
+[brdubois.com](https://brdubois.com).
 
-Live at [bretdubois.github.io](https://bretdubois.github.io).
+## Design principles
+
+- **Light, minimal, typographic.** One column, generous whitespace, content in
+  version control. No animation framework, no 3D hero, no scroll-jacking.
+- **Evidence over adjectives.** Project pages are case studies with real
+  architecture diagrams (plain `<pre>` box drawings) and real code excerpts from
+  the systems they describe.
+- **Nothing sensitive.** No internal IPs, ports, hostnames, bot handles, or
+  network topology details. No phone number.
 
 ## Stack
 
-- **Next.js 16** (Turbopack) with `output: "export"`, deployed as static HTML to GitHub Pages
-- **TypeScript** in strict mode
-- **Tailwind CSS v4** with custom warm design tokens via `@theme`
-- **Framer Motion 12** for scroll-triggered reveals, stagger, and clip-path text reveals
-- **GSAP + ScrollTrigger** for the timeline scroll-linked line draw
-- **React Three Fiber + Drei** for the animated network graph behind the hero
-- **Lenis** for smooth scroll, integrated with the GSAP ticker
-- **next/og** `ImageResponse` for the favicon, apple-touch-icon, and OG image generated at build time
+- **Next.js 16** with `output: "export"`, deployed as static HTML to GitHub Pages
+- **TypeScript** strict mode, **Tailwind CSS v4**
+- **next/og** `ImageResponse` for favicon and OG image at build time
+- Fonts: Inter + JetBrains Mono via `next/font`
 
 ## Local development
 
 ```bash
 npm install
 npm run dev    # http://localhost:3000
+npm run build  # static export to ./out
 ```
 
-Other scripts:
+## Deployment
 
-```bash
-npm run lint   # ESLint
-npm run build  # static export → out/
-```
-
-## Deploy
-
-Pushes to `main` trigger `.github/workflows/deploy.yml`, which runs `npm ci && npm run build` and publishes `out/` via `actions/deploy-pages@v4`. The repo name matches the host (`bretdubois.github.io`) so the URL has no path prefix.
-
-## Layout
-
-```
-src/
-  app/
-    layout.tsx          root metadata, JSON-LD Person schema, FOUC script
-    page.tsx            single-page layout, all sections mount here
-    icon.tsx            favicon (64×64, ImageResponse)
-    apple-icon.tsx      apple-touch-icon (180×180)
-    opengraph-image.tsx 1200×630 OG card
-    globals.css         design tokens + base styles
-  components/
-    layout/             Header (nav + dark toggle + scroll progress) and Footer
-    sections/           Hero, HowIWork, WhySE, About, Work, Projects, Skills, Contact
-    three/              NetworkScene, the R3F hero background
-    ui/                 TextReveal, AnimatedCounter
-  data/
-    work.ts             case studies + timeline entries
-    projects.ts         personal/technical projects
-    skills.ts           skill clusters + proficiencies
-  lib/
-    animation.ts        shared Framer Motion variants
-    utils.ts            smoothScrollTo helper (prefers Lenis)
-  providers/
-    LenisProvider.tsx   Lenis + GSAP ticker wiring, reduced-motion aware
-```
-
-## Notes
-
-- Dark mode is applied via a blocking inline script in `<head>` before hydration to prevent FOUC. The toggle persists choice in `localStorage`.
-- `prefers-reduced-motion` is honored in CSS (disables animations/transitions) and in `LenisProvider` (skips smooth scroll).
-- Contact email is intentionally not on the page; LinkedIn is the entry point.
-
-## License
-
-[MIT](./LICENSE)
+Pushing to `main` triggers `.github/workflows/deploy.yml`: build → static
+export → GitHub Pages. The custom domain (`brdubois.com`) is configured in the
+repo's Pages settings and DNS is managed in Cloudflare.

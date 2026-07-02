@@ -1,6 +1,5 @@
 import { ImageResponse } from "next/og";
 
-// Route segment config: static PNG generated at build time.
 export const dynamic = "force-static";
 export const size = { width: 64, height: 64 };
 export const contentType = "image/png";
@@ -15,16 +14,16 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#C2410C",
-          color: "#FAF7F2",
-          fontFamily: "serif",
-          fontWeight: 700,
-          fontSize: 38,
+          background: "#1c1c1a",
+          color: "#fdfdfc",
+          fontFamily: "monospace",
+          fontWeight: 600,
+          fontSize: 30,
           letterSpacing: "-0.02em",
-          borderRadius: 12,
+          borderRadius: 10,
         }}
       >
-        BD
+        bd
       </div>
     ),
     { ...size }

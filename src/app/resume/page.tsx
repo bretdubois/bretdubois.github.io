@@ -1,370 +1,224 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, MapPin, Mail, Calendar, ExternalLink } from "lucide-react";
-import PrintButton from "@/components/ui/PrintButton";
-import { caseStudies, timeline } from "@/data/work";
-import { projects } from "@/data/projects";
-import { skillClusters } from "@/data/skills";
+import PrintButton from "@/components/PrintButton";
 
 export const metadata: Metadata = {
-  title: "Résumé · Bret DuBois · Solutions Engineer",
+  title: "Résumé",
   description:
-    "Résumé of Bret DuBois. Solutions Engineer / Customer Engineer / Technical Consultant. Technical sales, infrastructure, automation, and AI tooling.",
-  alternates: { canonical: "/resume" },
+    "Résumé of Bret DuBois — Solutions Engineering / Sales Engineering / Technical Account Management. Technical sales background, self-hosted infrastructure, networking, and AI tooling.",
+  alternates: { canonical: "/resume/" },
 };
 
-// Reverse-chronological order for experience
-const EXPERIENCE_ORDER = ["spothopper", "asurion", "apple"];
-const experience = EXPERIENCE_ORDER.map(
-  (id) => caseStudies.find((c) => c.id === id)!
-).filter(Boolean);
-
-// Earlier roles pulled from the timeline (not in the case studies)
-const earlierRoles = [
-  timeline.find((t) => t.title === "Technical Product Owner"),
-  timeline.find((t) => t.title === "Network Engineering"),
-].filter(Boolean) as NonNullable<(typeof timeline)[number]>[];
-
-const education = [
-  {
-    degree: "B.S. Cognitive Science, Specialization in Design & Human-Computer Interaction",
-    school: "University of California, San Diego",
-    year: "2024",
-  },
-  {
-    degree: "A.S. Computer & Information Science",
-    school: "College of San Mateo",
-    year: "2021",
-  },
-];
-
-const certifications = [
-  { name: "AWS Certified Solutions Architect – Associate", year: "In Progress" },
-  { name: "CCNA (Cisco Certified Network Associate)", year: "In Progress" },
-  { name: "Cloud Computing Fundamentals, IBM", year: "2024" },
-  { name: "Apple Certified iOS Technician (ACiT)", year: "2022" },
-  { name: "Eagle Scout · Order of the Arrow, Boy Scouts of America", year: "2018" },
-];
-
-// Selected projects to feature on the résumé
-const FEATURED_PROJECTS = [
-  "ai-automation",
-  "raspberry-pi",
-  "unifi-network",
-  "market-research-tools",
-];
-const featuredProjects = FEATURED_PROJECTS.map(
-  (id) => projects.find((p) => p.id === id)!
-).filter(Boolean);
-
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return <p className="section-label mb-3">{children}</p>;
+function Entry({
+  title,
+  org,
+  period,
+  children,
+}: {
+  title: string;
+  org: string;
+  period: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="mb-5">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4">
+        <h3 style={{ marginTop: 0, marginBottom: 0 }}>
+          {title} · <span style={{ fontWeight: 500 }}>{org}</span>
+        </h3>
+        <span className="meta">{period}</span>
+      </div>
+      {children}
+    </div>
+  );
 }
 
 export default function ResumePage() {
   return (
-    <div className="resume-page min-h-screen bg-[var(--bg)] text-[var(--text-primary)]">
-      {/* ── Top utility bar (hidden in print) ───────────── */}
-      <div className="no-print sticky top-0 z-50 bg-[var(--bg)]/90 backdrop-blur-md border-b border-[var(--border)]">
-        <div className="container-wide flex items-center justify-between h-16">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors"
-          >
-            <ArrowLeft size={16} />
-            Back to portfolio
+    <div className="page prose pt-14 pb-4">
+      <div className="no-print mb-6 flex items-baseline justify-between">
+        <p className="label" style={{ marginBottom: 0 }}>
+          <Link href="/" style={{ textDecoration: "none", color: "inherit" }}>
+            ← home
           </Link>
-          <PrintButton />
-        </div>
+        </p>
+        <PrintButton />
       </div>
 
-      <main className="container-wide max-w-4xl py-12 md:py-16">
-        {/* ── Header ─────────────────────────────────────── */}
-        <header className="resume-keeptogether">
-          <h1
-            className="font-display text-4xl md:text-5xl font-bold"
-            style={{ color: "var(--text-primary)" }}
-          >
-            Bret DuBois
-          </h1>
-          <p
-            className="mt-2 font-display text-lg md:text-xl italic"
-            style={{ color: "var(--accent)" }}
-          >
-            Solutions Engineer · Customer Engineer · Technical Consultant
-          </p>
+      <h1>Bret DuBois</h1>
+      <p className="meta" style={{ marginBottom: "1.5rem" }}>
+        Redwood City, CA ·{" "}
+        <a href="mailto:bretdubois1@gmail.com">bretdubois1@gmail.com</a> ·{" "}
+        <a href="https://www.linkedin.com/in/bretdubois/">linkedin.com/in/bretdubois</a> ·{" "}
+        <a href="https://brdubois.com">brdubois.com</a>
+      </p>
 
-          <div
-            className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm"
-            style={{ color: "var(--text-secondary)" }}
-          >
-            <span className="inline-flex items-center gap-1.5">
-              <MapPin size={14} style={{ color: "var(--accent)" }} />
-              Redwood City, CA · Open to remote &amp; hybrid
-            </span>
-            <a
-              href="https://www.linkedin.com/in/bretdubois/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 hover:text-[var(--accent)] transition-colors"
-            >
-              <ExternalLink size={14} style={{ color: "var(--accent)" }} />
-              linkedin.com/in/bretdubois
-            </a>
-            <a
-              href="https://calendly.com/bretdubois1/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 hover:text-[var(--accent)] transition-colors"
-            >
-              <Calendar size={14} style={{ color: "var(--accent)" }} />
-              Book a 30-min chat
-            </a>
-            <a
-              href="mailto:bretdubois1@gmail.com"
-              className="inline-flex items-center gap-1.5 hover:text-[var(--accent)] transition-colors"
-            >
-              <Mail size={14} style={{ color: "var(--accent)" }} />
-              bretdubois1@gmail.com
-            </a>
-          </div>
-        </header>
+      <p>
+        Technical go-to-market professional: three years at Apple resolving complex
+        hardware/software issues at scale (300+ perfect NPS surveys, $150K+ in
+        enterprise referrals), a year as a BDR at an AI SaaS company running
+        technical discovery, and an independent networking practice. Builds and
+        operates his own infrastructure: a multi-service AI agent stack (Docker,
+        Python, PostgreSQL, Claude API), a broker-integrated futures trading
+        system, and indoor-positioning hardware. CCNA in progress. Targeting
+        Solutions Engineering and Technical Account Management roles at AI, cloud,
+        and networking companies.
+      </p>
 
-        <div className="resume-divider my-8" />
+      <h2>Experience</h2>
 
-        {/* ── Summary ────────────────────────────────────── */}
-        <section className="resume-keeptogether">
-          <SectionLabel>Summary</SectionLabel>
-          <p className="text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-            Technical sales professional who builds the systems I sell against: a
-            self-hosted AI/LLM and automation stack, network infrastructure, and data
-            pipelines on my own hardware. I translate that depth into outcomes
-            non-technical buyers can adopt and trust. Background spans enterprise (Apple),
-            field technical consulting, and B2B SaaS, on a Cognitive Science /
-            Human-Computer Interaction foundation. The core of Solutions Engineering,
-            understanding a technical product deeply and translating it into customer
-            value, has been the throughline of every role I&apos;ve had.
-          </p>
-        </section>
+      <Entry
+        title="Business Development Representative"
+        org="SpotHopper, SF Bay Area"
+        period="Apr 2025 – Apr 2026"
+      >
+        <ul style={{ marginBottom: 0 }}>
+          <li>
+            Ran technical discovery for an AI marketing platform, translating
+            platform architecture into value narratives for non-technical buyers.
+          </li>
+          <li>
+            Prioritized discovery quality over volume: ~50% qualified-to-booked
+            conversion; consistently recognized by AEs for high-fit meetings that
+            converted.
+          </li>
+          <li>
+            Contributed to the team's highest closed-won revenue month
+            (January 2026); director of BD requested I stay upon departure.
+          </li>
+          <li>
+            Left to pursue SE/TAM roles directly — the org hired AEs externally
+            with no internal promotion track.
+          </li>
+        </ul>
+      </Entry>
 
-        <div className="resume-divider my-8" />
+      <Entry
+        title="Field Tech Sales Expert"
+        org="Asurion, San Diego"
+        period="Sep 2024 – Apr 2025"
+      >
+        <ul style={{ marginBottom: 0 }}>
+          <li>
+            Delivered on-site technical support and device onboarding for mobile
+            and smart-home products; resolved complex configuration and
+            connectivity issues in unfamiliar environments.
+          </li>
+          <li>
+            Exceeded sales quotas while maintaining high CSAT; coached new hires on
+            troubleshooting workflows and consultative discovery.
+          </li>
+        </ul>
+      </Entry>
 
-        {/* ── Experience ─────────────────────────────────── */}
-        <section>
-          <SectionLabel>Experience</SectionLabel>
-          <div className="flex flex-col gap-5">
-            {experience.map((job) => (
-              <article key={job.id} className="resume-entry card resume-card p-5">
-                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                  <h3
-                    className="font-display text-lg font-semibold"
-                    style={{ color: "var(--text-primary)" }}
-                  >
-                    {job.company}
-                    <span style={{ color: "var(--accent)" }}> · {job.role}</span>
-                  </h3>
-                  <span
-                    className="font-mono text-xs whitespace-nowrap"
-                    style={{ color: "var(--text-muted)" }}
-                  >
-                    {job.period}
-                  </span>
-                </div>
-                <p className="font-mono text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
-                  {job.location}
-                </p>
+      <Entry
+        title="Technical Expert (2 promotions)"
+        org="Apple, San Mateo"
+        period="Oct 2019 – Aug 2022"
+      >
+        <ul style={{ marginBottom: 0 }}>
+          <li>
+            Diagnosed and resolved technical issues across iOS, macOS, hardware,
+            and device ecosystems at high volume; maintained 300+ perfect Net
+            Promoter Score surveys.
+          </li>
+          <li>
+            Identified and referred high-value business customers to enterprise
+            AEs — over $150K in verified lifetime revenue from a single referral.
+          </li>
+          <li>
+            Trained and mentored teammates on advanced troubleshooting and customer
+            communication.
+          </li>
+        </ul>
+      </Entry>
 
-                <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-                  {job.summary}
-                </p>
+      <Entry
+        title="Independent Network Technician / Consultant"
+        org="Redwood City"
+        period="2020 – present"
+      >
+        <ul style={{ marginBottom: 0 }}>
+          <li>
+            Design, deployment, and support of Ubiquiti UniFi networks (switching,
+            APs, PoE, VLANs, remote access) for SMB and residential clients — full
+            lifecycle from discovery to documented handoff.
+          </li>
+        </ul>
+      </Entry>
 
-                {job.metrics.length > 0 && (
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {job.metrics.map((m) => (
-                      <span
-                        key={m.label}
-                        className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs"
-                        style={{ background: "var(--bg-alt)", color: "var(--text-secondary)" }}
-                      >
-                        <span className="font-mono font-semibold" style={{ color: "var(--accent)" }}>
-                          {m.prefix ?? ""}
-                          {m.value}
-                          {m.suffix ?? ""}
-                        </span>
-                        {m.label}
-                      </span>
-                    ))}
-                  </div>
-                )}
+      <h2>Technical projects</h2>
+      <ul>
+        <li>
+          <strong>AI agent + trading automation stack</strong> — production
+          multi-service stack on Ubuntu: Telegram-fronted assistant (Python,
+          systemd, LLM fallback chain) plus a futures trading system that ingests
+          real-time signals and executes through the ProjectX/TopstepX broker API
+          with a full risk layer. PostgreSQL state, Docker Compose orchestration,
+          paper and live modes.
+        </li>
+        <li>
+          <strong>RoomTag</strong> — Wi-Fi-fingerprint indoor positioning: ESP32-C6
+          firmware, self-hosted FastAPI inference server (random forest + ONNX
+          neural ensemble), iOS app, Home Assistant integration, OTA firmware
+          releases via GitHub Actions.
+        </li>
+        <li>
+          <strong>Home lab & remote access infrastructure</strong> — self-hosted
+          Docker services (PostgreSQL, n8n, Open WebUI, CouchDB), Tailscale mesh
+          VPN, monitored restic backups, KVM/libvirt VMs running Cisco Modeling
+          Labs. Managed entirely via Linux CLI.
+        </li>
+        <li>
+          <strong>Ubiquiti UniFi deployments</strong> — multiple SMB/residential
+          installs: switching, APs, PoE, IP cameras, VLAN segmentation, remote
+          access. <Link href="/projects/unifi/">Case study.</Link>
+        </li>
+      </ul>
 
-                {job.highlights && (
-                  <ul className="mt-3 flex flex-col gap-1.5">
-                    {job.highlights.map((h) => (
-                      <li
-                        key={h}
-                        className="flex gap-2 text-sm leading-snug"
-                        style={{ color: "var(--text-secondary)" }}
-                      >
-                        <span style={{ color: "var(--accent)" }} className="mt-1 flex-shrink-0">
-                          ▸
-                        </span>
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+      <h2>Education</h2>
+      <ul>
+        <li>
+          <strong>B.S. Cognitive Science, Specialization in Design & HCI</strong> —
+          UC San Diego, June 2024. Relevant coursework: data structures &
+          algorithms, OOP, databases, networking fundamentals, operating systems.
+        </li>
+        <li>
+          <strong>A.S. Computer & Information Science</strong> — College of San
+          Mateo, 2021.
+        </li>
+      </ul>
 
-                <div className="mt-3 flex flex-wrap gap-1.5">
-                  {job.tags.map((tag) => (
-                    <span key={tag} className="tag">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
+      <h2>Certifications & awards</h2>
+      <ul>
+        <li>CCNA — in progress (self-study + Cisco Modeling Labs).</li>
+        <li>AWS Certified Solutions Architect – Associate — in progress.</li>
+        <li>Cloud Computing Fundamentals, IBM — 2024.</li>
+        <li>Eagle Scout, Boy Scouts of America — 2018.</li>
+      </ul>
 
-          {/* Earlier roles, compact */}
-          {earlierRoles.length > 0 && (
-            <div className="mt-5 resume-entry card resume-card p-5">
-              <h3
-                className="font-display text-base font-semibold mb-3"
-                style={{ color: "var(--text-primary)" }}
-              >
-                Earlier
-              </h3>
-              <div className="flex flex-col gap-3">
-                {earlierRoles.map((r) => (
-                  <div key={r.title} className="flex flex-wrap items-baseline justify-between gap-x-4">
-                    <div className="min-w-0">
-                      <span className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>
-                        {r.title}
-                      </span>
-                      <span className="text-sm" style={{ color: "var(--text-muted)" }}>
-                        {" "}
-                        · {r.company}
-                      </span>
-                    </div>
-                    <span className="font-mono text-xs" style={{ color: "var(--text-muted)" }}>
-                      {r.year}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </section>
-
-        <div className="resume-divider my-8" />
-
-        {/* ── Selected projects ──────────────────────────── */}
-        <section>
-          <SectionLabel>Selected Projects</SectionLabel>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {featuredProjects.map((p) => (
-              <article key={p.id} className="resume-entry card resume-card p-4">
-                <h3
-                  className="font-display text-base font-semibold leading-snug"
-                  style={{ color: "var(--text-primary)" }}
-                >
-                  {p.title}
-                </h3>
-                <p className="font-mono text-[0.7rem] mt-1" style={{ color: "var(--accent)" }}>
-                  {p.category}
-                </p>
-                <p className="mt-2 text-sm leading-snug" style={{ color: "var(--text-secondary)" }}>
-                  {p.description}
-                </p>
-                <div className="mt-3 flex flex-wrap gap-1.5">
-                  {p.tags.slice(0, 6).map((tag) => (
-                    <span key={tag} className="tag">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <div className="resume-divider my-8" />
-
-        {/* ── Skills ─────────────────────────────────────── */}
-        <section className="resume-keeptogether">
-          <SectionLabel>Skills</SectionLabel>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {skillClusters.map((cluster) => (
-              <div key={cluster.id} className="resume-entry">
-                <h3
-                  className="text-sm font-semibold mb-2"
-                  style={{ color: cluster.accent }}
-                >
-                  {cluster.title}
-                </h3>
-                <div className="flex flex-wrap gap-1.5">
-                  {cluster.skills.map((s) => (
-                    <span key={s.name} className="tag">
-                      {s.name}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <div className="resume-divider my-8" />
-
-        {/* ── Education + Certifications ──────────────────── */}
-        <section className="resume-keeptogether grid gap-8 md:grid-cols-2">
-          <div>
-            <SectionLabel>Education</SectionLabel>
-            <div className="flex flex-col gap-4">
-              {education.map((e) => (
-                <div key={e.degree}>
-                  <p className="text-sm font-medium leading-snug" style={{ color: "var(--text-primary)" }}>
-                    {e.degree}
-                  </p>
-                  <p className="text-sm" style={{ color: "var(--text-muted)" }}>
-                    {e.school} · {e.year}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <SectionLabel>Certifications &amp; Awards</SectionLabel>
-            <ul className="flex flex-col gap-2">
-              {certifications.map((c) => (
-                <li key={c.name} className="flex items-baseline justify-between gap-3 text-sm">
-                  <span style={{ color: "var(--text-secondary)" }}>{c.name}</span>
-                  <span
-                    className="font-mono text-xs whitespace-nowrap"
-                    style={{ color: c.year === "In Progress" ? "var(--gold)" : "var(--accent)" }}
-                  >
-                    {c.year}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        {/* ── Footer note ────────────────────────────────── */}
-        <div className="mt-12 text-center">
-          <div className="divider mx-auto" />
-          <p
-            className="mt-5 font-mono text-xs uppercase no-print"
-            style={{ color: "var(--text-muted)", letterSpacing: "0.18em" }}
-          >
-            <Link href="/" className="hover:text-[var(--accent)] transition-colors">
-              bretdubois.github.io
-            </Link>
-          </p>
-        </div>
-      </main>
+      <h2>Skills</h2>
+      <ul>
+        <li>
+          <strong>Sales & GTM</strong> — consultative selling, technical discovery,
+          value-based solutioning, objection handling, pipeline development, AE
+          partnership, CRM.
+        </li>
+        <li>
+          <strong>Technical</strong> — Linux, Docker, Bash, Python (pandas, numpy,
+          sklearn), JavaScript/Next.js, SQL, PostgreSQL, REST APIs & webhooks, git,
+          n8n, LLM tooling (Claude API, Ollama, prompt engineering).
+        </li>
+        <li>
+          <strong>Networking</strong> — LAN/WAN, switching & routing, Ubiquiti
+          UniFi, PoE, VLANs, Tailscale/SSH remote access, Wi-Fi troubleshooting,
+          network design & deployment.
+        </li>
+        <li>
+          <strong>Platforms</strong> — macOS, Windows, Linux, iOS, Android,
+          Supabase, Docker Compose, KVM/libvirt.
+        </li>
+      </ul>
     </div>
   );
 }

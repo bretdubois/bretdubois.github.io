@@ -1,34 +1,31 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Inter, JetBrains_Mono } from "next/font/google";
-import LenisProvider from "@/providers/LenisProvider";
+import Link from "next/link";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  variable: "--font-display",
-  subsets: ["latin"],
-  display: "swap",
-});
-
 const inter = Inter({
-  variable: "--font-sans",
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
+  variable: "--font-jbmono",
   subsets: ["latin"],
   display: "swap",
 });
 
-const SITE_URL = "https://bretdubois.github.io";
-const SITE_TITLE = "Bret DuBois · Solutions Engineering · Infrastructure · Automation";
+const SITE_URL = "https://brdubois.com";
+const SITE_TITLE = "Bret DuBois";
 const SITE_DESCRIPTION =
-  "Portfolio of Bret DuBois, Solutions Engineer and technical consultant specializing in network infrastructure, systems automation, API integration, and pre-sales technical advisory. Based in Redwood City, CA.";
+  "Solutions engineering candidate with a technical sales background who builds and runs his own infrastructure: a self-hosted Docker stack, a broker-integrated trading system, indoor-positioning hardware, and the automation that operates it all.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: SITE_TITLE,
+  title: {
+    default: SITE_TITLE,
+    template: "%s · Bret DuBois",
+  },
   description: SITE_DESCRIPTION,
   alternates: { canonical: "/" },
   authors: [{ name: "Bret DuBois", url: "https://www.linkedin.com/in/bretdubois/" }],
@@ -36,17 +33,13 @@ export const metadata: Metadata = {
   keywords: [
     "Bret DuBois",
     "solutions engineer",
-    "customer engineer",
-    "technical consultant",
+    "sales engineer",
+    "technical account manager",
     "pre-sales engineering",
-    "network infrastructure",
-    "Ubiquiti UniFi",
-    "systems automation",
-    "API integration",
-    "B2B SaaS",
-    "IoT",
-    "technical advisory",
-    "infrastructure design",
+    "infrastructure",
+    "homelab",
+    "network engineering",
+    "AI tooling",
   ],
   openGraph: {
     title: SITE_TITLE,
@@ -74,15 +67,11 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#FAF7F2" },
-    { media: "(prefers-color-scheme: dark)", color: "#18110E" },
-  ],
+  themeColor: "#fdfdfc",
   width: "device-width",
   initialScale: 1,
 };
 
-// Person schema for rich search results
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -96,24 +85,78 @@ const personSchema = {
     addressRegion: "CA",
     addressCountry: "US",
   },
-  sameAs: ["https://www.linkedin.com/in/bretdubois/"],
+  sameAs: [
+    "https://www.linkedin.com/in/bretdubois/",
+    "https://github.com/bretdubois",
+  ],
   alumniOf: [
     { "@type": "CollegeOrUniversity", name: "UC San Diego" },
     { "@type": "CollegeOrUniversity", name: "College of San Mateo" },
   ],
 };
 
-// Prevents a flash of the wrong theme on first paint. Must run synchronously
-// before React hydrates so the `.dark` class is set before the body paints.
-const themeInitScript = `
-try {
-  const t = localStorage.getItem('theme');
-  const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  if (t === 'dark' || (!t && systemDark)) {
-    document.documentElement.classList.add('dark');
-  }
-} catch (_) {}
-`.trim();
+function Header() {
+  return (
+    <header className="no-print" style={{ borderBottom: "1px solid var(--border)" }}>
+      <div className="page flex items-baseline justify-between py-5">
+        <Link
+          href="/"
+          className="font-semibold tracking-tight"
+          style={{ color: "var(--text)", textDecoration: "none" }}
+        >
+          Bret DuBois
+        </Link>
+        <nav className="meta flex gap-4">
+          <Link href="/#projects" className="hover:text-[var(--accent)]">
+            projects
+          </Link>
+          <Link href="/resume/" className="hover:text-[var(--accent)]">
+            résumé
+          </Link>
+          <a
+            href="https://github.com/bretdubois"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[var(--accent)]"
+          >
+            github
+          </a>
+        </nav>
+      </div>
+    </header>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="no-print mt-20" style={{ borderTop: "1px solid var(--border)" }}>
+      <div className="page meta flex flex-wrap items-baseline justify-between gap-2 py-6">
+        <span>© {new Date().getFullYear()} Bret DuBois · Redwood City, CA</span>
+        <span className="flex gap-4">
+          <a href="mailto:bretdubois1@gmail.com" className="hover:text-[var(--accent)]">
+            email
+          </a>
+          <a
+            href="https://www.linkedin.com/in/bretdubois/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[var(--accent)]"
+          >
+            linkedin
+          </a>
+          <a
+            href="https://github.com/bretdubois/bretdubois.github.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[var(--accent)]"
+          >
+            site source
+          </a>
+        </span>
+      </div>
+    </footer>
+  );
+}
 
 export default function RootLayout({
   children,
@@ -121,26 +164,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${playfair.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
       </head>
-      <body className="min-h-full flex flex-col">
+      <body className="flex min-h-full flex-col">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[var(--accent)] focus:text-white focus:font-medium focus:shadow-lg"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-[var(--text)] focus:px-3 focus:py-1.5 focus:text-sm focus:text-white"
         >
           Skip to main content
         </a>
-        <LenisProvider>{children}</LenisProvider>
+        <Header />
+        <main id="main" className="flex-1">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bretdubois.github.io/sitemap.xml
+Sitemap: https://brdubois.com/sitemap.xml

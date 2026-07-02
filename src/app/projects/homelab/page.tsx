@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SpecSheet from "@/components/SpecSheet";
 
 export const metadata: Metadata = {
   title: "The platform underneath — a homelab run like production",
@@ -10,17 +11,24 @@ export const metadata: Metadata = {
 
 export default function HomelabPage() {
   return (
-    <div className="page prose pt-14 pb-4">
-      <p className="label" style={{ marginBottom: "0.5rem" }}>
+    <div className="shell pt-14 pb-4">
+      <p className="label" style={{ marginBottom: "1rem" }}>
         <Link href="/#projects" style={{ textDecoration: "none", color: "inherit" }}>
           ← projects
         </Link>
       </p>
-      <h1>The platform underneath — a homelab run like production</h1>
-      <p className="meta" style={{ marginBottom: "1.5rem" }}>
-        Ubuntu 24.04 · Docker Compose · restic · Tailscale · KVM/libvirt · 2024–present
-      </p>
-
+      <h1 className="display" style={{ fontSize: "clamp(2rem, 4.5vw, 3.25rem)", maxWidth: "48rem" }}>
+        The platform underneath — a homelab run like production
+      </h1>
+      <SpecSheet
+        items={[
+          { key: "Role", value: "Owner-operator" },
+          { key: "Stack", value: "Ubuntu · Docker Compose · restic · Tailscale · KVM" },
+          { key: "Status", value: "Always on" },
+          { key: "Year", value: "2024–present" },
+        ]}
+      />
+      <div className="prose" style={{ maxWidth: "42rem" }}>
       <p>
         Every other project on this site runs on one always-on Dell OptiPlex.
         There's no Kubernetes and no cloud bill — the interesting part isn't scale,
@@ -116,6 +124,7 @@ export default function HomelabPage() {
         as course material but as things I've deployed, broken, monitored, and
         fixed.
       </p>
+      </div>
     </div>
   );
 }

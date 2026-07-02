@@ -1,29 +1,35 @@
 @import "tailwindcss";
 
 /*
- * Design system: light, minimal, typographic.
- * One column, generous whitespace, no animation, no decoration
- * that doesn't carry information. Content does the work.
+ * Design system: editorial / print-inspired, light, typographic.
+ * Fraunces for display, Inter for text, JetBrains Mono for apparatus
+ * (labels, metadata, code). A real grid, hairline rules, one ink-blue
+ * accent. Interaction is CSS-only and respects prefers-reduced-motion.
+ * No animation libraries — the craft is in type, grid, and detail.
  */
 
 @theme {
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-mono: var(--font-jbmono), ui-monospace, "SF Mono", monospace;
 }
 
 :root {
-  --bg: #fdfdfc;
-  --bg-subtle: #f6f6f4;
-  --text: #1c1c1a;
-  --text-secondary: #4d4d49;
-  --muted: #74746e;
-  --border: #e6e6e1;
-  --accent: #1d4ed8;
+  --paper: #fbfaf7;
+  --paper-raised: #ffffff;
+  --paper-recessed: #f3f1ec;
+  --ink: #1b1b16;
+  --ink-secondary: #4c4c44;
+  --muted: #77776d;
+  --rule: #e3e1d9;
+  --rule-strong: #1b1b16;
+  --accent: #2534c9;
+  --accent-soft: #e9ebfa;
 }
 
 html {
-  background: var(--bg);
-  color: var(--text);
+  background: var(--paper);
+  color: var(--ink);
   font-family: var(--font-sans);
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
@@ -35,118 +41,71 @@ body {
 }
 
 ::selection {
-  background: #dbe4fd;
+  background: var(--accent);
+  color: var(--paper);
 }
 
-/* ── Layout ─────────────────────────────────────────── */
+/* ── Shell & grid ───────────────────────────────────── */
 
-.page {
-  max-width: 42rem;
+.shell {
+  max-width: 64rem;
   margin: 0 auto;
-  padding: 0 1.25rem;
+  padding: 0 1.5rem;
 }
 
-/* ── Typographic content styles ─────────────────────── */
+/* Editorial two-column: hanging label rail + measure-limited content */
+.section-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem 3rem;
+}
 
-.prose h1 {
-  font-size: 1.5rem;
-  font-weight: 650;
+@media (min-width: 64rem) {
+  .section-grid {
+    grid-template-columns: 11rem minmax(0, 42rem);
+  }
+}
+
+/* ── Display type ───────────────────────────────────── */
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 560;
   letter-spacing: -0.015em;
-  line-height: 1.3;
-  margin-bottom: 0.375rem;
+  line-height: 1.06;
+  font-variation-settings: "opsz" 72;
 }
 
-.prose h2 {
-  font-size: 1.0625rem;
-  font-weight: 650;
-  letter-spacing: -0.01em;
-  margin-top: 2.75rem;
-  margin-bottom: 0.75rem;
+.display .accent-dot {
+  color: var(--accent);
 }
 
-.prose h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-top: 1.75rem;
-  margin-bottom: 0.375rem;
+.display-italic {
+  font-style: italic;
+  font-weight: 500;
 }
 
-.prose p {
-  margin-bottom: 1rem;
-  color: var(--text-secondary);
+/* ── Section apparatus ──────────────────────────────── */
+
+.section {
+  border-top: 1px solid var(--rule);
+  padding-top: 1.75rem;
+  margin-top: 3.5rem;
 }
 
-.prose strong {
-  color: var(--text);
-  font-weight: 600;
-}
-
-.prose ul {
-  margin: 0 0 1rem 0;
-  padding-left: 1.25rem;
-  list-style: disc;
-  color: var(--text-secondary);
-}
-
-.prose li {
-  margin-bottom: 0.375rem;
-}
-
-.prose li::marker {
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
   color: var(--muted);
 }
 
-.prose a {
-  color: var(--text);
-  text-decoration: underline;
-  text-decoration-color: #b9b9b2;
-  text-underline-offset: 3px;
-  transition: color 0.12s ease, text-decoration-color 0.12s ease;
-}
-
-.prose a:hover {
+.section-label .index {
   color: var(--accent);
-  text-decoration-color: var(--accent);
+  margin-right: 0.625rem;
 }
-
-/* ── Code & diagrams ────────────────────────────────── */
-
-.prose pre {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  line-height: 1.55;
-  background: var(--bg-subtle);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 1rem 1.125rem;
-  overflow-x: auto;
-  margin: 1.25rem 0 1.5rem;
-  color: var(--text-secondary);
-}
-
-.prose code {
-  font-family: var(--font-mono);
-  font-size: 0.8125em;
-  background: var(--bg-subtle);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 0.1em 0.35em;
-  color: var(--text-secondary);
-}
-
-.prose pre code {
-  background: none;
-  border: none;
-  padding: 0;
-  font-size: inherit;
-}
-
-/* Diagram variant: same chrome, but content is a picture, not code */
-.prose pre.diagram {
-  line-height: 1.4;
-}
-
-/* ── Small metadata / section labels ────────────────── */
 
 .label {
   font-family: var(--font-mono);
@@ -163,12 +122,361 @@ body {
   color: var(--muted);
 }
 
-/* ── Horizontal rule ────────────────────────────────── */
+/* ── Prose ──────────────────────────────────────────── */
+
+.prose h2 {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 580;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin-top: 2.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.75rem;
+  margin-bottom: 0.375rem;
+}
+
+.prose p {
+  margin-bottom: 1rem;
+  color: var(--ink-secondary);
+}
+
+.prose strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.prose em {
+  font-style: italic;
+}
+
+.prose ul {
+  margin: 0 0 1rem 0;
+  padding-left: 1.25rem;
+  list-style: disc;
+  color: var(--ink-secondary);
+}
+
+.prose li {
+  margin-bottom: 0.375rem;
+}
+
+.prose li::marker {
+  color: var(--accent);
+}
+
+.prose a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: #c6c4ba;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.prose a:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+/* Lead paragraph */
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+
+/* ── Code ───────────────────────────────────────────── */
+
+.prose pre {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.55;
+  background: var(--paper-recessed);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 1rem 1.125rem;
+  overflow-x: auto;
+  margin: 1.25rem 0 1.5rem;
+  color: var(--ink-secondary);
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.8125em;
+  background: var(--paper-recessed);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+  color: var(--ink-secondary);
+}
+
+.prose pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+/* ── Figures & diagrams ─────────────────────────────── */
+
+.figure {
+  margin: 1.5rem 0 1.75rem;
+}
+
+.figure {
+  overflow-x: auto;
+}
+
+.figure svg {
+  display: block;
+  width: 100%;
+  min-width: 38rem; /* keep diagram labels legible on phones; scroll instead of shrink */
+  height: auto;
+}
+
+.figure figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.625rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+.figure figcaption .fig-index {
+  color: var(--accent);
+  margin-right: 0.625rem;
+}
+
+/* Diagram node linking: hover states live in CSS so SVGs stay declarative */
+.diagram-svg a,
+.prose .diagram-svg a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.diagram-svg a .node {
+  fill: var(--paper-raised);
+  stroke: var(--ink);
+  stroke-width: 1.25;
+  transition: fill 0.15s ease, stroke 0.15s ease;
+}
+
+.diagram-svg a:hover .node,
+.diagram-svg a:focus-visible .node {
+  fill: var(--accent-soft);
+  stroke: var(--accent);
+}
+
+.diagram-svg a:hover text,
+.diagram-svg a:focus-visible text {
+  fill: var(--accent);
+}
+
+.diagram-svg .node-static {
+  fill: var(--paper-raised);
+  stroke: var(--ink);
+  stroke-width: 1.25;
+}
+
+.diagram-svg .node-soft {
+  fill: var(--paper-recessed);
+  stroke: var(--muted);
+  stroke-width: 1;
+}
+
+.diagram-svg text {
+  font-family: var(--font-mono);
+  fill: var(--ink);
+  transition: fill 0.15s ease;
+}
+
+.diagram-svg .t-muted {
+  fill: var(--muted);
+}
+
+.diagram-svg .t-accent {
+  fill: var(--accent);
+}
+
+.diagram-svg .edge {
+  stroke: var(--muted);
+  stroke-width: 1;
+  fill: none;
+}
+
+.diagram-svg .edge-accent {
+  stroke: var(--accent);
+  stroke-width: 1;
+  fill: none;
+}
+
+/* ── Project index rows (home) ──────────────────────── */
+
+.project-row,
+.prose a.project-row {
+  display: grid;
+  grid-template-columns: 2.25rem 1fr;
+  gap: 0 1rem;
+  padding: 1.375rem 0;
+  border-top: 1px solid var(--rule);
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-row:last-of-type {
+  border-bottom: 1px solid var(--rule);
+}
+
+.project-row .row-index {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  padding-top: 0.3rem;
+  transition: color 0.15s ease;
+}
+
+.project-row .row-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 560;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  transition: color 0.15s ease;
+}
+
+.project-row .row-arrow {
+  display: inline-block;
+  margin-left: 0.5rem;
+  color: var(--muted);
+  transition: transform 0.18s ease, color 0.15s ease;
+}
+
+.project-row:hover .row-title,
+.project-row:focus-visible .row-title,
+.project-row:hover .row-index {
+  color: var(--accent);
+}
+
+.project-row:hover .row-arrow {
+  transform: translateX(4px);
+  color: var(--accent);
+}
+
+/* ── Spec sheet (project page header) ───────────────── */
+
+.spec-sheet {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid var(--rule-strong);
+  margin: 1.75rem 0 2.25rem;
+}
+
+@media (min-width: 40rem) {
+  .spec-sheet {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.spec-cell {
+  padding: 0.75rem 1rem 0.875rem;
+  border-top: 1px solid var(--rule);
+}
+
+.spec-cell:nth-child(-n + 2) {
+  border-top: none;
+}
+
+@media (min-width: 40rem) {
+  .spec-cell {
+    border-top: none;
+    border-left: 1px solid var(--rule);
+  }
+  .spec-cell:first-child {
+    border-left: none;
+  }
+}
+
+.spec-cell dt {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+
+.spec-cell dd {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* ── Fact card (hero aside) ─────────────────────────── */
+
+.fact-card {
+  border: 1px solid var(--rule-strong);
+  background: var(--paper-raised);
+}
+
+.fact-card .fact-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.625rem 1rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.8125rem;
+}
+
+.fact-card .fact-row:first-child {
+  border-top: none;
+}
+
+.fact-card .fact-key {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.fact-card .fact-value {
+  text-align: right;
+}
+
+/* ── Rules ──────────────────────────────────────────── */
 
 hr {
   border: none;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--rule);
   margin: 2.5rem 0;
+}
+
+.rule-strong {
+  border: none;
+  border-top: 2px solid var(--rule-strong);
+}
+
+/* ── Motion discipline ──────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
 
 /* ── Print (résumé page) ────────────────────────────── */
@@ -181,9 +489,12 @@ hr {
     font-size: 13px;
     background: #fff;
   }
-  .page {
+  .shell {
     max-width: none;
     padding: 0;
+  }
+  .section-grid {
+    grid-template-columns: 1fr;
   }
   .prose h2 {
     margin-top: 1.5rem;

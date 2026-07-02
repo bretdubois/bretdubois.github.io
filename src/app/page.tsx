@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Section from "@/components/Section";
+import StackDiagram from "@/components/diagrams/StackDiagram";
 
 interface ProjectEntry {
   href: string;
@@ -59,157 +61,235 @@ const smallerProjects = [
   {
     title: "This site",
     description:
-      "static Next.js on GitHub Pages. Deliberately boring: no animation framework, no 3D hero, content in version control.",
+      "static Next.js on GitHub Pages, hand-set type, hand-drawn SVG diagrams, no animation framework. Design decisions in the colophon.",
   },
 ];
 
+function Hero() {
+  return (
+    <section className="shell pt-16 pb-2">
+      <p className="label" style={{ marginBottom: "1.25rem" }}>
+        Solutions engineering · Redwood City, CA
+      </p>
+      <h1
+        className="display"
+        style={{ fontSize: "clamp(2.625rem, 6.5vw, 4.75rem)", maxWidth: "56rem" }}
+      >
+        Technical seller
+        <br />
+        who <span className="display-italic">builds</span>
+        <span className="accent-dot">.</span>
+      </h1>
+
+      <div
+        className="mt-10 grid gap-10"
+        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(19rem, 1fr))" }}
+      >
+        <div className="prose" style={{ maxWidth: "36rem" }}>
+          <p className="lead">
+            Three years at Apple doing high-volume hardware and software triage —
+            two promotions, 300+ perfect satisfaction scores, one intake
+            conversation that became a $150K+ enterprise account. A year in B2B
+            SaaS running technical discovery for an AI platform. Nights and
+            weekends, I build and operate the systems on this page.
+          </p>
+          <p>
+            I'm looking for <strong>Solutions Engineering / Sales Engineering /
+            Technical Account Management</strong> roles at AI, networking, and
+            cloud companies — the job where explaining a system well matters as
+            much as understanding it.
+          </p>
+        </div>
+        <div style={{ maxWidth: "22rem" }}>
+          <dl className="fact-card">
+            <div className="fact-row">
+              <dt className="fact-key">Status</dt>
+              <dd className="fact-value">Open to SE / SE-adjacent roles</dd>
+            </div>
+            <div className="fact-row">
+              <dt className="fact-key">Location</dt>
+              <dd className="fact-value">SF Bay Area · hybrid or remote</dd>
+            </div>
+            <div className="fact-row">
+              <dt className="fact-key">Focus</dt>
+              <dd className="fact-value">AI · networking · cloud infra</dd>
+            </div>
+            <div className="fact-row">
+              <dt className="fact-key">In progress</dt>
+              <dd className="fact-value">CCNA · AWS SAA</dd>
+            </div>
+            <div className="fact-row">
+              <dt className="fact-key">Contact</dt>
+              <dd className="fact-value">
+                <a
+                  href="mailto:bretdubois1@gmail.com"
+                  style={{
+                    color: "var(--accent)",
+                    textDecoration: "underline",
+                    textUnderlineOffset: "3px",
+                  }}
+                >
+                  bretdubois1@gmail.com
+                </a>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   return (
-    <div className="page prose pt-14 pb-4">
-      {/* ── Intro ── */}
-      <h1>Technical seller who builds.</h1>
-      <p className="meta" style={{ marginBottom: "1.5rem" }}>
-        Redwood City, CA · open to SF Bay Area + remote
-      </p>
-      <p>
-        I spent three years at Apple doing high-volume hardware and software triage
-        (two promotions, 300+ perfect customer-satisfaction scores, one intake
-        conversation that turned into a $150K+ enterprise account), then a year in
-        B2B SaaS sales running technical discovery for an AI marketing platform.
-        Nights and weekends, I build and operate the systems on this page.
-      </p>
-      <p>
-        I'm looking for <strong>Solutions Engineering / Sales Engineering / Technical
-        Account Management</strong> roles at AI, networking, and cloud companies —
-        the job where explaining a system well matters as much as understanding it.
-        CCNA and AWS Solutions Architect Associate in progress.{" "}
-        <a href="mailto:bretdubois1@gmail.com">bretdubois1@gmail.com</a>
-      </p>
+    <div className="pb-4">
+      <Hero />
 
-      {/* ── What I run ── */}
-      <h2 id="what-i-run">What I run</h2>
-      <p>
-        Everything below is live on an always-on Dell OptiPlex under my desk, managed
-        entirely from the Linux CLI. It's a homelab, but I run it like production:
-        version-controlled compose files, secrets kept out of git, nightly monitored
-        backups, and a rule that nothing gets restarted without checking why it's
-        misbehaving first.
-      </p>
-      <pre className="diagram" aria-label="Diagram of the self-hosted infrastructure stack">
-{`             Telegram
-                │
- ┌──────────────▼─────────────────────────────────────────────┐
- │  JARVIS · Python bot · systemd                             │
- │  daily brief · container ops · backup alerts · job digest  │
- └──────────────┬─────────────────────────────────────────────┘
-                │ operates
- ┌──────────────▼─────────────────────────────────────────────┐
- │  Dell OptiPlex · Ubuntu 24.04 · Docker Compose             │
- │                                                            │
- │  postgres · n8n · open-webui · couchdb (Obsidian LiveSync) │
- │  media stack · room-inference · futures-{ingest,dash,hook} │
- │  KVM: Cisco Modeling Labs (CCNA lab topologies)            │
- └───────┬────────────────────────────┬───────────────────────┘
-         │ restic → NAS               │ Tailscale mesh
-         ▼   (nightly, monitored)     ▼
-   snapshot repo             MacBook · iPhone · gaming PC
-                                        (GPU for training
-                                         and inference)`}
-      </pre>
+      <div className="shell">
+        <Section index="01" title="What I run" id="what-i-run">
+          <p>
+            Everything below is live on an always-on Dell OptiPlex under my desk,
+            managed entirely from the Linux CLI. It's a homelab, but I run it like
+            production: version-controlled compose files, secrets kept out of git,
+            nightly monitored backups, and a rule that nothing gets restarted
+            without checking why it's misbehaving first.
+          </p>
+          <StackDiagram />
+        </Section>
 
-      {/* ── Projects ── */}
-      <h2 id="projects">Selected projects</h2>
-      <div className="flex flex-col gap-7">
-        {projects.map((p) => (
-          <div key={p.href}>
-            <h3 style={{ marginTop: 0 }}>
-              <Link href={p.href}>{p.title}</Link>
-            </h3>
-            <p className="meta" style={{ marginBottom: "0.375rem" }}>
-              {p.meta}
-            </p>
-            <p style={{ marginBottom: 0 }}>{p.description}</p>
+        <Section index="02" title="Selected projects" id="projects">
+          <div>
+            {projects.map((p, i) => (
+              <Link key={p.href} href={p.href} className="project-row">
+                <span className="row-index" aria-hidden>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span>
+                  <span className="row-title">
+                    {p.title}
+                    <span className="row-arrow" aria-hidden>
+                      →
+                    </span>
+                  </span>
+                  <span className="meta" style={{ display: "block", margin: "0.375rem 0" }}>
+                    {p.meta}
+                  </span>
+                  <span
+                    style={{
+                      display: "block",
+                      color: "var(--ink-secondary)",
+                      fontSize: "0.9375rem",
+                    }}
+                  >
+                    {p.description}
+                  </span>
+                </span>
+              </Link>
+            ))}
           </div>
-        ))}
+
+          <h3>Also built</h3>
+          <ul>
+            {smallerProjects.map((p) => (
+              <li key={p.title}>
+                <strong>{p.title}</strong> — {p.description}
+              </li>
+            ))}
+          </ul>
+        </Section>
+
+        <Section index="03" title="Work" id="work">
+          <ul>
+            <li>
+              <strong>SpotHopper</strong> · Business Development Rep · Apr 2025 –
+              Apr 2026
+              <br />
+              Technical discovery for an AI marketing platform sold to a skeptical,
+              non-technical buyer base. Prioritized discovery quality over call
+              volume; contributed to the team's highest closed-won revenue month
+              with roughly half of qualified conversations converting to booked
+              meetings. Left deliberately to pursue SE/TAM roles — the AE track
+              there hired externally.
+            </li>
+            <li>
+              <strong>Asurion</strong> · Field Tech Sales Expert · Sep 2024 – Apr
+              2025
+              <br />
+              In-home technical support and device onboarding: walk in cold, assess
+              an unfamiliar environment, fix it, and explain it in plain language.
+              Exceeded sales quota while keeping customer satisfaction high.
+            </li>
+            <li>
+              <strong>Apple</strong> · Sales Specialist → Technical Specialist →
+              Technical Expert · Oct 2019 – Aug 2022
+              <br />
+              High-volume diagnostics across iOS, macOS, and hardware. 300+ perfect
+              NPS surveys. Spotted an enterprise environment during a routine
+              consumer appointment and referred it — $150K+ in verified lifetime
+              revenue. Mentored teammates on troubleshooting and customer
+              communication.
+            </li>
+            <li>
+              <strong>Independent network consulting</strong> · 2020 – present
+              <br />
+              Design, deployment, and support of Ubiquiti UniFi networks for SMB
+              and residential clients. <Link href="/projects/unifi/">Case study.</Link>
+            </li>
+          </ul>
+        </Section>
+
+        <Section index="04" title="Education & certs" id="education">
+          <ul>
+            <li>
+              <strong>B.S. Cognitive Science, Design & Human-Computer
+              Interaction</strong> — UC San Diego, 2024. Coursework included data
+              structures & algorithms, databases, networking, and operating
+              systems.
+            </li>
+            <li>
+              <strong>A.S. Computer & Information Science</strong> — College of
+              San Mateo, 2021, completed while working full-time at Apple.
+            </li>
+            <li>
+              <strong>CCNA</strong> — in progress: self-study plus hands-on labs in
+              Cisco Modeling Labs running on my own hypervisor.
+            </li>
+            <li>
+              <strong>AWS Certified Solutions Architect – Associate</strong> — in
+              progress.
+            </li>
+            <li>
+              <strong>Eagle Scout</strong> — Boy Scouts of America, 2018.
+            </li>
+          </ul>
+        </Section>
+
+        <Section index="05" title="Contact" id="contact">
+          <p>
+            Email is fastest:{" "}
+            <a href="mailto:bretdubois1@gmail.com">bretdubois1@gmail.com</a>. Also
+            on{" "}
+            <a
+              href="https://www.linkedin.com/in/bretdubois/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>{" "}
+            and{" "}
+            <a
+              href="https://github.com/bretdubois"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+            . A printable résumé is at <Link href="/resume/">/resume</Link>, and
+            the thinking behind this site's design is in the{" "}
+            <Link href="/colophon/">colophon</Link>.
+          </p>
+        </Section>
       </div>
-
-      <h3>Also built</h3>
-      <ul>
-        {smallerProjects.map((p) => (
-          <li key={p.title}>
-            <strong>{p.title}</strong> — {p.description}
-          </li>
-        ))}
-      </ul>
-
-      {/* ── Work ── */}
-      <h2 id="work">Work</h2>
-      <ul>
-        <li>
-          <strong>SpotHopper</strong> · Business Development Rep · Apr 2025 – Apr 2026
-          <br />
-          Technical discovery for an AI marketing platform sold to a skeptical,
-          non-technical buyer base. Prioritized discovery quality over call volume;
-          contributed to the team's highest closed-won revenue month with roughly
-          half of qualified conversations converting to booked meetings. Left
-          deliberately to pursue SE/TAM roles — the AE track there hired externally.
-        </li>
-        <li>
-          <strong>Asurion</strong> · Field Tech Sales Expert · Sep 2024 – Apr 2025
-          <br />
-          In-home technical support and device onboarding: walk in cold, assess an
-          unfamiliar environment, fix it, and explain it in plain language.
-          Exceeded sales quota while keeping customer satisfaction high.
-        </li>
-        <li>
-          <strong>Apple</strong> · Sales Specialist → Technical Specialist →
-          Technical Expert · Oct 2019 – Aug 2022
-          <br />
-          High-volume diagnostics across iOS, macOS, and hardware. 300+ perfect
-          NPS surveys. Spotted an enterprise environment during a routine consumer
-          appointment and referred it — $150K+ in verified lifetime revenue.
-          Mentored teammates on troubleshooting and customer communication.
-        </li>
-        <li>
-          <strong>Independent network consulting</strong> · 2020 – present
-          <br />
-          Design, deployment, and support of Ubiquiti UniFi networks for SMB and
-          residential clients. <Link href="/projects/unifi/">Case study.</Link>
-        </li>
-      </ul>
-
-      {/* ── Education ── */}
-      <h2 id="education">Education & certifications</h2>
-      <ul>
-        <li>
-          <strong>B.S. Cognitive Science, Design & Human-Computer Interaction</strong> —
-          UC San Diego, 2024. Coursework included data structures & algorithms,
-          databases, networking, and operating systems.
-        </li>
-        <li>
-          <strong>A.S. Computer & Information Science</strong> — College of San
-          Mateo, 2021, completed while working full-time at Apple.
-        </li>
-        <li>
-          <strong>CCNA</strong> — in progress: self-study plus hands-on labs in
-          Cisco Modeling Labs running on my own hypervisor.
-        </li>
-        <li>
-          <strong>AWS Certified Solutions Architect – Associate</strong> — in progress.
-        </li>
-        <li>
-          <strong>Eagle Scout</strong> — Boy Scouts of America, 2018.
-        </li>
-      </ul>
-
-      {/* ── Contact ── */}
-      <h2 id="contact">Contact</h2>
-      <p>
-        Email is fastest: <a href="mailto:bretdubois1@gmail.com">bretdubois1@gmail.com</a>.
-        Also on <a href="https://www.linkedin.com/in/bretdubois/" target="_blank" rel="noopener noreferrer">LinkedIn</a> and{" "}
-        <a href="https://github.com/bretdubois" target="_blank" rel="noopener noreferrer">GitHub</a>.
-        A printable résumé is at <Link href="/resume/">/resume</Link>.
-      </p>
     </div>
   );
 }

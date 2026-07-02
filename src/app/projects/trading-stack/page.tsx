@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SpecSheet from "@/components/SpecSheet";
+import TradingDiagram from "@/components/diagrams/TradingDiagram";
 
 export const metadata: Metadata = {
   title: "Automated futures trading stack",
@@ -10,17 +12,24 @@ export const metadata: Metadata = {
 
 export default function TradingStackPage() {
   return (
-    <div className="page prose pt-14 pb-4">
-      <p className="label" style={{ marginBottom: "0.5rem" }}>
+    <div className="shell pt-14 pb-4">
+      <p className="label" style={{ marginBottom: "1rem" }}>
         <Link href="/#projects" style={{ textDecoration: "none", color: "inherit" }}>
           ← projects
         </Link>
       </p>
-      <h1>Automated futures trading stack</h1>
-      <p className="meta" style={{ marginBottom: "1.5rem" }}>
-        Python · PostgreSQL · Docker Compose · ProjectX broker API · Streamlit · FastAPI · 2025–2026
-      </p>
-
+      <h1 className="display" style={{ fontSize: "clamp(2rem, 4.5vw, 3.25rem)", maxWidth: "48rem" }}>
+        Automated futures trading stack
+      </h1>
+      <SpecSheet
+        items={[
+          { key: "Role", value: "Design, build, and operations" },
+          { key: "Stack", value: "Python · PostgreSQL · Docker · broker API" },
+          { key: "Status", value: "Running in paper mode, by design" },
+          { key: "Year", value: "2025–2026" },
+        ]}
+      />
+      <div className="prose" style={{ maxWidth: "42rem" }}>
       <p>
         I trade Micro E-mini Nasdaq futures (MNQ). This system automates the
         mechanical part: it watches a real-time signal feed, parses free-form trade
@@ -35,27 +44,7 @@ export default function TradingStackPage() {
         instance for state:
       </p>
 
-      <pre className="diagram" aria-label="Trading stack architecture diagram">
-{`  signal feed          webhooks
- (Discord poller)         │
-        │                 │
- ┌──────▼─────────────────▼──────┐
- │  ingestion service            │   parses text → structured
- │  message handler / parser     │   trade intents
- └──────────────┬────────────────┘
-                │
- ┌──────────────▼────────────────┐      ┌───────────────────┐
- │  trade manager (orchestrator) │◀────▶│  PostgreSQL        │
- │  risk checks · account        │      │  positions, orders │
- │  selection · position sizing  │      │  equity history    │
- └──────┬─────────────────┬──────┘      └───────────────────┘
-        │                 │
- ┌──────▼──────┐   ┌──────▼──────────┐   ┌──────────────────┐
- │ broker API  │   │ Telegram        │   │ Streamlit        │
- │ (orders)    │   │ (approvals +    │   │ dashboard        │
- └─────────────┘   │  notifications) │   │ (VPN-only)       │
-                   └─────────────────┘   └──────────────────┘`}
-      </pre>
+      <TradingDiagram />
 
       <h2>The risk layer is the point</h2>
       <p>
@@ -115,6 +104,7 @@ export default function TradingStackPage() {
         glad to walk through the architecture in detail:{" "}
         <a href="mailto:bretdubois1@gmail.com">bretdubois1@gmail.com</a>.
       </p>
+      </div>
     </div>
   );
 }

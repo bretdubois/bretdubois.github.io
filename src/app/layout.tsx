@@ -1,12 +1,20 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
+});
+
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  display: "swap",
+  style: ["normal", "italic"],
+  axes: ["opsz"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -67,7 +75,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#fdfdfc",
+  themeColor: "#fbfaf7",
   width: "device-width",
   initialScale: 1,
 };
@@ -97,16 +105,19 @@ const personSchema = {
 
 function Header() {
   return (
-    <header className="no-print" style={{ borderBottom: "1px solid var(--border)" }}>
-      <div className="page flex items-baseline justify-between py-5">
+    <header className="no-print" style={{ borderBottom: "2px solid var(--rule-strong)" }}>
+      <div className="shell flex items-baseline justify-between py-5">
         <Link
           href="/"
           className="font-semibold tracking-tight"
-          style={{ color: "var(--text)", textDecoration: "none" }}
+          style={{ color: "var(--ink)", textDecoration: "none", fontSize: "0.9375rem" }}
         >
           Bret DuBois
+          <span aria-hidden style={{ color: "var(--accent)" }}>
+            .
+          </span>
         </Link>
-        <nav className="meta flex gap-4">
+        <nav className="meta flex gap-5">
           <Link href="/#projects" className="hover:text-[var(--accent)]">
             projects
           </Link>
@@ -129,10 +140,10 @@ function Header() {
 
 function Footer() {
   return (
-    <footer className="no-print mt-20" style={{ borderTop: "1px solid var(--border)" }}>
-      <div className="page meta flex flex-wrap items-baseline justify-between gap-2 py-6">
+    <footer className="no-print mt-24" style={{ borderTop: "2px solid var(--rule-strong)" }}>
+      <div className="shell meta flex flex-wrap items-baseline justify-between gap-2 py-6">
         <span>© {new Date().getFullYear()} Bret DuBois · Redwood City, CA</span>
-        <span className="flex gap-4">
+        <span className="flex gap-5">
           <a href="mailto:bretdubois1@gmail.com" className="hover:text-[var(--accent)]">
             email
           </a>
@@ -144,13 +155,16 @@ function Footer() {
           >
             linkedin
           </a>
+          <Link href="/colophon/" className="hover:text-[var(--accent)]">
+            colophon
+          </Link>
           <a
             href="https://github.com/bretdubois/bretdubois.github.io"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[var(--accent)]"
           >
-            site source
+            source
           </a>
         </span>
       </div>
@@ -164,7 +178,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable} h-full antialiased`}
+    >
       <head>
         <script
           type="application/ld+json"
@@ -174,7 +191,7 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-[var(--text)] focus:px-3 focus:py-1.5 focus:text-sm focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-[var(--ink)] focus:px-3 focus:py-1.5 focus:text-sm focus:text-white"
         >
           Skip to main content
         </a>

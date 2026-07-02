@@ -35,7 +35,7 @@ function Entry({
 
 export default function ResumePage() {
   return (
-    <div className="page prose pt-14 pb-4">
+    <div className="shell prose pt-14 pb-4" style={{ maxWidth: "48rem" }}>
       <div className="no-print mb-6 flex items-baseline justify-between">
         <p className="label" style={{ marginBottom: 0 }}>
           <Link href="/" style={{ textDecoration: "none", color: "inherit" }}>
@@ -45,7 +45,9 @@ export default function ResumePage() {
         <PrintButton />
       </div>
 
-      <h1>Bret DuBois</h1>
+      <h1 className="display" style={{ fontSize: "2.25rem" }}>
+        Bret DuBois
+      </h1>
       <p className="meta" style={{ marginBottom: "1.5rem" }}>
         Redwood City, CA ·{" "}
         <a href="mailto:bretdubois1@gmail.com">bretdubois1@gmail.com</a> ·{" "}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SpecSheet from "@/components/SpecSheet";
 
 export const metadata: Metadata = {
   title: "Client network design — a UniFi case study",
@@ -10,17 +11,24 @@ export const metadata: Metadata = {
 
 export default function UnifiPage() {
   return (
-    <div className="page prose pt-14 pb-4">
-      <p className="label" style={{ marginBottom: "0.5rem" }}>
+    <div className="shell pt-14 pb-4">
+      <p className="label" style={{ marginBottom: "1rem" }}>
         <Link href="/#projects" style={{ textDecoration: "none", color: "inherit" }}>
           ← projects
         </Link>
       </p>
-      <h1>Client network design — a UniFi case study</h1>
-      <p className="meta" style={{ marginBottom: "1.5rem" }}>
-        Ubiquiti UniFi · VLANs · PoE · site survey · independent consulting, 2020–present
-      </p>
-
+      <h1 className="display" style={{ fontSize: "clamp(2rem, 4.5vw, 3.25rem)", maxWidth: "48rem" }}>
+        Client network design — a UniFi case study
+      </h1>
+      <SpecSheet
+        items={[
+          { key: "Role", value: "Consultant — design through handoff" },
+          { key: "Stack", value: "Ubiquiti UniFi · VLANs · PoE" },
+          { key: "Status", value: "Practice ongoing since 2020" },
+          { key: "Budget", value: "$1,200 hardware ceiling" },
+        ]}
+      />
+      <div className="prose" style={{ maxWidth: "42rem" }}>
       <p>
         Since 2020 I've designed, deployed, and supported Ubiquiti UniFi networks
         for SMB and residential clients — discovery, component selection, cabling
@@ -99,6 +107,7 @@ export default function UnifiPage() {
         is a permanent dependency on whoever built it, and permanent dependencies
         are bad engineering and worse business.
       </p>
+      </div>
     </div>
   );
 }

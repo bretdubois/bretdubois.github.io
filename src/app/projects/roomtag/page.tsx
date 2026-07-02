@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SpecSheet from "@/components/SpecSheet";
+import RoomtagDiagram from "@/components/diagrams/RoomtagDiagram";
 
 export const metadata: Metadata = {
   title: "RoomTag — indoor positioning from Wi-Fi fingerprints",
@@ -10,17 +12,24 @@ export const metadata: Metadata = {
 
 export default function RoomTagPage() {
   return (
-    <div className="page prose pt-14 pb-4">
-      <p className="label" style={{ marginBottom: "0.5rem" }}>
+    <div className="shell pt-14 pb-4">
+      <p className="label" style={{ marginBottom: "1rem" }}>
         <Link href="/#projects" style={{ textDecoration: "none", color: "inherit" }}>
           ← projects
         </Link>
       </p>
-      <h1>RoomTag — indoor positioning from Wi-Fi fingerprints</h1>
-      <p className="meta" style={{ marginBottom: "1.5rem" }}>
-        ESP32-C6 firmware · FastAPI · scikit-learn / PyTorch · ONNX · SwiftUI · 2026
-      </p>
-
+      <h1 className="display" style={{ fontSize: "clamp(2rem, 4.5vw, 3.25rem)", maxWidth: "48rem" }}>
+        RoomTag — indoor positioning from Wi-Fi fingerprints
+      </h1>
+      <SpecSheet
+        items={[
+          { key: "Role", value: "Everything — firmware, server, ML, iOS" },
+          { key: "Stack", value: "ESP32-C6 · FastAPI · PyTorch · ONNX · SwiftUI" },
+          { key: "Status", value: "Live at home, worn daily" },
+          { key: "Year", value: "2026" },
+        ]}
+      />
+      <div className="prose" style={{ maxWidth: "42rem" }}>
       <p>
         RoomTag answers one question continuously: <strong>which room is this tag in
         right now?</strong> No cameras, no BLE beacons, no GPS. A small ESP32-C6 tag
@@ -31,22 +40,7 @@ export default function RoomTagPage() {
       </p>
 
       <h2>Architecture</h2>
-      <pre className="diagram" aria-label="RoomTag architecture diagram">
-{`┌──────────────┐  RSSI fingerprint   ┌──────────────────────┐  WebSocket
-│  ESP32-C6    │ ──────────────────▶ │  FastAPI server      │ ───────────▶ iOS app
-│  (wearable)  │  HTTP POST, ~2 s    │  (Docker, Linux)     │
-└──────────────┘                     │                      │  REST
-                                     │  RF / neural model   │ ───────────▶ Home
-                                     │  EMA smoothing       │              Assistant
-                                     │  Bayesian priors     │
-                                     │  Markov transitions  │
-                                     └──────────▲───────────┘
-                                                │ ONNX upload after training
-                                     ┌──────────┴───────────┐
-                                     │  Gaming PC (CUDA)    │
-                                     │  train_neural.py     │
-                                     └──────────────────────┘`}
-      </pre>
+      <RoomtagDiagram />
 
       <h2>The interesting problem is stability, not accuracy</h2>
       <p>
@@ -128,6 +122,7 @@ export default function RoomTagPage() {
         public release is planned, and I'm happy to walk through the code in the
         meantime: <a href="mailto:bretdubois1@gmail.com">bretdubois1@gmail.com</a>.
       </p>
+      </div>
     </div>
   );
 }

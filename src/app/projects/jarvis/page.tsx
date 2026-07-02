@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SpecSheet from "@/components/SpecSheet";
 
 export const metadata: Metadata = {
   title: "JARVIS — a deterministic-first personal assistant",
@@ -10,17 +11,24 @@ export const metadata: Metadata = {
 
 export default function JarvisPage() {
   return (
-    <div className="page prose pt-14 pb-4">
-      <p className="label" style={{ marginBottom: "0.5rem" }}>
+    <div className="shell pt-14 pb-4">
+      <p className="label" style={{ marginBottom: "1rem" }}>
         <Link href="/#projects" style={{ textDecoration: "none", color: "inherit" }}>
           ← projects
         </Link>
       </p>
-      <h1>JARVIS — a deterministic-first personal assistant</h1>
-      <p className="meta" style={{ marginBottom: "1.5rem" }}>
-        Python · systemd · Telegram Bot API · Ollama · Obsidian · 2026
-      </p>
-
+      <h1 className="display" style={{ fontSize: "clamp(2rem, 4.5vw, 3.25rem)", maxWidth: "48rem" }}>
+        JARVIS — a deterministic-first personal assistant
+      </h1>
+      <SpecSheet
+        items={[
+          { key: "Role", value: "Design, build, and daily use" },
+          { key: "Stack", value: "Python · systemd · Telegram · Ollama" },
+          { key: "Status", value: "Running continuously" },
+          { key: "Year", value: "2026" },
+        ]}
+      />
+      <div className="prose" style={{ maxWidth: "42rem" }}>
       <p>
         JARVIS is the Telegram bot I actually talk to every day. It fronts{" "}
         <Link href="/projects/homelab/">the OptiPlex stack</Link>: morning briefs,
@@ -127,6 +135,7 @@ export default function JarvisPage() {
         architecture is easy to talk through:{" "}
         <a href="mailto:bretdubois1@gmail.com">bretdubois1@gmail.com</a>.
       </p>
+      </div>
     </div>
   );
 }

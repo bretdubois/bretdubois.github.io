@@ -16,10 +16,10 @@ export default function OGImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "88px",
-          background: "#fdfdfc",
-          color: "#1c1c1a",
-          fontFamily: "sans-serif",
-          borderBottom: "16px solid #1c1c1a",
+          background: "#fbfaf7",
+          color: "#1b1b16",
+          fontFamily: "Georgia, serif",
+          borderBottom: "16px solid #2534c9",
         }}
       >
         <div

@@ -1,5 +1,8 @@
+import Reveal from "@/components/Reveal";
+
 export default function TradingDiagram() {
   return (
+    <Reveal>
     <figure className="figure">
       <svg
         className="diagram-svg"
@@ -35,8 +38,8 @@ export default function TradingDiagram() {
           webhooks
         </text>
 
-        <line className="edge" x1="150" y1="62" x2="150" y2="106" markerEnd="url(#arr-ts)" />
-        <line className="edge" x1="345" y1="62" x2="345" y2="106" markerEnd="url(#arr-ts)" />
+        <line className="edge" pathLength={1} x1="150" y1="62" x2="150" y2="106" markerEnd="url(#arr-ts)" />
+        <line className="edge" pathLength={1} x1="345" y1="62" x2="345" y2="106" markerEnd="url(#arr-ts)" />
 
         {/* ingestion */}
         <rect className="node-static" x="60" y="110" width="350" height="56" rx="4" />
@@ -50,7 +53,7 @@ export default function TradingDiagram() {
           free-form text → structured trade intents
         </text>
 
-        <line className="edge" x1="235" y1="166" x2="235" y2="210" markerEnd="url(#arr-ts)" />
+        <line className="edge" pathLength={1} x1="235" y1="166" x2="235" y2="210" markerEnd="url(#arr-ts)" />
 
         {/* trade manager */}
         <rect className="node-static" x="60" y="214" width="350" height="72" rx="4" />
@@ -77,6 +80,7 @@ export default function TradingDiagram() {
         </text>
         <line
           className="edge"
+          pathLength={1}
           x1="410"
           y1="250"
           x2="496"
@@ -86,9 +90,9 @@ export default function TradingDiagram() {
         />
 
         {/* outputs */}
-        <line className="edge" x1="120" y1="286" x2="120" y2="330" markerEnd="url(#arr-ts)" />
-        <line className="edge" x1="310" y1="286" x2="310" y2="330" markerEnd="url(#arr-ts)" />
-        <line className="edge" x1="590" y1="286" x2="590" y2="330" markerEnd="url(#arr-ts)" />
+        <line className="edge" pathLength={1} x1="120" y1="286" x2="120" y2="330" markerEnd="url(#arr-ts)" />
+        <line className="edge" pathLength={1} x1="310" y1="286" x2="310" y2="330" markerEnd="url(#arr-ts)" />
+        <line className="edge" pathLength={1} x1="590" y1="286" x2="590" y2="330" markerEnd="url(#arr-ts)" />
 
         <rect className="node-static" x="40" y="334" width="160" height="56" rx="4" />
         <text x="120" y="358" fontSize="11.5" textAnchor="middle">
@@ -119,5 +123,6 @@ export default function TradingDiagram() {
         Signal to order — with the risk layer in the middle on purpose
       </figcaption>
     </figure>
+    </Reveal>
   );
 }

@@ -1,3 +1,5 @@
+import Reveal from "@/components/Reveal";
+
 /*
  * Hand-drawn SVG map of the OptiPlex stack. Nodes wrapped in <a> are
  * clickable and get hover/focus styles from .diagram-svg rules in
@@ -5,6 +7,7 @@
  */
 export default function StackDiagram() {
   return (
+    <Reveal>
     <figure className="figure">
       <svg
         className="diagram-svg"
@@ -32,7 +35,7 @@ export default function StackDiagram() {
         <text x="100" y="37" fontSize="12" textAnchor="middle">
           Telegram
         </text>
-        <line className="edge" x1="100" y1="50" x2="100" y2="80" markerEnd="url(#arr)" />
+        <line className="edge" pathLength={1} x1="100" y1="50" x2="100" y2="80" markerEnd="url(#arr)" />
 
         {/* JARVIS */}
         <a href="/projects/jarvis/" aria-label="JARVIS project page">
@@ -47,7 +50,7 @@ export default function StackDiagram() {
             ↗
           </text>
         </a>
-        <line className="edge" x1="100" y1="142" x2="100" y2="176" markerEnd="url(#arr)" />
+        <line className="edge" pathLength={1} x1="100" y1="142" x2="100" y2="176" markerEnd="url(#arr)" />
         <text className="t-muted" x="112" y="165" fontSize="10.5">
           operates
         </text>
@@ -106,7 +109,7 @@ export default function StackDiagram() {
         </text>
 
         {/* branch: backups */}
-        <line className="edge" x1="200" y1="356" x2="200" y2="404" markerEnd="url(#arr)" />
+        <line className="edge" pathLength={1} x1="200" y1="356" x2="200" y2="404" markerEnd="url(#arr)" />
         <text className="t-muted" x="212" y="384" fontSize="10.5">
           restic · nightly · monitored
         </text>
@@ -116,7 +119,7 @@ export default function StackDiagram() {
         </text>
 
         {/* branch: mesh */}
-        <line className="edge" x1="520" y1="356" x2="520" y2="404" markerEnd="url(#arr)" />
+        <line className="edge" pathLength={1} x1="520" y1="356" x2="520" y2="404" markerEnd="url(#arr)" />
         <text className="t-muted" x="532" y="384" fontSize="10.5">
           Tailscale mesh
         </text>
@@ -127,11 +130,22 @@ export default function StackDiagram() {
         <text className="t-muted" x="520" y="446" fontSize="10" textAnchor="middle">
           (GPU for training + inference)
         </text>
+
+        {/* one unit of traffic doing laps of the stack (hidden under
+            prefers-reduced-motion via the .packet CSS rule) */}
+        <circle className="packet" r="3">
+          <animateMotion
+            dur="9s"
+            repeatCount="indefinite"
+            path="M 100 28 L 100 76 M 100 146 L 100 172 M 200 360 L 200 400 M 520 360 L 520 400"
+          />
+        </circle>
       </svg>
       <figcaption>
         <span className="fig-index">Fig. 01</span>
         The stack as deployed — outlined nodes link to their writeups
       </figcaption>
     </figure>
+    </Reveal>
   );
 }

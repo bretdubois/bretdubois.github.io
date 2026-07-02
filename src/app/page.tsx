@@ -68,12 +68,16 @@ const smallerProjects = [
 function Hero() {
   return (
     <section className="shell pt-16 pb-2">
-      <p className="label" style={{ marginBottom: "1.25rem" }}>
+      <p className="label rise" style={{ marginBottom: "1.25rem" }}>
         Solutions engineering · Redwood City, CA
       </p>
       <h1
-        className="display"
-        style={{ fontSize: "clamp(2.625rem, 6.5vw, 4.75rem)", maxWidth: "56rem" }}
+        className="display rise"
+        style={{
+          fontSize: "clamp(2.625rem, 6.5vw, 4.75rem)",
+          maxWidth: "56rem",
+          animationDelay: "0.08s",
+        }}
       >
         Technical seller
         <br />
@@ -82,8 +86,11 @@ function Hero() {
       </h1>
 
       <div
-        className="mt-10 grid gap-10"
-        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(19rem, 1fr))" }}
+        className="mt-10 grid gap-10 rise"
+        style={{
+          gridTemplateColumns: "repeat(auto-fit, minmax(19rem, 1fr))",
+          animationDelay: "0.18s",
+        }}
       >
         <div className="prose" style={{ maxWidth: "36rem" }}>
           <p className="lead">

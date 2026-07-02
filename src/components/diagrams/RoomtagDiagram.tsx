@@ -1,5 +1,8 @@
+import Reveal from "@/components/Reveal";
+
 export default function RoomtagDiagram() {
   return (
+    <Reveal>
     <figure className="figure">
       <svg
         className="diagram-svg"
@@ -32,7 +35,7 @@ export default function RoomtagDiagram() {
         </text>
 
         {/* edge tag → server */}
-        <line className="edge" x1="164" y1="90" x2="270" y2="90" markerEnd="url(#arr-rt)" />
+        <line className="edge" pathLength={1} x1="164" y1="90" x2="270" y2="90" markerEnd="url(#arr-rt)" />
         <text className="t-muted" x="217" y="72" fontSize="10" textAnchor="middle">
           RSSI fingerprint
         </text>
@@ -48,7 +51,7 @@ export default function RoomtagDiagram() {
         <text className="t-muted" x="374" y="66" fontSize="10" textAnchor="middle">
           (Docker, Linux)
         </text>
-        <line className="edge" x1="294" y1="78" x2="454" y2="78" />
+        <line className="edge" pathLength={1} x1="294" y1="78" x2="454" y2="78" />
         <text x="374" y="100" fontSize="10.5" textAnchor="middle">
           RF / neural model
         </text>
@@ -66,7 +69,7 @@ export default function RoomtagDiagram() {
         </text>
 
         {/* edges server → clients */}
-        <line className="edge" x1="474" y1="70" x2="576" y2="70" markerEnd="url(#arr-rt)" />
+        <line className="edge" pathLength={1} x1="474" y1="70" x2="576" y2="70" markerEnd="url(#arr-rt)" />
         <text className="t-muted" x="525" y="58" fontSize="10" textAnchor="middle">
           WebSocket
         </text>
@@ -75,7 +78,7 @@ export default function RoomtagDiagram() {
           iOS app
         </text>
 
-        <line className="edge" x1="474" y1="150" x2="576" y2="150" markerEnd="url(#arr-rt)" />
+        <line className="edge" pathLength={1} x1="474" y1="150" x2="576" y2="150" markerEnd="url(#arr-rt)" />
         <text className="t-muted" x="525" y="138" fontSize="10" textAnchor="middle">
           REST
         </text>
@@ -95,7 +98,7 @@ export default function RoomtagDiagram() {
         <text className="t-muted" x="374" y="285" fontSize="10" textAnchor="middle">
           train_neural.py
         </text>
-        <line className="edge-accent" x1="374" y1="248" x2="374" y2="208" markerEnd="url(#arr-rt)" />
+        <line className="edge-accent" pathLength={1} x1="374" y1="248" x2="374" y2="208" markerEnd="url(#arr-rt)" />
         <text className="t-accent" x="386" y="232" fontSize="10">
           ONNX upload · zero-downtime hot-swap
         </text>
@@ -105,5 +108,6 @@ export default function RoomtagDiagram() {
         Fingerprint in, room out — inference on CPU, training on GPU
       </figcaption>
     </figure>
+    </Reveal>
   );
 }

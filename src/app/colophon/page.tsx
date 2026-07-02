@@ -78,15 +78,32 @@ export default function ColophonPage() {
           prose for screen readers.
         </p>
 
-        <h2>What was deliberately left out</h2>
+        <h2>Motion</h2>
         <p>
           The previous version of this site had a WebGL particle network behind
-          the hero, smooth-scroll hijacking, scroll-triggered reveals, animated
-          counters, and a marquee. Each made the site feel more like a template
-          and made reading slightly worse. Motion here is limited to short
-          CSS transitions on hover and focus, and all of it collapses under{" "}
-          <code>prefers-reduced-motion</code>. Restraint is the design decision
-          I'm most confident in.
+          the hero, smooth-scroll hijacking, animated counters, and a marquee —
+          motion as decoration. The rule now is that{" "}
+          <strong>motion must carry information</strong>, and every use here
+          passes that test: the architecture diagrams draw their edges when they
+          enter the viewport (the topology assembles in reading order), a single
+          packet loops the home diagram because data flow is literally what it
+          depicts, page navigations cross-fade via the View Transitions API so
+          moving between case studies feels continuous, and the hero settles in
+          once, in under 600 milliseconds, and never moves again.
+        </p>
+        <p>
+          All of it is hand-rolled — CSS keyframes, SVG, and one
+          IntersectionObserver; still no animation libraries. Everything
+          collapses under <code>prefers-reduced-motion</code>, and visitors
+          without JavaScript simply see the finished diagrams.
+        </p>
+        <h2>The terminal</h2>
+        <p>
+          The <Link href="/projects/jarvis/">JARVIS page</Link> has an
+          interactive terminal that replays the bot's real command surface with
+          canned output, labeled as exactly that. A demo you can poke at beats a
+          paragraph describing one — but simulating it honestly (and saying so
+          in the interface) matters more than the trick.
         </p>
 
         <h2>Accessibility & performance</h2>

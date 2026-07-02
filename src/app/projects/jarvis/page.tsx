@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SpecSheet from "@/components/SpecSheet";
+import JarvisDemo from "@/components/JarvisDemo";
 
 export const metadata: Metadata = {
   title: "JARVIS — a deterministic-first personal assistant",
@@ -73,6 +74,14 @@ export default function JarvisPage() {
         health-checked fallback chain rather than a config value. If both endpoints
         are down, every operational command still works.
       </p>
+
+      <h2>Try the command surface</h2>
+      <p>
+        A simulated replay — canned output, real commands, honest proportions.
+        The deterministic layer is the part you're poking at; this is what it
+        feels like from my phone:
+      </p>
+      <JarvisDemo />
 
       <h2>What it does all day</h2>
       <ul>

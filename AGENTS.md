@@ -18,7 +18,11 @@ This version has breaking changes — APIs, conventions, and file structure may 
   sees everything), the SMIL packet dot, and View Transitions cross-fades
   all collapsing under prefers-reduced-motion. The JARVIS page terminal
   (JarvisDemo) is a labeled simulation with canned output; keep it honest.
-  /colophon documents the rationale; keep it true.
+  Same pattern for the other playable demos: RoomtagSim (roomtag page,
+  real EMA α=0.72 + hysteresis over synthesized classifier output) and
+  SignalGate (trading page, real risk checks over a parsed free-form
+  signal). Rule for all: synthesized DATA, faithful LOGIC, labeled as a
+  simulation in the UI. /colophon documents the rationale; keep it true.
 - Diagrams are hand-drawn SVG components in `src/components/diagrams/`,
   styled via `.diagram-svg` CSS vars, with prose `aria-label`s and numbered
   figcaptions. Code excerpts must be real code from the actual projects,

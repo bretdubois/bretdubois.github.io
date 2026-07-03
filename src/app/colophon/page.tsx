@@ -97,13 +97,23 @@ export default function ColophonPage() {
           collapses under <code>prefers-reduced-motion</code>, and visitors
           without JavaScript simply see the finished diagrams.
         </p>
-        <h2>The terminal</h2>
+        <h2>Playable demos</h2>
         <p>
-          The <Link href="/projects/jarvis/">JARVIS page</Link> has an
-          interactive terminal that replays the bot's real command surface with
-          canned output, labeled as exactly that. A demo you can poke at beats a
-          paragraph describing one, but simulating it honestly (and saying so
-          in the interface) matters more than the trick.
+          Three project pages let you poke at the actual idea instead of reading
+          about it. The <Link href="/projects/jarvis/">JARVIS page</Link> has a
+          terminal that replays the bot's real command surface. The{" "}
+          <Link href="/projects/roomtag/">RoomTag page</Link> has a floor plan you
+          walk a tag around while a synthesized classifier feeds the real EMA and
+          hysteresis logic, so you can toggle the smoothing off and feel the
+          doorway-flicker problem the project exists to solve. The{" "}
+          <Link href="/projects/trading-stack/">trading page</Link> lets you type a
+          trade call and watch it parse and hit the real risk checks.
+        </p>
+        <p>
+          The rule for all three: the <em>data</em> is synthesized and the
+          interface says so, but the <em>logic</em> is faithful to what runs in
+          production. A demo you can poke at beats a paragraph describing one, and
+          simulating it honestly matters more than the trick.
         </p>
 
         <h2>Accessibility & performance</h2>

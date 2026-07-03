@@ -153,18 +153,18 @@ export default function Home() {
       <Hero />
 
       <div className="shell">
-        <Section index="01" title="What I run" id="what-i-run">
+        <Section index="01" title="Selected work" id="projects">
           <p>
-            Everything below is live on an always-on Dell OptiPlex under my desk,
-            managed entirely from the Linux CLI. It's a homelab, but I run it like
-            production: version-controlled compose files, secrets kept out of git,
-            nightly monitored backups, and a rule that nothing gets restarted
-            without checking why it's misbehaving first.
+            The fastest way to know whether I can do the job is to look at what
+            I've built. Most of it runs as one system on an always-on box under my
+            desk, managed from the Linux CLI and run like production: version-controlled
+            compose, secrets kept out of git, monitored nightly backups. Here it is
+            as a map; every outlined piece has a writeup.
           </p>
           <StackDiagram />
-        </Section>
-
-        <Section index="02" title="Selected projects" id="projects">
+          <p style={{ marginTop: "0.5rem", marginBottom: "1.25rem" }}>
+            The case studies, in the order I'd want you to read them:
+          </p>
           <div>
             {projects.map((p, i) => (
               <Link key={p.href} href={p.href} className="project-row">
@@ -205,7 +205,14 @@ export default function Home() {
           </ul>
         </Section>
 
-        <Section index="03" title="Work" id="work">
+        <Section index="02" title="Work" id="work">
+          <p>
+            The building is one half. The other half is six years of translating
+            between technical systems and the people who buy them: enterprise
+            referrals at Apple, technical discovery for an AI platform at SpotHopper,
+            in-home consulting at Asurion. That combination is the whole pitch for a
+            solutions role.
+          </p>
           <ul>
             <li>
               <strong>SpotHopper</strong> · Business Development Rep · Apr 2025 –
@@ -245,7 +252,7 @@ export default function Home() {
           </ul>
         </Section>
 
-        <Section index="04" title="Education & certs" id="education">
+        <Section index="03" title="Education & certs" id="education">
           <ul>
             <li>
               <strong>B.S. Cognitive Science, Design & Human-Computer
@@ -271,7 +278,7 @@ export default function Home() {
           </ul>
         </Section>
 
-        <Section index="05" title="Contact" id="contact">
+        <Section index="04" title="Contact" id="contact">
           <p>
             Email is fastest:{" "}
             <a href="mailto:bretdubois1@gmail.com">bretdubois1@gmail.com</a>. Also

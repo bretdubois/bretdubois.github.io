@@ -23,7 +23,11 @@ export default function Reveal({ children }: { children: React.ReactNode }) {
           }
         }
       },
-      { threshold: 0.35 }
+      // Fire as soon as any part enters, and pre-trigger just before the
+      // scroll reaches it. Threshold 0 means an element already in the first
+      // viewport (e.g. the stack diagram) reveals immediately on load rather
+      // than waiting for a scroll that may never come.
+      { threshold: 0, rootMargin: "0px 0px 120px 0px" }
     );
     observer.observe(el);
     return () => observer.disconnect();

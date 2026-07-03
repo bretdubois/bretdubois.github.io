@@ -143,7 +143,7 @@ export default function StackDiagram() {
       </svg>
       <figcaption>
         <span className="fig-index">Fig. 01</span>
-        The stack as deployed, outlined nodes link to their writeups
+        The system as deployed, tap any outlined node to open its case study
       </figcaption>
     </figure>
     </Reveal>

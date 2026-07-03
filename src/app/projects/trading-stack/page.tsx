@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import SpecSheet from "@/components/SpecSheet";
 import TradingDiagram from "@/components/diagrams/TradingDiagram";
+import SignalGate from "@/components/SignalGate";
 
 export const metadata: Metadata = {
   title: "Automated futures trading stack",
@@ -78,6 +79,16 @@ export default function TradingStackPage() {
           per-ticker close/trim/break-even commands are always available manually.
         </li>
       </ul>
+
+      <h2>Try the risk gate</h2>
+      <p>
+        This is what a signal goes through before it becomes an order. Type a
+        trade call or tap an example; it parses into a structured intent and runs
+        the real checks. The valid oversized order and the two toggles below show
+        how the gate refuses trades that a naive "call the broker endpoint"
+        script would happily place.
+      </p>
+      <SignalGate />
 
       <h2>Incident: the day the stack went down</h2>
       <p>

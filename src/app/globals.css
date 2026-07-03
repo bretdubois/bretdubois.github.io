@@ -632,6 +632,326 @@ html.js .reveal.in-view .diagram-svg .edge-accent {
   color: var(--accent);
 }
 
+.sim-chip-on {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* ── Interactive sims (RoomTag, trading gate) ───────── */
+
+.sim {
+  border: 1px solid var(--rule-strong);
+  border-radius: 6px;
+  margin: 1.25rem 0 0.75rem;
+  overflow: hidden;
+}
+
+.sim-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.5rem 0.875rem;
+  background: #16160f;
+  color: #8f8f7f;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sim-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  padding: 1.125rem;
+  background: var(--paper-raised);
+}
+
+@media (min-width: 34rem) {
+  .sim-body {
+    grid-template-columns: 300px 1fr;
+    align-items: center;
+  }
+}
+
+.sim-floor {
+  width: 100%;
+  height: auto;
+}
+
+.sim-room {
+  fill: var(--paper-recessed);
+  stroke: var(--rule-strong);
+  stroke-width: 1;
+  transition: fill 0.3s ease, stroke 0.3s ease;
+}
+
+.sim-room-on {
+  fill: var(--accent-soft);
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+
+.sim-room-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--ink-secondary);
+}
+
+.sim-tag {
+  fill: var(--accent);
+  stroke: var(--paper-raised);
+  stroke-width: 2;
+  transition: cx 0.4s ease, cy 0.4s ease;
+}
+
+.sim-panel {
+  min-width: 0;
+}
+
+.sim-readout {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 0.875rem;
+}
+
+.sim-readout > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.sim-k {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.sim-v {
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.sim-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.sim-bar-row {
+  display: grid;
+  grid-template-columns: 4rem 1fr 1.75rem;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sim-bar-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--ink-secondary);
+}
+
+.sim-bar-track {
+  position: relative;
+  height: 0.75rem;
+  background: var(--paper-recessed);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.sim-bar-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--accent);
+  opacity: 0.85;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.sim-bar-raw {
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  width: 2px;
+  background: var(--ink);
+  opacity: 0.55;
+  transition: left 0.2s ease;
+}
+
+.sim-bar-pct {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--muted);
+  text-align: right;
+}
+
+.sim-legend {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--muted);
+  margin-top: 0.625rem;
+}
+
+.sim-controls {
+  padding: 0.875rem 1.125rem;
+  border-top: 1px solid var(--rule);
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sim-walk,
+.sim-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.sim-ctrl-label {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-right: 0.25rem;
+}
+
+.sim-hint {
+  font-size: 0.8125rem;
+  color: var(--ink-secondary);
+  margin: 0.5rem 0 0;
+  padding: 0 0.125rem;
+}
+
+/* Trading gate specifics */
+
+.gate-body {
+  background: #16160f;
+  padding: 0.875rem;
+}
+
+.gate-out {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  padding: 1rem 0 0.5rem;
+}
+
+@media (min-width: 34rem) {
+  .gate-out {
+    grid-template-columns: 1fr 1.3fr;
+  }
+}
+
+.gate-col-h {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #8f8f7f;
+  margin-bottom: 0.5rem;
+}
+
+.gate-intent {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #d9d9ca;
+}
+
+.gate-intent > div {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.15rem 0;
+}
+
+.gate-intent dt {
+  color: #8f8f7f;
+  width: 4rem;
+  flex-shrink: 0;
+}
+
+.gate-intent dd {
+  color: #f2f2e6;
+}
+
+.gate-unknown {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #d98c6a;
+}
+
+.gate-checks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.gate-checks li {
+  display: flex;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #d9d9ca;
+}
+
+.gate-checks li > span:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.gate-mark {
+  flex-shrink: 0;
+  font-weight: 700;
+}
+
+.gate-pass .gate-mark {
+  color: #6bbf7b;
+}
+
+.gate-fail .gate-mark {
+  color: #d9645a;
+}
+
+.gate-checks strong {
+  color: #f2f2e6;
+  font-weight: 600;
+}
+
+.gate-detail {
+  color: #8f8f7f;
+  font-size: 0.6875rem;
+}
+
+.gate-verdict {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  margin-top: 0.875rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+}
+
+.gate-verdict-ok {
+  background: rgba(107, 191, 123, 0.14);
+  color: #8ed49b;
+  border: 1px solid rgba(107, 191, 123, 0.4);
+}
+
+.gate-verdict-no {
+  background: rgba(217, 100, 90, 0.14);
+  color: #e58b83;
+  border: 1px solid rgba(217, 100, 90, 0.4);
+}
+
 /* ── Motion discipline ──────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {

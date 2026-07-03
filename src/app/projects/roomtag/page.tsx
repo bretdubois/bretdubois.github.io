@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import SpecSheet from "@/components/SpecSheet";
 import RoomtagDiagram from "@/components/diagrams/RoomtagDiagram";
+import RoomtagSim from "@/components/RoomtagSim";
 
 export const metadata: Metadata = {
   title: "RoomTag: indoor positioning from Wi-Fi fingerprints",
@@ -88,6 +89,16 @@ export default function RoomTagPage() {
     ema_state[device_id] = smoothed
     return smoothed`}</code>
       </pre>
+
+      <h2>See it settle</h2>
+      <p>
+        Rather than describe the stability tradeoff, here it is running. Walk the
+        tag between rooms and watch the raw classifier (the ticks) jump around
+        while the smoothed probability (the bars) stays calm and the committed
+        room holds steady. Then turn smoothing and hysteresis off and watch the
+        same signal turn into doorway flicker.
+      </p>
+      <RoomtagSim />
 
       <h2>Two models, one interface</h2>
       <p>

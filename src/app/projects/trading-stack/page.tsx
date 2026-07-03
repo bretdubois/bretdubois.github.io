@@ -3,6 +3,7 @@ import Link from "next/link";
 import SpecSheet from "@/components/SpecSheet";
 import TradingDiagram from "@/components/diagrams/TradingDiagram";
 import SignalGate from "@/components/SignalGate";
+import FuturesDash from "@/components/FuturesDash";
 
 export const metadata: Metadata = {
   title: "Automated futures trading stack",
@@ -101,6 +102,15 @@ export default function TradingStackPage() {
         rotation procedure instead of a "set once" assumption, and startup now
         reconciles local state against the broker before acting on anything.
       </p>
+
+      <h2>The dashboard</h2>
+      <p>
+        Watching the system is a Streamlit dashboard: session equity, open
+        positions, and how much of the broker's daily loss limit the account has
+        used. It lives behind the VPN, so here is a faithful recreation of the
+        layout.
+      </p>
+      <FuturesDash />
 
       <h2>Status, honestly</h2>
       <p>

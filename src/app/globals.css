@@ -141,7 +141,10 @@ body {
   margin-bottom: 0.375rem;
 }
 
-.prose p {
+/* Prose typography must not bleed into the self-styled widgets (terminal,
+   sims, device frames). The :where() keeps the guard at zero specificity,
+   so widget-internal classes win cleanly. */
+.prose p:not(:where(.term, .term-chips, .sim, .gate-body, .dash, .phone, .device-wrap) *) {
   margin-bottom: 1rem;
   color: var(--ink-secondary);
 }
@@ -155,18 +158,18 @@ body {
   font-style: italic;
 }
 
-.prose ul {
+.prose ul:not(:where(.term, .sim, .gate-body, .dash, .phone, .device-wrap) *) {
   margin: 0 0 1rem 0;
   padding-left: 1.25rem;
   list-style: disc;
   color: var(--ink-secondary);
 }
 
-.prose li {
+.prose li:not(:where(.term, .sim, .gate-body, .dash, .phone, .device-wrap) *) {
   margin-bottom: 0.375rem;
 }
 
-.prose li::marker {
+.prose li:not(:where(.term, .sim, .gate-body, .dash, .phone, .device-wrap) *)::marker {
   color: var(--accent);
 }
 
@@ -950,6 +953,360 @@ html.js .reveal.in-view .diagram-svg .edge-accent {
   background: rgba(217, 100, 90, 0.14);
   color: #e58b83;
   border: 1px solid rgba(217, 100, 90, 0.4);
+}
+
+/* ── Device frames (app + dashboard recreations) ────── */
+
+.device-wrap {
+  margin: 1.5rem 0 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.device-caption {
+  margin-top: 0.75rem;
+  text-align: center;
+  max-width: 24rem;
+}
+
+/* iPhone frame. Content uses the system font stack on purpose:
+   it should feel like iOS, not like the site. */
+
+.phone {
+  width: 264px;
+  border-radius: 42px;
+  background: #0a0a0a;
+  padding: 10px;
+  box-shadow:
+    0 0 0 1.5px #3a3a3a,
+    0 18px 40px -18px rgb(0 0 0 / 0.45);
+  position: relative;
+  font-family: -apple-system, "SF Pro Text", "Helvetica Neue", Inter, sans-serif;
+}
+
+.phone-island {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 78px;
+  height: 22px;
+  border-radius: 12px;
+  background: #0a0a0a;
+  z-index: 3;
+}
+
+.phone-status {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  right: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.phone-battery {
+  width: 20px;
+  height: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 3px;
+  position: relative;
+}
+
+.phone-battery::after {
+  content: "";
+  position: absolute;
+  inset: 1.5px 30% 1.5px 1.5px;
+  background: #fff;
+  border-radius: 1px;
+}
+
+.phone-screen {
+  border-radius: 33px;
+  background: linear-gradient(180deg, #101014 0%, #17171c 100%);
+  color: #f4f4f6;
+  padding: 52px 18px 16px;
+  min-height: 470px;
+  overflow: hidden;
+}
+
+/* The phone sits inside .prose on project pages; hard-reset the prose
+   paragraph color/margins so the screen keeps its own palette. */
+.phone-screen p,
+.prose .phone-screen p {
+  margin: 0;
+  color: inherit;
+}
+
+.phone-app-title {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #f4f4f6;
+}
+
+.phone-sub {
+  font-size: 11px;
+  margin-bottom: 14px;
+}
+
+.phone-sub,
+.prose .phone-screen p.phone-sub {
+  color: #8e8e96;
+}
+
+.phone-card {
+  background: linear-gradient(135deg, #2534c9 0%, #4a58e0 100%);
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+@keyframes phone-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+}
+
+.phone-card-in {
+  animation: phone-card-in 0.45s cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+.phone-card-label,
+.prose .phone-screen p.phone-card-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.78);
+  margin-bottom: 2px;
+}
+
+.phone-room,
+.prose .phone-screen p.phone-room {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #ffffff;
+}
+
+.phone-conf,
+.prose .phone-screen p.phone-conf {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.82);
+  margin-top: 2px;
+}
+
+.phone-list {
+  background: #1f1f26;
+  border-radius: 14px;
+  padding: 6px 12px;
+  margin-bottom: 14px;
+}
+
+.phone-row {
+  display: grid;
+  grid-template-columns: 82px 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 0.5px solid #2c2c34;
+  font-size: 12px;
+}
+
+.phone-row:last-child {
+  border-bottom: none;
+}
+
+.phone-row-track {
+  height: 5px;
+  background: #2c2c34;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.phone-row-fill {
+  display: block;
+  height: 100%;
+  background: #6b78ec;
+  border-radius: 3px;
+  transition: width 0.45s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.phone-btn {
+  width: 100%;
+  background: #1f1f26;
+  color: #8a96ff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+}
+
+.phone-home {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 96px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* Browser-framed dashboard recreation */
+
+.dash {
+  width: 100%;
+  max-width: 34rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #16160f;
+  font-family: var(--font-mono);
+}
+
+.dash-chrome {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: #22221a;
+  border-bottom: 1px solid #2e2e24;
+}
+
+.dash-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.dash-dots i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #4b4b3e;
+}
+
+.dash-url {
+  flex: 1;
+  font-size: 0.6875rem;
+  color: #8f8f7f;
+  background: #16160f;
+  border-radius: 4px;
+  padding: 0.15rem 0.6rem;
+}
+
+.dash-badge {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #e0b34c;
+  border: 1px solid rgba(224, 179, 76, 0.5);
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+}
+
+.dash-body {
+  padding: 0.875rem;
+}
+
+.dash-stats {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.875rem;
+}
+
+.dash-k {
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #8f8f7f;
+  margin-bottom: 0.15rem;
+}
+
+.dash-v {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #f2f2e6;
+}
+
+.dash-up {
+  color: #8ed49b;
+}
+
+.dash-chart {
+  border: 1px solid #2e2e24;
+  border-radius: 6px;
+  padding: 0.6rem 0.75rem 0.25rem;
+  margin-bottom: 0.875rem;
+}
+
+.dash-chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.dash-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.6875rem;
+  margin-bottom: 0.875rem;
+}
+
+.dash-table th {
+  text-align: left;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.575rem;
+  color: #8f8f7f;
+  padding: 0.3rem 0.5rem;
+  border-bottom: 1px solid #2e2e24;
+}
+
+.dash-table td {
+  padding: 0.4rem 0.5rem;
+  color: #d9d9ca;
+}
+
+.dash-dll {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.dash-dll .dash-k {
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.dash-dll-track {
+  flex: 1;
+  height: 0.5rem;
+  background: #2e2e24;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.dash-dll-fill {
+  display: block;
+  height: 100%;
+  background: #e0b34c;
+  border-radius: 3px;
+}
+
+.dash-dll-pct {
+  font-size: 0.6875rem;
+  color: #d9d9ca;
 }
 
 /* ── Motion discipline ──────────────────────────────── */

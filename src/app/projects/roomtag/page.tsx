@@ -3,6 +3,7 @@ import Link from "next/link";
 import SpecSheet from "@/components/SpecSheet";
 import RoomtagDiagram from "@/components/diagrams/RoomtagDiagram";
 import RoomtagSim from "@/components/RoomtagSim";
+import RoomtagPhone from "@/components/RoomtagPhone";
 
 export const metadata: Metadata = {
   title: "RoomTag: indoor positioning from Wi-Fi fingerprints",
@@ -115,6 +116,15 @@ export default function RoomTagPage() {
         in the iOS app relabels the last few fingerprints and retrains immediately.
         Accuracy at home has held at roughly 90%+.
       </p>
+
+      <h2>The app</h2>
+      <p>
+        The consumer end is a SwiftUI app: current room up top, per-room
+        confidence below, and a "wrong room?" button that relabels the last few
+        fingerprints and retrains the model on the spot. Results arrive over
+        WebSocket, with polling as the fallback.
+      </p>
+      <RoomtagPhone />
 
       <h2>Shipping it</h2>
       <p>

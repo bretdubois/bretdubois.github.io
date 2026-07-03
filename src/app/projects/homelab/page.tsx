@@ -3,7 +3,7 @@ import Link from "next/link";
 import SpecSheet from "@/components/SpecSheet";
 
 export const metadata: Metadata = {
-  title: "The platform underneath — a homelab run like production",
+  title: "The platform underneath: a homelab run like production",
   description:
     "An always-on Ubuntu box with a dozen composed Docker services, monitored nightly backups, a Tailscale mesh, and written operating rules for safe changes.",
   alternates: { canonical: "/projects/homelab/" },
@@ -18,7 +18,7 @@ export default function HomelabPage() {
         </Link>
       </p>
       <h1 className="display" style={{ fontSize: "clamp(2rem, 4.5vw, 3.25rem)", maxWidth: "48rem" }}>
-        The platform underneath — a homelab run like production
+        The platform underneath: a homelab run like production
       </h1>
       <SpecSheet
         items={[
@@ -31,7 +31,7 @@ export default function HomelabPage() {
       <div className="prose" style={{ maxWidth: "42rem" }}>
       <p>
         Every other project on this site runs on one always-on Dell OptiPlex.
-        There's no Kubernetes and no cloud bill — the interesting part isn't scale,
+        There's no Kubernetes and no cloud bill, and the interesting part isn't scale;
         it's <strong>operational discipline on a machine nobody is paid to
         maintain</strong>. The difference between a homelab and a science project is
         whether it's still working six months after you stopped thinking about it.
@@ -52,7 +52,7 @@ export default function HomelabPage() {
       <ul>
         <li>One directory per service; compose definition and data live together.</li>
         <li>
-          Credentials in <code>.env</code> files only — never in compose files,
+          Credentials in <code>.env</code> files only, never in compose files,
           never in git.
         </li>
         <li>
@@ -83,27 +83,27 @@ export default function HomelabPage() {
       </p>
       <ul>
         <li>
-          <strong>Audit first, act second</strong> — verify actual state before
+          <strong>Audit first, act second</strong>: verify actual state before
           changing anything; never trust memory of how a service was configured.
         </li>
         <li>
-          <strong>Propose before executing</strong> — write out what will change
+          <strong>Propose before executing</strong>: write out what will change
           before it happens, even when working alone. It catches bad plans while
           they're still cheap.
         </li>
         <li>
-          <strong>No unconfirmed restarts</strong> — a restart hides evidence.
+          <strong>No unconfirmed restarts</strong>: a restart hides evidence.
           Understand why a service is misbehaving before bouncing it.
         </li>
         <li>
-          <strong>Flag surprises</strong> — anything that deviates from documented
+          <strong>Flag surprises</strong>: anything that deviates from documented
           state gets recorded, not quietly fixed.
         </li>
       </ul>
       <p>
         The same discipline extends to supply chain: I dropped one popular
         LLM-gateway dependency from the stack entirely after it shipped a
-        compromised release — self-hosted doesn't mean exempt from vendor
+        compromised release: self-hosted doesn't mean exempt from vendor
         diligence.
       </p>
 
@@ -120,7 +120,7 @@ export default function HomelabPage() {
       <p>
         Solutions engineering is explaining systems you understand deeply to people
         who need to trust you quickly. This box is where that understanding comes
-        from — networking, containers, databases, backups, VPNs, LLM tooling — not
+        from: networking, containers, databases, backups, VPNs, LLM tooling, not
         as course material but as things I've deployed, broken, monitored, and
         fixed.
       </p>

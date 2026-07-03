@@ -105,7 +105,7 @@ export default function StackDiagram() {
         {/* row 3: KVM */}
         <rect className="node-soft" x="60" y="310" width="600" height="32" rx="3" />
         <text x="360" y="330" fontSize="11" textAnchor="middle">
-          KVM · Cisco Modeling Labs — CCNA lab topologies
+          KVM · Cisco Modeling Labs: CCNA lab topologies
         </text>
 
         {/* branch: backups */}
@@ -143,7 +143,7 @@ export default function StackDiagram() {
       </svg>
       <figcaption>
         <span className="fig-index">Fig. 01</span>
-        The stack as deployed — outlined nodes link to their writeups
+        The stack as deployed, outlined nodes link to their writeups
       </figcaption>
     </figure>
     </Reveal>

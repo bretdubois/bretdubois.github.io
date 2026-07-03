@@ -5,7 +5,7 @@ import PrintButton from "@/components/PrintButton";
 export const metadata: Metadata = {
   title: "Résumé",
   description:
-    "Résumé of Bret DuBois — Solutions Engineering / Sales Engineering / Technical Account Management. Technical sales background, self-hosted infrastructure, networking, and AI tooling.",
+    "Résumé of Bret DuBois: Solutions Engineering / Sales Engineering / Technical Account Management. Technical sales background, self-hosted infrastructure, networking, and AI tooling.",
   alternates: { canonical: "/resume/" },
 };
 
@@ -89,7 +89,7 @@ export default function ResumePage() {
             (January 2026); director of BD requested I stay upon departure.
           </li>
           <li>
-            Left to pursue SE/TAM roles directly — the org hired AEs externally
+            Left to pursue SE/TAM roles directly: the org hired AEs externally
             with no internal promotion track.
           </li>
         </ul>
@@ -126,7 +126,7 @@ export default function ResumePage() {
           </li>
           <li>
             Identified and referred high-value business customers to enterprise
-            AEs — over $150K in verified lifetime revenue from a single referral.
+            AEs, over $150K in verified lifetime revenue from a single referral.
           </li>
           <li>
             Trained and mentored teammates on advanced troubleshooting and customer
@@ -143,7 +143,7 @@ export default function ResumePage() {
         <ul style={{ marginBottom: 0 }}>
           <li>
             Design, deployment, and support of Ubiquiti UniFi networks (switching,
-            APs, PoE, VLANs, remote access) for SMB and residential clients — full
+            APs, PoE, VLANs, remote access) for SMB and residential clients, full
             lifecycle from discovery to documented handoff.
           </li>
         </ul>
@@ -152,7 +152,7 @@ export default function ResumePage() {
       <h2>Technical projects</h2>
       <ul>
         <li>
-          <strong>AI agent + trading automation stack</strong> — production
+          <strong>AI agent + trading automation stack</strong>: production
           multi-service stack on Ubuntu: Telegram-fronted assistant (Python,
           systemd, LLM fallback chain) plus a futures trading system that ingests
           real-time signals and executes through the ProjectX/TopstepX broker API
@@ -160,19 +160,19 @@ export default function ResumePage() {
           paper and live modes.
         </li>
         <li>
-          <strong>RoomTag</strong> — Wi-Fi-fingerprint indoor positioning: ESP32-C6
+          <strong>RoomTag</strong>: Wi-Fi-fingerprint indoor positioning: ESP32-C6
           firmware, self-hosted FastAPI inference server (random forest + ONNX
           neural ensemble), iOS app, Home Assistant integration, OTA firmware
           releases via GitHub Actions.
         </li>
         <li>
-          <strong>Home lab & remote access infrastructure</strong> — self-hosted
+          <strong>Home lab & remote access infrastructure</strong>: self-hosted
           Docker services (PostgreSQL, n8n, Open WebUI, CouchDB), Tailscale mesh
           VPN, monitored restic backups, KVM/libvirt VMs running Cisco Modeling
           Labs. Managed entirely via Linux CLI.
         </li>
         <li>
-          <strong>Ubiquiti UniFi deployments</strong> — multiple SMB/residential
+          <strong>Ubiquiti UniFi deployments</strong>: multiple SMB/residential
           installs: switching, APs, PoE, IP cameras, VLAN segmentation, remote
           access. <Link href="/projects/unifi/">Case study.</Link>
         </li>
@@ -181,43 +181,42 @@ export default function ResumePage() {
       <h2>Education</h2>
       <ul>
         <li>
-          <strong>B.S. Cognitive Science, Specialization in Design & HCI</strong> —
-          UC San Diego, June 2024. Relevant coursework: data structures &
+          <strong>B.S. Cognitive Science, Specialization in Design & HCI</strong>: UC San Diego, June 2024. Relevant coursework: data structures &
           algorithms, OOP, databases, networking fundamentals, operating systems.
         </li>
         <li>
-          <strong>A.S. Computer & Information Science</strong> — College of San
+          <strong>A.S. Computer & Information Science</strong>: College of San
           Mateo, 2021.
         </li>
       </ul>
 
       <h2>Certifications & awards</h2>
       <ul>
-        <li>CCNA — in progress (self-study + Cisco Modeling Labs).</li>
-        <li>AWS Certified Solutions Architect – Associate — in progress.</li>
-        <li>Cloud Computing Fundamentals, IBM — 2024.</li>
-        <li>Eagle Scout, Boy Scouts of America — 2018.</li>
+        <li>CCNA: in progress (self-study + Cisco Modeling Labs).</li>
+        <li>AWS Certified Solutions Architect – Associate: in progress.</li>
+        <li>Cloud Computing Fundamentals, IBM: 2024.</li>
+        <li>Eagle Scout, Boy Scouts of America: 2018.</li>
       </ul>
 
       <h2>Skills</h2>
       <ul>
         <li>
-          <strong>Sales & GTM</strong> — consultative selling, technical discovery,
+          <strong>Sales & GTM</strong>: consultative selling, technical discovery,
           value-based solutioning, objection handling, pipeline development, AE
           partnership, CRM.
         </li>
         <li>
-          <strong>Technical</strong> — Linux, Docker, Bash, Python (pandas, numpy,
+          <strong>Technical</strong>: Linux, Docker, Bash, Python (pandas, numpy,
           sklearn), JavaScript/Next.js, SQL, PostgreSQL, REST APIs & webhooks, git,
           n8n, LLM tooling (Claude API, Ollama, prompt engineering).
         </li>
         <li>
-          <strong>Networking</strong> — LAN/WAN, switching & routing, Ubiquiti
+          <strong>Networking</strong>: LAN/WAN, switching & routing, Ubiquiti
           UniFi, PoE, VLANs, Tailscale/SSH remote access, Wi-Fi troubleshooting,
           network design & deployment.
         </li>
         <li>
-          <strong>Platforms</strong> — macOS, Windows, Linux, iOS, Android,
+          <strong>Platforms</strong>: macOS, Windows, Linux, iOS, Android,
           Supabase, Docker Compose, KVM/libvirt.
         </li>
       </ul>

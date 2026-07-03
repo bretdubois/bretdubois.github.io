@@ -34,7 +34,7 @@ export default function TradingStackPage() {
         I trade Micro E-mini Nasdaq futures (MNQ). This system automates the
         mechanical part: it watches a real-time signal feed, parses free-form trade
         calls into structured intents, checks them against a risk layer, and places
-        the resulting orders through the ProjectX/TopstepX broker API — then
+        the resulting orders through the ProjectX/TopstepX broker API, then
         manages the position (modifies, trims, break-even stops, cancels) as
         follow-up signals arrive.
       </p>
@@ -53,27 +53,27 @@ export default function TradingStackPage() {
       </p>
       <ul>
         <li>
-          <strong>Position limits and dynamic sizing</strong> — contract count is
+          <strong>Position limits and dynamic sizing</strong>: contract count is
           computed per-signal from account equity and configured risk, not
           hardcoded.
         </li>
         <li>
-          <strong>Account selection with fan-out</strong> — signals can target one
+          <strong>Account selection with fan-out</strong>: signals can target one
           evaluation account or fan out to several, with an allowlist controlling
           which accounts are eligible.
         </li>
         <li>
-          <strong>Daily-loss-limit snapshots</strong> — before acting, the manager
+          <strong>Daily-loss-limit snapshots</strong>: before acting, the manager
           snapshots account drawdown against the broker's daily loss limit and
           refuses trades that would breach it.
         </li>
         <li>
-          <strong>Session awareness</strong> — a session clock models the futures
+          <strong>Session awareness</strong>: a session clock models the futures
           trading calendar (nightly resets, weekend closes), so the system doesn't
           act on stale signals outside market hours.
         </li>
         <li>
-          <strong>Human-in-the-loop mode</strong> — signals can require explicit
+          <strong>Human-in-the-loop mode</strong>: signals can require explicit
           approval from Telegram before execution, and <code>flatten all</code> /
           per-ticker close/trim/break-even commands are always available manually.
         </li>
@@ -82,11 +82,11 @@ export default function TradingStackPage() {
       <h2>Incident: the day the stack went down</h2>
       <p>
         In June 2026 the stack stopped trading: the broker API key had been
-        invalidated (expired-or-compromised — treated as compromised either way) and
+        invalidated (expired or compromised, treated as compromised either way) and
         database state had drifted from reality while services retried. Recovery was
         a proper ops exercise: rotate the credential, audit what the retry loop had
         written, repair position state against the broker's records, and bring the
-        services back one at a time. Two changes came out of it — credentials got a
+        services back one at a time. Two changes came out of it: credentials got a
         rotation procedure instead of a "set once" assumption, and startup now
         reconciles local state against the broker before acting on anything.
       </p>

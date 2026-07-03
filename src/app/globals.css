@@ -5,7 +5,7 @@
  * Fraunces for display, Inter for text, JetBrains Mono for apparatus
  * (labels, metadata, code). A real grid, hairline rules, one ink-blue
  * accent. Interaction is CSS-only and respects prefers-reduced-motion.
- * No animation libraries — the craft is in type, grid, and detail.
+ * No animation libraries; the craft is in type, grid, and detail.
  */
 
 @theme {
@@ -471,10 +471,10 @@ hr {
 /* ── Motion ─────────────────────────────────────────── */
 /*
  * All hand-rolled. Three kinds, each tied to meaning:
- *  1. One-time entrance on the hero (.rise) — under 600ms, runs once.
+ *  1. One-time entrance on the hero (.rise), under 600ms, runs once.
  *  2. Diagrams draw their edges when scrolled into view (.reveal,
  *     JS-gated via html.js so no-JS visitors see everything).
- *  3. A packet dot loops the home diagram — data flow, literally.
+ *  3. A packet dot loops the home diagram: data flow, literally.
  * Cross-page navigation cross-fades via the View Transitions API.
  * Everything collapses under prefers-reduced-motion.
  */

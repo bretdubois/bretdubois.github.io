@@ -32,7 +32,7 @@ export default function ColophonPage() {
           seconds, whether I'm worth a phone screen. Everything optimizes for
           that: the home page answers "who is this and what have they actually
           built" before the first scroll, every claim links to a case study, and
-          nothing interrupts reading. The design should feel considered — but
+          nothing interrupts reading. The design should feel considered, but
           the moment a visual choice competes with the content, the content
           wins.
         </p>
@@ -41,7 +41,7 @@ export default function ColophonPage() {
         <p>
           Three typefaces with strictly separated jobs.{" "}
           <strong>Fraunces</strong>, a variable optical-size serif, does the
-          display work — its warmth keeps a very structured page from feeling
+          display work; its warmth keeps a very structured page from feeling
           sterile. <strong>Inter</strong> carries body text at a 42rem measure
           (about 75 characters), 1.7 line height. <strong>JetBrains Mono</strong>{" "}
           is reserved for apparatus: section numbers, metadata, figure captions,
@@ -55,13 +55,13 @@ export default function ColophonPage() {
           The layout borrows from print: a hanging label rail on wide viewports,
           numbered sections, hairline rules, heavier rules at the page frame,
           and figure captions under every diagram. Print conventions carry a
-          useful signal — they say <em>edited</em>, the way a lab notebook
+          useful signal: they say <em>edited</em>, the way a lab notebook
           differs from a whiteboard.
         </p>
 
         <h2>Color</h2>
         <p>
-          Warm paper (<code>#fbfaf7</code>), near-black ink, and one accent — an
+          Warm paper (<code>#fbfaf7</code>), near-black ink, and one accent: an
           ink blue (<code>#2534c9</code>) used only for meaning: interactive
           nodes, section indices, hover states, the period after my name. One
           accent used consistently reads as identity; three accents read as a
@@ -73,7 +73,7 @@ export default function ColophonPage() {
           The architecture diagrams are hand-drawn SVG on a fixed grid, styled
           with the site's own CSS variables and set in the same mono as the
           captions. On the home page, outlined nodes are real links with hover
-          and keyboard-focus states — the diagram <em>is</em> the navigation.
+          and keyboard-focus states; the diagram <em>is</em> the navigation.
           Each carries an <code>aria-label</code> describing the topology in
           prose for screen readers.
         </p>
@@ -81,7 +81,7 @@ export default function ColophonPage() {
         <h2>Motion</h2>
         <p>
           The previous version of this site had a WebGL particle network behind
-          the hero, smooth-scroll hijacking, animated counters, and a marquee —
+          the hero, smooth-scroll hijacking, animated counters, and a marquee:
           motion as decoration. The rule now is that{" "}
           <strong>motion must carry information</strong>, and every use here
           passes that test: the architecture diagrams draw their edges when they
@@ -92,7 +92,7 @@ export default function ColophonPage() {
           once, in under 600 milliseconds, and never moves again.
         </p>
         <p>
-          All of it is hand-rolled — CSS keyframes, SVG, and one
+          All of it is hand-rolled: CSS keyframes, SVG, and one
           IntersectionObserver; still no animation libraries. Everything
           collapses under <code>prefers-reduced-motion</code>, and visitors
           without JavaScript simply see the finished diagrams.
@@ -102,7 +102,7 @@ export default function ColophonPage() {
           The <Link href="/projects/jarvis/">JARVIS page</Link> has an
           interactive terminal that replays the bot's real command surface with
           canned output, labeled as exactly that. A demo you can poke at beats a
-          paragraph describing one — but simulating it honestly (and saying so
+          paragraph describing one, but simulating it honestly (and saying so
           in the interface) matters more than the trick.
         </p>
 
@@ -114,7 +114,7 @@ export default function ColophonPage() {
           </li>
           <li>Text and apparatus colors meet WCAG AA contrast on the paper background.</li>
           <li>
-            Static export — no client-side data fetching, fonts subset and
+            Static export: no client-side data fetching, fonts subset and
             self-hosted via <code>next/font</code>, zero layout shift from
             loading content.
           </li>

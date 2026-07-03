@@ -3,9 +3,9 @@ import Link from "next/link";
 import SpecSheet from "@/components/SpecSheet";
 
 export const metadata: Metadata = {
-  title: "Client network design — a UniFi case study",
+  title: "Client network design: a UniFi case study",
   description:
-    "Independent Ubiquiti UniFi consulting: one engagement in detail — constraints, architecture decisions, tradeoffs, and the documented handoff.",
+    "Independent Ubiquiti UniFi consulting: one engagement in detail, covering constraints, architecture decisions, tradeoffs, and the documented handoff.",
   alternates: { canonical: "/projects/unifi/" },
 };
 
@@ -18,11 +18,11 @@ export default function UnifiPage() {
         </Link>
       </p>
       <h1 className="display" style={{ fontSize: "clamp(2rem, 4.5vw, 3.25rem)", maxWidth: "48rem" }}>
-        Client network design — a UniFi case study
+        Client network design: a UniFi case study
       </h1>
       <SpecSheet
         items={[
-          { key: "Role", value: "Consultant — design through handoff" },
+          { key: "Role", value: "Consultant: design through handoff" },
           { key: "Stack", value: "Ubiquiti UniFi · VLANs · PoE" },
           { key: "Status", value: "Practice ongoing since 2020" },
           { key: "Budget", value: "$1,200 hardware ceiling" },
@@ -31,7 +31,7 @@ export default function UnifiPage() {
       <div className="prose" style={{ maxWidth: "42rem" }}>
       <p>
         Since 2020 I've designed, deployed, and supported Ubiquiti UniFi networks
-        for SMB and residential clients — discovery, component selection, cabling
+        for SMB and residential clients: discovery, component selection, cabling
         and PoE planning, configuration, remote access, and post-deployment
         support. One engagement in detail, because the reasoning matters more than
         the parts list.
@@ -46,7 +46,7 @@ export default function UnifiPage() {
 
       <h2>Constraints</h2>
       <ul>
-        <li>No rewiring — had to work with the existing Cat5e runs.</li>
+        <li>No rewiring: had to work with the existing Cat5e runs.</li>
         <li>
           Non-technical client who needed to manage guest Wi-Fi independently
           after handoff.

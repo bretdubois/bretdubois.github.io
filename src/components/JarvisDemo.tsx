@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 /*
  * A simulated replay of the real JARVIS command surface. Output is
- * canned (and says so) — the point is to show what a deterministic-first
+ * canned (and says so); the point is to show what a deterministic-first
  * ops bot feels like without exposing the machine that runs my house.
  */
 
@@ -35,16 +35,16 @@ const RESPONSES: Record<string, string[]> = {
   "/backup last": [
     "last snapshot: 03:00 today · repo healthy",
     "retention: 7 daily / 4 weekly / 6 monthly",
-    "watchdog: silent — alerts only fire past the 25-hour threshold",
+    "watchdog: silent, alerts only fire past the 25-hour threshold",
   ],
   "/brain": [
-    "primary: gaming PC (GPU) — reachable, selected",
-    "fallback: local CPU — standing by",
+    "primary: gaming PC (GPU), reachable, selected",
+    "fallback: local CPU, standing by",
     "if both are down, every command above still works.",
   ],
   "/restart n8n": [
     "n8n: restarting… done (2.1 s)",
-    "(simulated — the real one doesn't ask twice either)",
+    "(simulated; the real one doesn't ask twice either)",
   ],
 };
 
@@ -57,7 +57,7 @@ interface Line {
 
 export default function JarvisDemo() {
   const [lines, setLines] = useState<Line[]>([
-    { kind: "sys", text: "JARVIS ready. Type a command or tap one below — try `help`." },
+    { kind: "sys", text: "JARVIS ready. Type a command or tap one below, try `help`." },
   ]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
@@ -98,7 +98,7 @@ export default function JarvisDemo() {
     <div>
       <div className="term">
         <div className="term-head">
-          <span>jarvis — simulated replay</span>
+          <span>jarvis: simulated replay</span>
           <span>canned output · real command surface</span>
         </div>
         <div ref={bodyRef} className="term-body" role="log" aria-live="polite">

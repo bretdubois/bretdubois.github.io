@@ -120,7 +120,7 @@ export default function TradingDiagram() {
       </svg>
       <figcaption>
         <span className="fig-index">Fig. 01</span>
-        Signal to order — with the risk layer in the middle on purpose
+        Signal to order, with the risk layer in the middle on purpose
       </figcaption>
     </figure>
     </Reveal>

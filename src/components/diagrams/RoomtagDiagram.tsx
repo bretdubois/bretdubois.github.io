@@ -105,7 +105,7 @@ export default function RoomtagDiagram() {
       </svg>
       <figcaption>
         <span className="fig-index">Fig. 01</span>
-        Fingerprint in, room out — inference on CPU, training on GPU
+        Fingerprint in, room out: inference on CPU, training on GPU
       </figcaption>
     </figure>
     </Reveal>

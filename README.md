@@ -1,6 +1,6 @@
 # brdubois.com
 
-Personal site of **Bret DuBois** — technical seller who builds. Solutions
+Personal site of **Bret DuBois**: technical seller who builds. Solutions
 engineering, infrastructure, and the systems documented at
 [brdubois.com](https://brdubois.com).
 

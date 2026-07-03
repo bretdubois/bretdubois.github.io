@@ -4,7 +4,7 @@ import SpecSheet from "@/components/SpecSheet";
 import RoomtagDiagram from "@/components/diagrams/RoomtagDiagram";
 
 export const metadata: Metadata = {
-  title: "RoomTag — indoor positioning from Wi-Fi fingerprints",
+  title: "RoomTag: indoor positioning from Wi-Fi fingerprints",
   description:
     "A wearable ESP32 tag plus a self-hosted ML inference server that knows which room you're in. Hardware, firmware, training pipeline, and iOS app.",
   alternates: { canonical: "/projects/roomtag/" },
@@ -19,11 +19,11 @@ export default function RoomTagPage() {
         </Link>
       </p>
       <h1 className="display" style={{ fontSize: "clamp(2rem, 4.5vw, 3.25rem)", maxWidth: "48rem" }}>
-        RoomTag — indoor positioning from Wi-Fi fingerprints
+        RoomTag: indoor positioning from Wi-Fi fingerprints
       </h1>
       <SpecSheet
         items={[
-          { key: "Role", value: "Everything — firmware, server, ML, iOS" },
+          { key: "Role", value: "Everything: firmware, server, ML, iOS" },
           { key: "Stack", value: "ESP32-C6 · FastAPI · PyTorch · ONNX · SwiftUI" },
           { key: "Status", value: "Live at home, worn daily" },
           { key: "Year", value: "2026" },
@@ -35,7 +35,7 @@ export default function RoomTagPage() {
         right now?</strong> No cameras, no BLE beacons, no GPS. A small ESP32-C6 tag
         scans nearby Wi-Fi access points every ~2 seconds and posts the RSSI
         fingerprint to a self-hosted server, which maps it to a room and pushes the
-        result to an iOS app over WebSocket — and to Home Assistant, so lights and
+        result to an iOS app over WebSocket, and to Home Assistant, so lights and
         focus modes can follow you around.
       </p>
 
@@ -51,26 +51,26 @@ export default function RoomTagPage() {
       </p>
       <ul>
         <li>
-          <strong>Relative RSSI normalization</strong> — the strongest AP in each
+          <strong>Relative RSSI normalization</strong>: the strongest AP in each
           scan becomes 0 dB and everything else is measured against it, which makes
           fingerprints immune to router power changes and long-term RSSI drift.
         </li>
         <li>
-          <strong>EMA smoothing over probability vectors</strong> (α = 0.72) — snappy
+          <strong>EMA smoothing over probability vectors</strong> (α = 0.72), snappy
           but stable; a genuine room change commits within one or two scans.
         </li>
         <li>
-          <strong>Hysteresis</strong> — a new room needs two consecutive
+          <strong>Hysteresis</strong>: a new room needs two consecutive
           high-confidence predictions before it's committed, which eliminates
           doorway flicker.
         </li>
         <li>
-          <strong>Time-of-day Bayesian prior</strong> — the historical room
+          <strong>Time-of-day Bayesian prior</strong>: the historical room
           distribution for the current hour is multiplied in, so borderline cases
           collapse toward where I almost always am at that time.
         </li>
         <li>
-          <strong>Markov transition prior</strong> — room-to-room transition
+          <strong>Markov transition prior</strong>: room-to-room transition
           frequencies weight the prediction when the model wants to switch rooms.
         </li>
       </ul>
@@ -92,7 +92,7 @@ export default function RoomTagPage() {
       <h2>Two models, one interface</h2>
       <p>
         The default classifier is a 300-tree random forest with balanced class
-        weights — CPU-only, no GPU required, and it reports out-of-bag accuracy for
+        weights: CPU-only, no GPU required, and it reports out-of-bag accuracy for
         free. For better performance I train an attention-weighted MLP ensemble on
         my gaming PC's GPU with heavy augmentation (Gaussian jitter, AP masking,
         RSSI scaling, Mixup) and test-time augmentation, export it to ONNX, and the
@@ -109,7 +109,7 @@ export default function RoomTagPage() {
       <p>
         Getting it working was half the project; making it deployable was the other
         half. Firmware releases build in GitHub Actions, which compiles the ESP32-C6
-        image and attaches OTA assets to the release — the tag updates itself over
+        image and attaches OTA assets to the release; the tag updates itself over
         the air. The iOS app fetches firmware through the backend so the release
         repo can stay private. Server, training, and firmware live in one repo with
         an operator runbook.
@@ -118,7 +118,7 @@ export default function RoomTagPage() {
       <h2>Status</h2>
       <p>
         Live at home, worn daily, wired into Home Assistant. The repo is private
-        while I scrub deployment-specific configuration out of its history — a
+        while I scrub deployment-specific configuration out of its history. A
         public release is planned, and I'm happy to walk through the code in the
         meantime: <a href="mailto:bretdubois1@gmail.com">bretdubois1@gmail.com</a>.
       </p>

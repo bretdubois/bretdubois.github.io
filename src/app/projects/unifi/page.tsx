@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SpecSheet from "@/components/SpecSheet";
+import BenzTopology from "@/components/BenzTopology";
 
 export const metadata: Metadata = {
   title: "Benz Collision: a UniFi network redesign",
@@ -115,6 +116,8 @@ export default function UnifiPage() {
           is a coverage patch, not a plan.
         </li>
       </ul>
+
+      <BenzTopology />
 
       <h2>Tradeoffs</h2>
       <ul>

@@ -1309,6 +1309,34 @@ html.js .reveal.in-view .diagram-svg .edge-accent {
   color: #d9d9ca;
 }
 
+/* ── Benz topology diagram ──────────────────────────── */
+
+.benz-wire {
+  fill: none;
+  transition: stroke 0.15s ease, stroke-width 0.15s ease, opacity 0.15s ease;
+}
+
+@keyframes benz-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+.benz-anim {
+  stroke-dasharray: 1;
+  animation: benz-draw 0.75s ease both;
+}
+
+.benz-node {
+  animation: benz-fade 0.4s ease both;
+}
+
+@keyframes benz-fade {
+  from {
+    opacity: 0;
+  }
+}
+
 /* ── Motion discipline ──────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {

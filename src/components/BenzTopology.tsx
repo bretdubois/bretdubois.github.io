@@ -4,46 +4,55 @@ import { useState } from "react";
 
 /*
  * Interactive topology for the Benz Collision redesign.
- *  - "before": the two camera cables run cameras → closet → office switch,
- *    the closet a passive passthrough.
- *  - "after": the cables are cut and terminated in the closet, which now
- *    holds the UDM-SE core; the four ends are repurposed as WAN feed, LAN
- *    return, and two PoE camera drops.
- * Core-and-leaves layout, curved connectors, a packet that flows along
- * the traced cable. Hover or tap a cable (or a legend chip) to trace it.
- * Planned design; drawn to the same spec as the site's other diagrams.
+ *  - "before": Comcast feeds the office Lite 8; both camera cables run
+ *    cameras → closet → Lite 8; a long run from the front office feeds a
+ *    rear USW-Flex that powers the Verkada beacon.
+ *  - "after": the two camera cables are cut in the closet. One office-side
+ *    end carries WAN from the gateway up to the UDM-SE core; the other is
+ *    the LAN return down to the Lite 8; both camera-side ends land on the
+ *    UDM-SE PoE ports. The rear USW-Flex + beacon stay, the long run is
+ *    re-homed to the closet, and a U7 Outdoor AP is added on the USW-Flex.
+ * Hover or tap a reused cable (or a legend chip) to trace it. Planned
+ * design, drawn to the same spec as the site's other diagrams.
  */
 
 type Mode = "after" | "before";
 type Cable = "A" | "B";
 
 interface Wire {
-  cable: Cable;
-  id: string;
+  cable?: Cable;
+  id?: string;
   d: string;
   role?: string;
-  label?: { text: string; x: number; y: number };
   arrow?: boolean;
+  packet?: boolean;
+  label?: { text: string; x: number; y: number; dyn?: boolean };
 }
 
 const AFTER: Wire[] = [
-  { cable: "A", id: "bz-wan", role: "WAN", d: "M130,300 C 130,244 250,214 350,186", arrow: true, label: { text: "WAN feed", x: 236, y: 204 } },
-  { cable: "B", id: "bz-lan", role: "LAN", d: "M430,186 C 430,250 372,276 327,300", arrow: true, label: { text: "LAN return", x: 452, y: 248 } },
-  { cable: "A", id: "bz-poe1", role: "PoE", d: "M506,104 C 552,98 582,96 604,95", arrow: true, label: { text: "PoE", x: 556, y: 84 } },
-  { cable: "B", id: "bz-poe2", role: "PoE", d: "M506,154 C 552,160 582,162 604,163", arrow: true, label: { text: "PoE", x: 556, y: 178 } },
+  { cable: "B", id: "bz-wan", role: "WAN", packet: true, arrow: true, d: "M120,296 C 120,236 300,206 396,178", label: { text: "WAN feed", x: 250, y: 200, dyn: true } },
+  { cable: "A", id: "bz-lan", role: "LAN", packet: true, arrow: true, d: "M470,178 C 470,306 236,372 118,372", label: { text: "LAN return", x: 320, y: 300, dyn: true } },
+  { cable: "A", id: "bz-poe1", role: "PoE", packet: true, arrow: true, d: "M546,84 C 620,82 660,82 706,82", label: { text: "PoE", x: 632, y: 72, dyn: true } },
+  { cable: "B", id: "bz-poe2", role: "PoE", packet: true, arrow: true, d: "M546,150 C 620,150 660,148 706,148", label: { text: "PoE", x: 632, y: 166, dyn: true } },
 ];
 
-const AFTER_SUPPORT = [
-  "M300,120 C 262,120 230,124 202,125",
-  "M404,331 L 434,331",
-  "M470,186 C 560,232 636,262 679,300",
+const AFTER_SUPPORT: Wire[] = [
+  { d: "M500,178 C 560,250 582,322 596,352", arrow: true, label: { text: "long run · re-homed to closet", x: 556, y: 262 } },
+  { d: "M746,352 C 754,340 758,330 762,323", arrow: true },
+  { d: "M746,380 C 754,388 758,392 762,395", arrow: true },
 ];
 
 const BEFORE: Wire[] = [
-  { cable: "A", id: "bz-ba1", d: "M604,95 C 560,100 522,105 506,108" },
-  { cable: "A", id: "bz-ba2", d: "M350,186 C 348,250 330,282 315,300" },
-  { cable: "B", id: "bz-bb1", d: "M604,163 C 560,158 522,153 506,150" },
-  { cable: "B", id: "bz-bb2", d: "M430,186 C 430,252 362,282 337,300" },
+  { cable: "A", id: "bz-ba1", d: "M706,82 C 640,86 580,88 546,90" },
+  { cable: "A", id: "bz-ba2", d: "M420,178 C 420,306 236,372 118,372" },
+  { cable: "B", id: "bz-bb1", d: "M706,148 C 640,146 580,142 546,140" },
+  { cable: "B", id: "bz-bb2", d: "M480,178 C 480,306 288,372 128,374" },
+];
+
+const BEFORE_SUPPORT: Wire[] = [
+  { d: "M120,352 L 120,372", arrow: true, label: { text: "internet", x: 150, y: 366 } },
+  { d: "M206,400 C 360,430 480,396 596,368", arrow: true, label: { text: "long run to rear", x: 402, y: 430 } },
+  { d: "M746,352 C 754,340 758,330 762,323", arrow: true },
 ];
 
 /* ── device glyphs, 20×20, stroke = ink ── */
@@ -87,6 +96,12 @@ function Icon({ type, x, y }: { type: string; x: number; y: number }) {
           <circle cx="10" cy="15" r="1.3" fill="var(--ink)" stroke="none" />
         </>
       )}
+      {type === "horn" && (
+        <>
+          <path d="M3 8 H6 L12 4 V16 L6 12 H3 Z" {...s} />
+          <path d="M14.5 7 a4 4 0 0 1 0 6" {...s} />
+        </>
+      )}
     </g>
   );
 }
@@ -97,15 +112,15 @@ interface NodeProps {
 }
 function Node({ x, y, w, h, icon, title, sub, accent, soft }: NodeProps) {
   const iconY = accent ? y + 16 : y + h / 2 - 10;
-  const tx = x + 44;
+  const tx = x + 42;
   const titleY = sub || accent ? y + (accent ? 30 : h / 2 - 1) : y + h / 2 + 4;
   return (
     <g className="benz-node">
       <rect x={x} y={y} width={w} height={h} rx={7} className={soft ? "node-soft" : "node-static"} />
-      <Icon type={icon} x={x + 14} y={iconY} />
+      <Icon type={icon} x={x + 13} y={iconY} />
       <text x={tx} y={titleY} fontSize="12" fontWeight="600">{title}</text>
-      {sub && <text x={tx} y={titleY + 16} className="t-muted" fontSize="10">{sub}</text>}
-      {accent && <text x={x + 16} y={y + h - 16} className="t-accent" fontSize="10">{accent}</text>}
+      {sub && <text x={tx} y={titleY + 15} className="t-muted" fontSize="9.5">{sub}</text>}
+      {accent && <text x={x + 15} y={y + h - 15} className="t-accent" fontSize="9.5">{accent}</text>}
     </g>
   );
 }
@@ -116,12 +131,13 @@ export default function BenzTopology() {
   const [hovered, setHovered] = useState<Cable | null>(null);
   const active = pinned ?? hovered;
 
-  const wires = mode === "after" ? AFTER : BEFORE;
+  const hero = mode === "after" ? AFTER : BEFORE;
+  const support = mode === "after" ? AFTER_SUPPORT : BEFORE_SUPPORT;
 
-  const wireStyle = (cable: Cable, i: number): React.CSSProperties => ({
+  const heroStyle = (cable: Cable, i: number): React.CSSProperties => ({
     stroke: active === cable ? "var(--accent)" : "var(--muted)",
     strokeWidth: active === cable ? 2 : 1.3,
-    opacity: active && active !== cable ? 0.18 : 1,
+    opacity: active && active !== cable ? 0.16 : 1,
     animationDelay: `${0.06 * i}s`,
   });
 
@@ -136,10 +152,10 @@ export default function BenzTopology() {
         <div style={{ background: "var(--paper-raised)", padding: "0.5rem 0.5rem 0.25rem", overflowX: "auto" }}>
           <svg
             className="diagram-svg"
-            viewBox="0 0 780 460"
+            viewBox="0 0 900 452"
             xmlns="http://www.w3.org/2000/svg"
             role="img"
-            aria-label="Planned network topology. An upstairs closet holds a UniFi Dream Machine SE as the core. Two existing camera cables are cut and terminated in the closet: their office-side ends become the WAN feed from the Comcast gateway and the LAN return to the main-office Lite 8 switch, and their camera-side ends become PoE drops that keep the two Verkada cameras online. Access points cover the offices, shop floor, and exterior over wired links."
+            aria-label="Planned network topology. An upstairs closet holds a UniFi Dream Machine SE as the core. Two existing camera cables are cut and terminated in the closet: one office-side end carries WAN from the Comcast gateway, the other is the LAN return to the main-office Lite 8 switch, and both camera-side ends land on the core's PoE ports to keep the Verkada cameras online. A long run feeds a rear USW-Flex switch that powers a Verkada beacon and a new U7 Outdoor access point."
           >
             <defs>
               <marker id="bz-arr" viewBox="0 0 8 8" refX="6.5" refY="4" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
@@ -150,97 +166,75 @@ export default function BenzTopology() {
               </marker>
             </defs>
 
-            {/* floor divider */}
-            <line x1="16" y1="216" x2="764" y2="216" stroke="var(--rule)" strokeDasharray="4 5" />
+            <line x1="16" y1="248" x2="884" y2="248" stroke="var(--rule)" strokeDasharray="4 5" />
             <text x="18" y="26" className="t-muted" fontSize="9.5" letterSpacing="0.12em">UPSTAIRS</text>
-            <text x="18" y="240" className="t-muted" fontSize="9.5" letterSpacing="0.12em">DOWNSTAIRS</text>
+            <text x="18" y="272" className="t-muted" fontSize="9.5" letterSpacing="0.12em">DOWNSTAIRS</text>
 
-            {/* wires (draw + trace), keyed by mode so the draw-in replays on toggle */}
             <g key={mode}>
-              {mode === "after" &&
-                AFTER_SUPPORT.map((d, i) => (
-                  <path key={i} d={d} className="benz-wire benz-anim edge" pathLength={1} markerEnd="url(#bz-arr)" style={{ animationDelay: `${0.3 + 0.05 * i}s` }} />
-                ))}
+              {/* support wires (plain, gray) */}
+              {support.map((w, i) => (
+                <g key={`s${i}`}>
+                  <path d={w.d} className="benz-wire benz-anim edge" pathLength={1} markerEnd={w.arrow ? "url(#bz-arr)" : undefined} style={{ animationDelay: `${0.34 + 0.05 * i}s` }} />
+                  {w.label && <text x={w.label.x} y={w.label.y} fontSize="9.5" textAnchor="middle" className="t-muted">{w.label.text}</text>}
+                </g>
+              ))}
 
-              {wires.map((w, i) => (
+              {/* hero wires (interactive, traced) */}
+              {hero.map((w, i) => (
                 <g
                   key={w.id}
                   style={{ cursor: "pointer" }}
                   tabIndex={0}
                   role="button"
                   aria-label={`Cable ${w.cable}${w.role ? ", " + w.role : ""}`}
-                  onMouseEnter={() => setHovered(w.cable)}
+                  onMouseEnter={() => setHovered(w.cable!)}
                   onMouseLeave={() => setHovered(null)}
-                  onFocus={() => setHovered(w.cable)}
+                  onFocus={() => setHovered(w.cable!)}
                   onBlur={() => setHovered(null)}
-                  onClick={() => setPinned((p) => (p === w.cable ? null : w.cable))}
+                  onClick={() => setPinned((p) => (p === w.cable ? null : w.cable!))}
                 >
                   <path d={w.d} fill="none" stroke="transparent" strokeWidth={16} />
-                  <path
-                    d={w.d}
-                    className="benz-wire benz-anim"
-                    pathLength={1}
-                    style={wireStyle(w.cable, i)}
-                    markerEnd={w.arrow ? (active === w.cable ? "url(#bz-arr-a)" : "url(#bz-arr)") : undefined}
-                  />
-                  {/* flowing packet: subtle at rest, bright when traced */}
-                  <circle
-                    className="packet"
-                    r={active === w.cable ? 3 : 2.2}
-                    style={{ fill: active === w.cable ? "var(--accent)" : "var(--muted)", opacity: active && active !== w.cable ? 0.12 : active === w.cable ? 1 : 0.5 }}
-                  >
-                    <animateMotion dur={`${2.6 + (i % 2) * 0.5}s`} repeatCount="indefinite" begin={`${0.15 * i}s`}>
-                      <mpath href={`#${w.id}`} />
-                    </animateMotion>
-                  </circle>
-                  <path id={w.id} d={w.d} fill="none" stroke="none" />
+                  <path d={w.d} id={w.id} className="benz-wire benz-anim" pathLength={1} style={heroStyle(w.cable!, i)} markerEnd={w.arrow ? (active === w.cable ? "url(#bz-arr-a)" : "url(#bz-arr)") : undefined} />
+                  {w.packet && (
+                    <circle className="packet" r={active === w.cable ? 3 : 2.2} style={{ fill: active === w.cable ? "var(--accent)" : "var(--muted)", opacity: active && active !== w.cable ? 0.1 : active === w.cable ? 1 : 0.5 }}>
+                      <animateMotion dur={`${2.6 + (i % 2) * 0.5}s`} repeatCount="indefinite" begin={`${0.15 * i}s`}>
+                        <mpath href={`#${w.id}`} />
+                      </animateMotion>
+                    </circle>
+                  )}
                 </g>
               ))}
             </g>
 
-            {/* role / trace labels */}
+            {/* dynamic role labels */}
             {mode === "after" &&
               AFTER.filter((w) => w.label).map((w) => (
-                <text
-                  key={w.id}
-                  x={w.label!.x}
-                  y={w.label!.y}
-                  fontSize="10"
-                  textAnchor="middle"
-                  style={{
-                    fill: active === w.cable ? "var(--accent)" : "var(--muted)",
-                    fontWeight: active === w.cable ? 600 : 400,
-                    opacity: active && active !== w.cable ? 0.18 : 1,
-                    transition: "fill 0.15s ease, opacity 0.15s ease",
-                  }}
-                >
+                <text key={w.id} x={w.label!.x} y={w.label!.y} fontSize="9.5" textAnchor="middle"
+                  style={{ fill: active === w.cable ? "var(--accent)" : "var(--muted)", fontWeight: active === w.cable ? 600 : 400, opacity: active && active !== w.cable ? 0.16 : 1, transition: "fill 0.15s ease, opacity 0.15s ease" }}>
                   {w.label!.text}
                 </text>
               ))}
             {mode === "before" && (
-              <text x={250} y={250} fontSize="10" textAnchor="middle" className="t-muted">
-                original camera runs
-              </text>
+              <text x={296} y={300} fontSize="9.5" textAnchor="middle" className="t-muted">original camera runs</text>
             )}
 
             {/* ── nodes ── */}
-            {/* core / closet */}
             {mode === "after" ? (
-              <Node x={300} y={62} w={206} h={124} icon="router" title="Upstairs closet · core" sub="UniFi Dream Machine SE" accent="2 camera cables cut + terminated here" />
+              <Node x={340} y={52} w={206} h={126} icon="router" title="Upstairs closet · core" sub="UniFi Dream Machine SE" accent="2 camera cables cut + terminated here" />
             ) : (
-              <Node x={300} y={62} w={206} h={124} icon="router" title="Upstairs closet" sub="camera cables pass through" />
+              <Node x={340} y={52} w={206} h={126} icon="router" title="Upstairs closet" sub="camera cables pass through" />
             )}
 
-            {/* cameras */}
-            <Node x={604} y={70} w={140} h={50} icon="camera" title="Verkada cam 1" soft />
-            <Node x={604} y={138} w={140} h={50} icon="camera" title="Verkada cam 2" soft />
+            <Node x={706} y={58} w={152} h={48} icon="camera" title="Verkada cam 1" soft />
+            <Node x={706} y={124} w={152} h={48} icon="camera" title="Verkada cam 2" soft />
 
-            {/* downstairs row */}
-            <Node x={44} y={300} w={172} h={62} icon="cloud" title="Comcast gateway" sub="main office · coax" soft />
-            <Node x={246} y={300} w={158} h={62} icon="switch" title="UniFi Lite 8" sub={mode === "after" ? "LAN edge switch" : "main-office switch"} />
-            {mode === "after" && <Node x={434} y={300} w={150} h={62} icon="ap" title="Office wall AP" soft />}
-            {mode === "after" && <Node x={604} y={300} w={150} h={62} icon="ap" title="Shop + exterior APs" sub="wired · line of sight" soft />}
-            {mode === "after" && <Node x={44} y={96} w={158} h={58} icon="ap" title="Upstairs office AP" soft />}
+            <Node x={34} y={296} w={172} h={56} icon="cloud" title="Comcast gateway" sub="main office · coax" soft />
+            <Node x={34} y={372} w={172} h={56} icon="switch" title="UniFi Lite 8" sub={mode === "after" ? "LAN edge switch" : "main-office switch"} />
+
+            {/* rear / exterior cluster */}
+            <Node x={596} y={336} w={150} h={56} icon="switch" title="USW-Flex" sub="rear exterior" soft />
+            <Node x={762} y={296} w={128} h={50} icon="horn" title="Verkada beacon" soft />
+            {mode === "after" && <Node x={762} y={370} w={128} h={50} icon="ap" title="U7 Outdoor" sub="new · WiFi 7" soft />}
           </svg>
         </div>
 
@@ -259,7 +253,7 @@ export default function BenzTopology() {
               onMouseLeave={() => setHovered(null)}
               onClick={() => setPinned((p) => (p === "A" ? null : "A"))}
             >
-              cable A: WAN + camera 1
+              cable A: LAN + camera 1
             </button>
             <button
               type="button"
@@ -268,7 +262,7 @@ export default function BenzTopology() {
               onMouseLeave={() => setHovered(null)}
               onClick={() => setPinned((p) => (p === "B" ? null : "B"))}
             >
-              cable B: LAN + camera 2
+              cable B: WAN + camera 2
             </button>
           </div>
         </div>

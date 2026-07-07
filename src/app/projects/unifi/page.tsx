@@ -52,9 +52,10 @@ export default function UnifiPage() {
 
       <h2>What was already there</h2>
       <ul>
-        <li>Comcast Business internet terminating on coax in the main office, into a Comcast gateway that stays put.</li>
-        <li>Verkada cameras with existing home-run cabling that had to stay online.</li>
-        <li>A UniFi Lite 8 PoE switch in the main office, plus an exterior UniFi switch.</li>
+        <li>Comcast Business internet terminating on coax in the main office, into a Comcast gateway feeding the office.</li>
+        <li>Two Verkada cameras home-run back to the main-office Lite 8, their cables passing through an upstairs utility closet on the way.</li>
+        <li>A UniFi Lite 8 PoE switch in the main office.</li>
+        <li>A long cable run from the front office all the way to the rear of the shop, feeding an exterior UniFi USW-Flex switch that powers a Verkada beacon.</li>
         <li>Partially understood cable paths: some runs documented, some traced by hand during the survey.</li>
       </ul>
 
@@ -106,14 +107,22 @@ export default function UnifiPage() {
           working without change.
         </li>
         <li>
+          <strong>Keep the rear subsystem, shorten its dependency.</strong> The
+          existing long run to the back of the shop already feeds an exterior
+          USW-Flex that powers the Verkada beacon. That stays as-is, but the run
+          gets re-homed to terminate at the closet core instead of the front
+          office: a shorter, cleaner uplink that no longer leans on the office
+          switch. A new U7 Outdoor AP goes about six feet below the beacon on the
+          same USW-Flex, giving the rear yard real coverage off a wired backhaul.
+        </li>
+        <li>
           <strong>Wired APs placed for line of sight, not mesh.</strong> The main
           office gets a wall-mounted AP, since the UDM-SE upstairs does not throw
           useful signal down into the office. The upstairs office gets an AP fed
-          directly from the closet. The shop floor and rear exterior are covered by
-          wired APs positioned for line of sight across the metal, where a wired
-          backhaul matters most. Mesh is designed in only as a fallback for the
-          hardest exterior corner, never as the primary link: in a steel shop, mesh
-          is a coverage patch, not a plan.
+          directly from the closet, and the shop floor is covered by wired APs
+          positioned for line of sight across the metal. Mesh is designed in only as
+          a fallback for the hardest corner, never as the primary link: in a steel
+          shop, mesh is a coverage patch, not a plan.
         </li>
       </ul>
 

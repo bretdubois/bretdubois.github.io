@@ -40,10 +40,10 @@ const projects: ProjectEntry[] = [
   },
   {
     href: "/projects/unifi/",
-    title: "Client network design: a UniFi case study",
-    meta: "Ubiquiti UniFi · VLANs · PoE · site survey",
+    title: "Benz Collision: a network core in a closet",
+    meta: "Ubiquiti UniFi · PoE · Comcast Business · Verkada · structured cabling",
     description:
-      "Independent networking work for paying clients. One engagement in detail: constraints, architecture decisions, tradeoffs, and the documented handoff.",
+      "A network redesign for a working auto body shop. Site survey, constraint analysis, and topology design that turns an upstairs closet into the core by reusing camera cabling that already ran through it.",
   },
 ];
 

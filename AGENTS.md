@@ -23,10 +23,12 @@ This version has breaking changes — APIs, conventions, and file structure may 
   SignalGate (trading page, real risk checks over a parsed free-form
   signal). Rule for all: synthesized DATA, faithful LOGIC, labeled as a
   simulation in the UI. /colophon documents the rationale; keep it true.
-- Diagrams are hand-drawn SVG components in `src/components/diagrams/`,
-  styled via `.diagram-svg` CSS vars, with prose `aria-label`s and numbered
-  figcaptions. Code excerpts must be real code from the actual projects,
-  never invented filler.
+- Diagrams are hand-drawn SVG components styled via `.diagram-svg` CSS
+  vars, with prose `aria-label`s and numbered figcaptions. Static ones
+  live in `src/components/diagrams/`; interactive ones (client components:
+  `BenzTopology`, and the sims `RoomtagSim` / `SignalGate` / `JarvisDemo`)
+  live in `src/components/`. Code excerpts must be real code from the
+  actual projects, never invented filler.
 - Never publish: phone number, internal/Tailscale IPs, ports, hostnames,
   Telegram bot handles, or home-network topology.
 - Facts (dates, employers, metrics) come from the resume master in the

@@ -192,6 +192,12 @@ export default function BenzTopology() {
                   onFocus={() => setHovered(w.cable!)}
                   onBlur={() => setHovered(null)}
                   onClick={() => setPinned((p) => (p === w.cable ? null : w.cable!))}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setPinned((p) => (p === w.cable ? null : w.cable!));
+                    }
+                  }}
                 >
                   <path d={w.d} fill="none" stroke="transparent" strokeWidth={16} />
                   <path d={w.d} id={w.id} className="benz-wire benz-anim" pathLength={1} style={heroStyle(w.cable!, i)} markerEnd={w.arrow ? (active === w.cable ? "url(#bz-arr-a)" : "url(#bz-arr)") : undefined} />

@@ -42,7 +42,17 @@ export default function ResumePage() {
             ← home
           </Link>
         </p>
-        <PrintButton />
+        <span className="flex items-baseline gap-3">
+          <a
+            href="/Bret-DuBois-Resume.pdf"
+            download
+            className="meta rounded-md border px-3 py-1.5 transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+            style={{ borderColor: "var(--rule)", textDecoration: "none" }}
+          >
+            download PDF
+          </a>
+          <PrintButton />
+        </span>
       </div>
 
       <h1 className="display" style={{ fontSize: "2.25rem" }}>
@@ -62,9 +72,9 @@ export default function ResumePage() {
         technical discovery, and an independent networking practice. Builds and
         operates his own infrastructure: a multi-service AI agent stack (Docker,
         Python, PostgreSQL, Claude API), a broker-integrated futures trading
-        system, and indoor-positioning hardware. CCNA in progress. Targeting
-        Solutions Engineering and Technical Account Management roles at AI, cloud,
-        and networking companies.
+        system, and indoor-positioning hardware. CCNA and AWS Solutions Architect
+        Associate in progress. Targeting Solutions Engineering and Technical
+        Account Management roles at AI, cloud, and networking companies.
       </p>
 
       <h2>Experience</h2>

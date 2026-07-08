@@ -466,11 +466,6 @@ hr {
   margin: 2.5rem 0;
 }
 
-.rule-strong {
-  border: none;
-  border-top: 2px solid var(--rule-strong);
-}
-
 /* ── Motion ─────────────────────────────────────────── */
 /*
  * All hand-rolled. Three kinds, each tied to meaning:

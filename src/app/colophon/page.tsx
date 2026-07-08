@@ -73,9 +73,13 @@ export default function ColophonPage() {
           The architecture diagrams are hand-drawn SVG on a fixed grid, styled
           with the site's own CSS variables and set in the same mono as the
           captions. On the home page, outlined nodes are real links with hover
-          and keyboard-focus states; the diagram <em>is</em> the navigation.
-          Each carries an <code>aria-label</code> describing the topology in
-          prose for screen readers.
+          and keyboard-focus states; the diagram <em>is</em> the navigation. The
+          network topology on the{" "}
+          <Link href="/projects/unifi/">UniFi case study</Link> goes further: a
+          before/after toggle morphs the wiring, and you can trace either reused
+          cable through its new roles. Each diagram carries an{" "}
+          <code>aria-label</code> describing the topology in prose for screen
+          readers.
         </p>
 
         <h2>Motion</h2>
@@ -85,9 +89,9 @@ export default function ColophonPage() {
           motion as decoration. The rule now is that{" "}
           <strong>motion must carry information</strong>, and every use here
           passes that test: the architecture diagrams draw their edges when they
-          enter the viewport (the topology assembles in reading order), a single
-          packet loops the home diagram because data flow is literally what it
-          depicts, page navigations cross-fade via the View Transitions API so
+          enter the viewport (the topology assembles in reading order), packets
+          travel the topology diagrams because data flow is literally what they
+          depict, page navigations cross-fade via the View Transitions API so
           moving between case studies feels continuous, and the hero settles in
           once, in under 600 milliseconds, and never moves again.
         </p>
@@ -99,8 +103,9 @@ export default function ColophonPage() {
         </p>
         <h2>Playable demos</h2>
         <p>
-          Three project pages let you poke at the actual idea instead of reading
-          about it. The <Link href="/projects/jarvis/">JARVIS page</Link> has a
+          Three project pages carry an interactive simulation you can poke
+          instead of just reading about it. The{" "}
+          <Link href="/projects/jarvis/">JARVIS page</Link> has a
           terminal that replays the bot's real command surface. The{" "}
           <Link href="/projects/roomtag/">RoomTag page</Link> has a floor plan you
           walk a tag around while a synthesized classifier feeds the real EMA and

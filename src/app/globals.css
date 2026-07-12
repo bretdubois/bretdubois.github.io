@@ -229,16 +229,27 @@ body {
 
 .figure {
   margin: 1.5rem 0 1.75rem;
-}
-
-.figure {
   overflow-x: auto;
+  /* Scroll-shadow affordance. Paper-colored covers scroll WITH the diagram
+     (background-attachment: local); the edge shadows stay pinned to the
+     frame (scroll). When a wide diagram overflows on a phone, the shadow on
+     the swipe-able side shows through, so it reads as scrollable instead of
+     cut off. On desktop the diagram fits, the covers sit over the shadows,
+     and nothing shows. */
+  background:
+    linear-gradient(to right, var(--paper) 30%, transparent) 0 0,
+    linear-gradient(to left, var(--paper) 30%, transparent) 100% 0,
+    radial-gradient(farthest-side at 0 50%, rgba(27, 27, 22, 0.13), transparent) 0 0,
+    radial-gradient(farthest-side at 100% 50%, rgba(27, 27, 22, 0.13), transparent) 100% 0;
+  background-repeat: no-repeat;
+  background-size: 2.5rem 100%, 2.5rem 100%, 0.9rem 100%, 0.9rem 100%;
+  background-attachment: local, local, scroll, scroll;
 }
 
 .figure svg {
   display: block;
   width: 100%;
-  min-width: 38rem; /* keep diagram labels legible on phones; scroll instead of shrink */
+  min-width: 30rem; /* keep diagram labels legible; scroll (with the edge-fade cue) instead of shrinking to unreadable */
   height: auto;
 }
 

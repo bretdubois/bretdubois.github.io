@@ -69,12 +69,12 @@ function Hero() {
   return (
     <section className="shell pt-16 pb-2">
       <p className="label rise" style={{ marginBottom: "1.25rem" }}>
-        Solutions engineering · Redwood City, CA
+        Builds and operates real systems · Redwood City, CA
       </p>
       <h1
         className="display rise"
         style={{
-          fontSize: "clamp(2.625rem, 6.5vw, 4.75rem)",
+          fontSize: "clamp(2.25rem, 6.5vw, 4.75rem)",
           maxWidth: "56rem",
           animationDelay: "0.08s",
         }}
@@ -101,17 +101,18 @@ function Hero() {
             weekends, I build and operate the systems on this page.
           </p>
           <p>
-            I'm looking for <strong>Solutions Engineering / Sales Engineering /
-            Technical Account Management</strong> roles at AI, networking, and
-            cloud companies, the job where explaining a system well matters as
-            much as understanding it.
+            I'm after the work where building a system and explaining it are the
+            same job: <strong>solutions and sales engineering, technical account
+            management</strong>, and the infrastructure, SRE, and R&amp;D roles
+            behind them. Mostly at AI, networking, and cloud companies. Title
+            matters less to me than whether both halves are on the table.
           </p>
         </div>
         <div style={{ maxWidth: "22rem" }}>
           <dl className="fact-card">
             <div className="fact-row">
               <dt className="fact-key">Status</dt>
-              <dd className="fact-value">Open to SE / SE-adjacent roles</dd>
+              <dd className="fact-value">Open to SE, TAM, infra, and SRE roles</dd>
             </div>
             <div className="fact-row">
               <dt className="fact-key">Location</dt>
@@ -210,8 +211,9 @@ export default function Home() {
             The building is one half. The other half is six years of translating
             between technical systems and the people who buy them: enterprise
             referrals at Apple, technical discovery for an AI platform at SpotHopper,
-            in-home consulting at Asurion. That combination is the whole pitch for a
-            solutions role.
+            in-home consulting at Asurion. Build the systems, then translate them:
+            that combination is the pitch for a solutions role, and for most jobs
+            where both halves matter.
           </p>
           <ul>
             <li>
